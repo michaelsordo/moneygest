@@ -5,6 +5,7 @@ Aplicación de gestión de finanzas para dispositivos móviles Android.
 ## Interfaces y explicación
 
 LOGIN
+
 ![image](https://user-images.githubusercontent.com/91323674/140921511-d4c85323-e65e-4cd4-8650-0a0727ec2632.png)
 
 REGISTRO
