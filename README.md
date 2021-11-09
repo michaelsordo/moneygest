@@ -3,12 +3,16 @@ Aplicación de gestión de finanzas para dispositivos móviles Android.
 ![N|Solid](https://user-images.githubusercontent.com/49002900/140368276-9fe0901b-b281-4844-bcd2-6150e18e4d74.png)
 
 ## Interfaces y explicación
+
 LOGIN
 ![image](https://user-images.githubusercontent.com/91323674/140921511-d4c85323-e65e-4cd4-8650-0a0727ec2632.png)
+
 REGISTRO
 ![image](https://user-images.githubusercontent.com/91323674/140921550-b23e8400-4bad-4495-a261-a404c11f0564.png)
+
 HOME/DASHBOARD
 ![image](https://user-images.githubusercontent.com/91323674/140921593-7e8538d1-152a-422b-a58f-5ab8955855c1.png)
+
 GASTOS
 ![image](https://user-images.githubusercontent.com/91323674/140921635-e61e5266-7ace-4189-994c-65ff6f3c1562.png)
 ALTA/MODIFICACIÓN GASTOS
