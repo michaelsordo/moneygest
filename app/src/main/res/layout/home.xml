@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:textAlignment="center">
+
+    <TextView
+        android:id="@+id/Resumen"
+        android:layout_width="match_parent"
+        android:layout_height="112dp"
+        android:text="Resumen"
+        android:textAlignment="center"
+        android:textSize="24sp" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="182dp" />
+
+    <TextView
+        android:id="@+id/gasto_total"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:text="Gasto Total"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/gasto_mayor"
+        android:layout_width="match_parent"
+        android:layout_height="76dp"
+        android:text="Gasto Mayor"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/gasto_objetivo"
+        android:layout_width="match_parent"
+        android:layout_height="74dp"
+        android:text="Gasto Objetivo"
+        android:textSize="20sp" />
+</LinearLayout>
