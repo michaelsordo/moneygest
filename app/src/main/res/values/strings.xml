@@ -6,6 +6,6 @@
     <string name="area_personal">Área Personal</string>
     <string name="nombre_usuario">nombre</string>
     <string name="correo_usuario">correo@correo.com</string>
-    <string name="pass_usuario">contraseña</string>
+    <string name="pass_usuario">pass</string>
     <string name="modificar">MODIFICAR</string>
 </resources>
