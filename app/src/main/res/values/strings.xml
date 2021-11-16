@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">moneygest</string>
+<<<<<<< HEAD
+=======
+    <string name="gastos">Gastos</string>
+    <string name="ingresos">Ingresos</string>
+    <string name="inversiones">Inversiones</string>
+    <string name="area_personal">Área Personal</string>
+    <string name="nombre_usuario">nombre</string>
+    <string name="correo_usuario">correo@correo.com</string>
+    <string name="pass_usuario">password</string>
+    <string name="modificar">MODIFICAR</string>
+>>>>>>> diego
 </resources>
