@@ -8,6 +8,7 @@
     <string name="login">Login</string>
     <string name="registro">Registro</string>
     <string name="registrarme">Registrarme</string>
+    <string name="loguearme">Loguearme</string>
     <string name="nombre_usuario">nombre</string>
     <string name="correo_usuario">correo@correo.com</string>
     <string name="pass_usuario">pass</string>
@@ -19,6 +20,7 @@
     <string name="modificar">MODIFICAR</string>
     <string name="añadir">AÑADIR</string>
     <string name="detalles">DETALLES</string>
-    <string name="registro_text">Todavía no tienes una cuenta? Registrate pulsando en el siguiente botón</string>
+    <string name="registro_text">¿Todavía no tienes una cuenta? Registrate pulsando en el siguiente botón</string>
+    <string name="login_text">¿Ya tienes una cuenta? Logueate pulsando en el siguiente botón</string>
 
 </resources>
