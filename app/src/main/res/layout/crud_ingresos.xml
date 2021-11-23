@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/ingresos_text"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:paddingTop="50dp"
+            android:text="ALTA/MODIFICACION INGRESOS"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/ingresos_text2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ingresos"
+            android:textSize="21sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/boton_ingresos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="325dp"
+            android:layout_marginTop="525dp"
+            android:clickable="true"
+            app:srcCompat="@android:drawable/ic_menu_add" />
+    </LinearLayout>
+</RelativeLayout>
