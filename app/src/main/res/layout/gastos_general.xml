@@ -14,25 +14,25 @@
         tools:layout_editor_absoluteY="1dp">
 
         <TextView
-            android:id="@+id/home_gastos"
+            android:id="@+id/general_gastos_text"
             android:layout_width="match_parent"
             android:layout_height="74dp"
             android:paddingTop="10sp"
-            android:text="GASTOS"
+            android:text="@string/gastos"
             android:textAlignment="center"
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/gastos"
+            android:id="@+id/general_gastos"
             android:layout_width="match_parent"
             android:layout_height="72dp"
-            android:text="Gastos" />
+            android:text="@string/gastos" />
 
         <EditText
-            android:id="@+id/ingresos"
+            android:id="@+id/general_ingresos"
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            android:text="Ingresos" />
+            android:text="@string/ingresos" />
 
         <Space
             android:layout_width="match_parent"
@@ -45,10 +45,10 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/general_boton_detalles"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Detalles" />
+                android:text="@string/detalles" />
         </LinearLayout>
 
     </LinearLayout>

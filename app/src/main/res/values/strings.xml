@@ -2,12 +2,23 @@
     <string name="app_name">moneygest</string>
     <string name="gastos">Gastos</string>
     <string name="ingresos">Ingresos</string>
+    <string name="resumen">Resumen</string>
     <string name="inversiones">Inversiones</string>
     <string name="area_personal">Área Personal</string>
+    <string name="login">Login</string>
+    <string name="registro">Registro</string>
+    <string name="registrarme">Registrarme</string>
     <string name="nombre_usuario">nombre</string>
     <string name="correo_usuario">correo@correo.com</string>
     <string name="pass_usuario">pass</string>
+    <string name="gasto_total">Gasto Total</string>
+    <string name="gasto_mayor">Gasto Mayor</string>
+    <string name="gasto_objetivo">Gasto Objetivo</string>
+    <string name="info_gastos">Detalles/Modificar/Eliminar Gastos</string>
+    <string name="info_ingresos">Alta/Modificación Ingresos</string>
     <string name="modificar">MODIFICAR</string>
-    <string name="registro">Todavía no tienes una cuenta? Registrate pulsando en el siguiente botón</string>
+    <string name="añadir">AÑADIR</string>
+    <string name="detalles">DETALLES</string>
+    <string name="registro_text">Todavía no tienes una cuenta? Registrate pulsando en el siguiente botón</string>
 
 </resources>

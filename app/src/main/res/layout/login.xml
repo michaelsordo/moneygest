@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/register"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -10,45 +9,45 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/registro_text"
+            android:id="@+id/login_text"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:paddingTop="50dp"
-            android:text="Login"
+            android:text="@string/login"
             android:textAlignment="center"
             android:textSize="24sp"
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/usuario_registro"
+            android:id="@+id/login_nombre_usuario"
             android:layout_width="match_parent"
             android:layout_height="72dp"
             android:layout_marginTop="100dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Nombre de usuario" />
+            android:text="@string/nombre_usuario" />
 
         <EditText
-            android:id="@+id/contrasenha_registro"
+            android:id="@+id/login_pass_usuario"
             android:layout_width="match_parent"
             android:layout_height="93dp"
             android:layout_marginTop="25dp"
             android:ems="10"
             android:inputType="textPassword"
-            android:text="Contraseña" />
+            android:text="@string/pass_usuario" />
 
         <Button
-            android:id="@+id/button_registro"
+            android:id="@+id/boton_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:text="Login" />
+            android:text="@string/login" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="50sp"
-            android:text="@string/registro" />
+            android:text="@string/registro_text" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -56,12 +55,12 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/registro"
+                android:id="@+id/boton_login_registro"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="ejecutar_registro"
-                android:text="registrarme" />
+                android:text="@string/registrarme" />
         </LinearLayout>
 
     </LinearLayout>

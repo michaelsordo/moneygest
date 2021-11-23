@@ -10,20 +10,20 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/ingresos_text"
+            android:id="@+id/info_ingresos"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:paddingTop="50dp"
-            android:text="ALTA/MODIFICACION INGRESOS"
+            android:text="@string/info_ingresos"
             android:textAlignment="center"
             android:textSize="24sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/ingresos_text2"
+            android:id="@+id/ingresos_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Ingresos"
+            android:text="@string/ingresos"
             android:textSize="21sp"
             android:textStyle="bold" />
 

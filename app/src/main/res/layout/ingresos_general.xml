@@ -14,7 +14,7 @@
         tools:layout_editor_absoluteY="1dp">
 
         <TextView
-            android:id="@+id/home_ingresos"
+            android:id="@+id/general_ingresos_text"
             android:layout_width="match_parent"
             android:layout_height="74dp"
             android:paddingTop="10sp"
@@ -23,7 +23,7 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/ingresos_2"
+            android:id="@+id/general_ingresos_2"
             android:layout_width="match_parent"
             android:layout_height="72dp"
             android:text="@string/ingresos" />
@@ -39,7 +39,7 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/modificar"
+                android:id="@+id/boton_ingresos_modidificar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/modificar" />

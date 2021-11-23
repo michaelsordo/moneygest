@@ -8,7 +8,7 @@
         android:id="@+id/info_gastos"
         android:layout_width="match_parent"
         android:layout_height="94dp"
-        android:text="Detalles/Modificar/Eliminar Gastos"
+        android:text="@string/info_gastos"
         android:textAlignment="center"
         android:textSize="24sp" />
 
@@ -17,9 +17,9 @@
         android:layout_height="430dp" />
 
     <Button
-        android:id="@+id/añadir"
+        android:id="@+id/boton_gastos_añadir"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="añadir"
+        android:text="@string/añadir"
         android:textAlignment="center" />
 </LinearLayout>
