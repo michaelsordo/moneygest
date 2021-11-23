@@ -8,4 +8,6 @@
     <string name="correo_usuario">correo@correo.com</string>
     <string name="pass_usuario">pass</string>
     <string name="modificar">MODIFICAR</string>
+    <string name="registro">Todavía no tienes una cuenta? Registrate pulsando en el siguiente botón</string>
+
 </resources>
