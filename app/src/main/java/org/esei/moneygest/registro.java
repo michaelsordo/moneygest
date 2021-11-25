@@ -10,7 +10,7 @@ public class registro extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.registro);
+        setContentView(R.layout.activity_registro);
     }
 
     public void ejecutar_login(View view){
