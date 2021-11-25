@@ -12,34 +12,40 @@ public class User {
     private static final String PATTERN_EMAIL ="^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
 
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
+    public User(String email, String login_user, String password) {
+
+        this.email = email;
+        this.login_user = login_user;
+        this.password = password;
     }
 
     public String getEmail() {
+
         return email;
     }
 
     public void setEmail(String email) {
+
         this.email = email;
     }
 
     public String getlogin_user() {
+
         return login_user;
     }
 
     public void setlogin_user(String login_user) {
+
         this.login_user = login_user;
     }
 
     public String getpassword() {
+
         return password;
     }
 
     public void setpassword(String password) {
+
         this.password = password;
     }
 
