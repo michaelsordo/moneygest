@@ -13,8 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
-    public static String DATABASE_NAME = "user_db";
-    public static int DATABASE_VERSION = 3;
+    public static final String DATABASE_NAME = "user_db";
+    public static int DATABASE_VERSION = 1;
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -25,9 +25,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.beginTransaction();
         try {
             db.execSQL("CREATE TABLE IF NOT EXISTS usuario("
-                    + "email_usuario string(45) PRIMARY KEY,"
-                    + "login_usuario string(45) NOT NULL,"
-                    + "pass_usuario string(45) NOT NULL"
+                    + "login_usuario VARCHAR(15) PRIMARY KEY,"
+                    + "email_usuario VARCHAR(50) UNIQUE,"
+                    + "pass_usuario VARCHAR(20) NOT NULL"
                     + ")");
             db.setTransactionSuccessful();
         } finally {
@@ -73,6 +73,55 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             db.endTransaction();
         }
         return;
+    }
+
+    public Boolean insertData(String username, String password, String email){
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("login_usuario", username);
+        contentValues.put("email_usuario", email);
+        contentValues.put("pass_usuario", password);
+
+        long result = MyDB.insert("usuario", null, contentValues);
+
+        if(result ==-1 ){
+            return false;
+        }
+
+        return true;
+    }
+
+    public Boolean checkUsernameExists(String username){
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        Cursor cursor = MyDB.rawQuery("Select * from usuario where login_usuario =?", new String[]{username} );
+
+        if(cursor.getCount() > 0){
+            return true;
+        }
+
+        return false;
+    }
+
+    public Boolean checkEmailExists(String email){
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        Cursor cursor = MyDB.rawQuery("Select * from usuario where email_usuario =?", new String[]{email} );
+
+        if(cursor.getCount() > 0){
+            return true;
+        }
+
+        return false;
+    }
+
+    public Boolean checkUsernamePass(String username, String password){
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        Cursor cursor = MyDB.rawQuery("Select * from usuario where login_usuario =? and pass_usuario=?", new String[]{username, password});
+
+        if(cursor.getCount() > 0){
+            return true;
+        }
+
+        return false;
     }
 
 }
