@@ -1,14 +1,17 @@
 package org.esei.moneygest;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class registro extends Activity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class RegistroActivity extends AppCompatActivity {
 
     EditText username, password, email;
     Button btnlogin, btnregister;
@@ -85,7 +88,7 @@ public class registro extends Activity {
 
     public void ejecutar_login(View view){
 
-        Intent i= new Intent(this, MainActivity.class);
+        Intent i= new Intent(this, LoginActivity.class);
 
         startActivity(i);
 
@@ -102,7 +105,7 @@ public class registro extends Activity {
         String emailS = email.getText().toString();
 
         if(user.equals("") || pass.equals("") || emailS.equals("")){
-            Toast.makeText(registro.this, "Por favor cubre todos los campos", Toast.LENGTH_SHORT).show();
+            Toast.makeText(RegistroActivity.this, "Por favor cubre todos los campos", Toast.LENGTH_SHORT).show();
         }
 
         else{
@@ -113,23 +116,23 @@ public class registro extends Activity {
                 if(!checkemail){
                     Boolean insert = DB.insertData(user, pass, emailS);
                     if(insert){
-                        Toast.makeText(registro.this, "Usuario registrado correctamente", Toast.LENGTH_LONG).show();
+                        Toast.makeText(RegistroActivity.this, "Usuario registrado correctamente", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                         startActivity(intent);
                     }
 
                     else{
-                        Toast.makeText(registro.this, "Error en el registro", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegistroActivity.this, "Error en el registro", Toast.LENGTH_SHORT).show();
                     }
                 }
 
                 else{
-                    Toast.makeText(registro.this, "El correo ya está en uso", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegistroActivity.this, "El correo ya está en uso", Toast.LENGTH_SHORT).show();
                 }
             }
 
             else{
-                Toast.makeText(registro.this, "El nombre de usuario ya está en uso", Toast.LENGTH_SHORT).show();
+                Toast.makeText(RegistroActivity.this, "El nombre de usuario ya está en uso", Toast.LENGTH_SHORT).show();
             }
 
         }

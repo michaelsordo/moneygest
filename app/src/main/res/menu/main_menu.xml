@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:title="@string/gastos" android:id="@+id/gastos_menu" />
-    <item android:title="@string/ingresos" android:id="@+id/ingresos_menu" />
-    <item android:title="@string/inversiones" android:id="@+id/inversiones_menu" />
+    <item
+        android:id="@+id/item1"
+        android:title="@string/item1" />
+    <item
+        android:id="@+id/item2"
+        android:title="@string/item2" />
+    <item
+        android:id="@+id/item3"
+        android:title="@string/item3" />
 </menu>

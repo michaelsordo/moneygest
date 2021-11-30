@@ -3,11 +3,11 @@ package org.esei.moneygest;
 import android.app.Activity;
 import android.os.Bundle;
 
-public class login extends Activity {
+public class IngresosActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_ingresos_general);
     }
 }

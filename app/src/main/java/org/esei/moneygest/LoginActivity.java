@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     EditText username, password;
     Button btnlogin, btnregister;
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void ejecutar_registro(View view){
 
-        Intent i= new Intent(this, registro.class);
+        Intent i= new Intent(this, RegistroActivity.class);
 
         startActivity(i);
 
@@ -76,21 +76,23 @@ public class MainActivity extends AppCompatActivity {
         String pass = password.getText().toString();
 
         if(user.equals("") || pass.equals("")){
-            Toast.makeText(MainActivity.this, "Por favor cubre todos los campos", Toast.LENGTH_SHORT).show();
+            Toast.makeText(LoginActivity.this, "Por favor cubre todos los campos", Toast.LENGTH_SHORT).show();
         }
         else{
             Boolean checkuserpass = DB.checkUsernamePass(user, pass);
             if(checkuserpass){
-                Toast.makeText(MainActivity.this, "Usuario logueado correctamente", Toast.LENGTH_LONG).show();
+                Toast.makeText(LoginActivity.this, "Usuario logueado correctamente", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                 startActivity(intent);
             }
 
             else{
-                Toast.makeText(MainActivity.this, "Credenciales inválidas", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "Credenciales inválidas", Toast.LENGTH_SHORT).show();
             }
         }
 
     }
+
+
 
 }

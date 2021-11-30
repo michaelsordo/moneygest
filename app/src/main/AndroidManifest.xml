@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Moneygest">
         <activity
-            android:name=".MainActivity"
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,8 +18,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".registro" android:exported="true"/>
+        <activity android:name=".RegistroActivity" android:exported="true"/>
         <activity android:name=".HomeActivity" android:exported="true"/>
+        <activity android:name=".GastosActivity" android:exported="true"/>
+        <activity android:name=".IngresosActivity" android:exported="true"/>
+        <activity android:name=".AreaPersonalActivity" android:exported="true"/>
 
 
     </application>
