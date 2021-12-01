@@ -24,12 +24,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.beginTransaction();
         try {
-            db.execSQL("CREATE TABLE IF NOT EXISTS usuario("
+
+            db.execSQL("CREATE TABLE IF NOT EXISTS USUARIO("
                     + "login_usuario VARCHAR(15) PRIMARY KEY,"
                     + "email_usuario VARCHAR(50) UNIQUE,"
                     + "pass_usuario VARCHAR(20) NOT NULL"
                     + ")");
-            // solucionar tema tabla gastos
+
+            db.execSQL("CREATE TABLE IF NOT EXISTS GASTO("
+                    + "id_gasto INT PRIMARY KEY, AUTO_INCREMENT"
+                    + "concepto_gasto VARCHAR(100) NOT NULL,"
+                    + "cantidad_gasto VDOUBLE(7,2) NOT NULL,"
+                    + "fecha_gasto DATE NOT NULL,"
+                    + "login_autor VARCHAR(15) NOT NULL,"
+                    + "FOREIGN KEY (login_autor) REFERENCES USUARIO(login_usuario) ON DELETE CASCADE"
+                    + ")");
+
+            db.execSQL("CREATE TABLE IF NOT EXISTS INGRESO("
+                    + "id_ingreso INT PRIMARY KEY, AUTO_INCREMENT"
+                    + "concepto_ingreso VARCHAR(100) NOT NULL,"
+                    + "cantidad_ingreso VDOUBLE(7,2) NOT NULL,"
+                    + "fecha_ingreso DATE NOT NULL,"
+                    + "login_autor VARCHAR(15) NOT NULL,"
+                    + "FOREIGN KEY (login_autor) REFERENCES USUARIO(login_usuario) ON DELETE CASCADE"
+                    + ")");
             db.setTransactionSuccessful();
         } finally {
             db.endTransaction();
@@ -40,7 +58,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         try {
             db.beginTransaction();
-            db.execSQL("DROP TABLE IF EXISTS usuario");
+            db.execSQL("DROP TABLE IF EXISTS USUARIO");
             db.setTransactionSuccessful();
         } finally {
             db.endTransaction();
@@ -52,7 +70,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         db.beginTransaction();
         try {
-            db.execSQL("DELETE FROM usuario");
+            db.execSQL("DELETE FROM USUARIO");
             db.setTransactionSuccessful();
         } finally {
             db.endTransaction();
@@ -67,7 +85,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         db.beginTransaction();
         try {
-            db.execSQL("INSERT INTO usuario(login_usuario,email,password) VALUES(?,?,?)",
+            db.execSQL("INSERT INTO USUARIO(login_usuario,email,password) VALUES(?,?,?)",
                     new String[]{user.getEmail(),user.getlogin_user(),user.getpassword()});
             db.setTransactionSuccessful();
         } finally {
@@ -83,7 +101,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put("email_usuario", email);
         contentValues.put("pass_usuario", password);
 
-        long result = MyDB.insert("usuario", null, contentValues);
+        long result = MyDB.insert("USUARIO", null, contentValues);
 
         if(result ==-1 ){
             return false;
@@ -94,7 +112,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public Boolean checkUsernameExists(String username){
         SQLiteDatabase MyDB = this.getWritableDatabase();
-        Cursor cursor = MyDB.rawQuery("Select * from usuario where login_usuario =?", new String[]{username} );
+        Cursor cursor = MyDB.rawQuery("Select * from USUARIO where login_usuario =?", new String[]{username} );
 
         if(cursor.getCount() > 0){
             return true;
@@ -105,7 +123,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public Boolean checkEmailExists(String email){
         SQLiteDatabase MyDB = this.getWritableDatabase();
-        Cursor cursor = MyDB.rawQuery("Select * from usuario where email_usuario =?", new String[]{email} );
+        Cursor cursor = MyDB.rawQuery("Select * from USUARIO where email_usuario =?", new String[]{email} );
 
         if(cursor.getCount() > 0){
             return true;
@@ -116,7 +134,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public Boolean checkUsernamePass(String username, String password){
         SQLiteDatabase MyDB = this.getWritableDatabase();
-        Cursor cursor = MyDB.rawQuery("Select * from usuario where login_usuario =? and pass_usuario=?", new String[]{username, password});
+        Cursor cursor = MyDB.rawQuery("Select * from USUARIO where login_usuario =? and pass_usuario=?", new String[]{username, password});
 
         if(cursor.getCount() > 0){
             return true;
