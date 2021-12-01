@@ -1,12 +1,15 @@
 package org.esei.moneygest;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +20,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        cargar_info_user();
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
@@ -64,6 +68,15 @@ public class HomeActivity extends AppCompatActivity {
         }
 
         return toret;
+    }
+
+    private void cargar_info_user(){
+        SharedPreferences preferences = getSharedPreferences("credenciales", Context.MODE_PRIVATE);
+
+        TextView username = (TextView) findViewById(R.id.info_user);
+        String usuario = preferences.getString("user", "");
+        username.setText(usuario);
+
     }
 
 }

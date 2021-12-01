@@ -13,6 +13,11 @@
         android:textAlignment="center"
         android:textSize="24sp" />
 
+    <TextView
+        android:id="@+id/info_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <ProgressBar
         android:id="@+id/home_progressBar"
         style="?android:attr/progressBarStyle"
@@ -39,4 +44,5 @@
         android:layout_height="74dp"
         android:text="@string/gasto_objetivo"
         android:textSize="20sp" />
+
 </LinearLayout>
