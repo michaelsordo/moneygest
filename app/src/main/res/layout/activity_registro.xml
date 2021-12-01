@@ -11,7 +11,7 @@
         <TextView
             android:id="@+id/registro_text"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="wrap_content"
             android:paddingTop="50dp"
             android:text="@string/registro"
             android:textAlignment="center"
@@ -24,8 +24,8 @@
             android:layout_height="72dp"
             android:layout_marginTop="100dp"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:hint="@string/nombre_usuario" />
+            android:hint="@string/nombre_usuario"
+            android:inputType="textPersonName" />
 
         <EditText
             android:id="@+id/registro_email_usuario"
@@ -33,8 +33,8 @@
             android:layout_height="72dp"
             android:layout_marginTop="25dp"
             android:ems="10"
-            android:inputType="textEmailAddress"
-            android:hint="@string/correo_usuario" />
+            android:hint="@string/correo_usuario"
+            android:inputType="textEmailAddress" />
 
         <EditText
             android:id="@+id/registro_pass_usuario"
@@ -42,14 +42,15 @@
             android:layout_height="72dp"
             android:layout_marginTop="25dp"
             android:ems="10"
-            android:inputType="textPassword"
-            android:hint="@string/pass_usuario" />
+            android:hint="@string/pass_usuario"
+            android:inputType="textPassword" />
 
         <Button
             android:id="@+id/boton_registro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
+            android:background="@drawable/button_radius"
             android:onClick="registrar"
             android:text="@string/registro" />
 
@@ -69,6 +70,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@drawable/button_radius"
                 android:onClick="ejecutar_login"
                 android:text="@string/loguearme" />
         </LinearLayout>
