@@ -1,48 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:textAlignment="center">
 
     <TextView
-        android:id="@+id/home_resumen"
-        android:layout_width="match_parent"
-        android:layout_height="112dp"
-        android:text="@string/resumen"
-        android:textAlignment="center"
-        android:textSize="24sp" />
+        android:id="@+id/resumen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:text="HOME"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/bienvenido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="90dp"
+        android:text="Bienvenido"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/info_user"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="90dp"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/bienvenido"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ProgressBar
-        android:id="@+id/home_progressBar"
+        android:id="@+id/progressBar"
         style="?android:attr/progressBarStyle"
-        android:layout_width="match_parent"
-        android:layout_height="182dp" />
+        android:layout_width="133dp"
+        android:layout_height="133dp"
+        android:layout_marginTop="111dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/resumen" />
 
-    <TextView
-        android:id="@+id/home_gasto_total"
-        android:layout_width="match_parent"
-        android:layout_height="75dp"
-        android:text="@string/gasto_total"
-        android:textSize="20sp" />
-
-    <TextView
-        android:id="@+id/home_gasto_mayor"
-        android:layout_width="match_parent"
-        android:layout_height="76dp"
-        android:text="@string/gasto_mayor"
-        android:textSize="20sp" />
-
-    <TextView
-        android:id="@+id/home_gasto_objetivo"
-        android:layout_width="match_parent"
-        android:layout_height="74dp"
-        android:text="@string/gasto_objetivo"
-        android:textSize="20sp" />
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
