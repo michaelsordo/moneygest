@@ -29,7 +29,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     + "email_usuario VARCHAR(50) UNIQUE,"
                     + "pass_usuario VARCHAR(20) NOT NULL"
                     + ")");
-            db.execSQL(utilidades.CREAR_TABLA_GASTO);
+            // solucionar tema tabla gastos
             db.setTransactionSuccessful();
         } finally {
             db.endTransaction();
