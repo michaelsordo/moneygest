@@ -22,8 +22,10 @@
     <string name="detalles">DETALLES</string>
     <string name="registro_text">¿Todavía no tienes una cuenta? Registrate pulsando en el siguiente botón</string>
     <string name="login_text">¿Ya tienes una cuenta? Logueate pulsando en el siguiente botón</string>
+    <string name="item0">Home</string>
     <string name="item1">Gastos</string>
     <string name="item2">Ingresos</string>
     <string name="item3">Area Personal</string>
+    <string name="item4">Logout</string>
 
 </resources>

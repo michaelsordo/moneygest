@@ -30,23 +30,35 @@ public class HomeActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item){
 
         boolean toret=false;
+        Intent intent;
 
         switch (item.getItemId()){
+
+            case R.id.item0:
+                intent = new Intent(getApplicationContext(), HomeActivity.class);
+                startActivity(intent);
+                toret=true;
+                break;
+
             case R.id.item1:
-                Intent intent = new Intent(getApplicationContext(), GastosActivity.class);
+                intent = new Intent(getApplicationContext(), GastosActivity.class);
                 startActivity(intent);
                 toret=true;
                 break;
 
             case R.id.item2:
-                Intent intent2 = new Intent(getApplicationContext(),IngresosActivity.class);
-                startActivity(intent2);
+                intent = new Intent(getApplicationContext(),IngresosActivity.class);
+                startActivity(intent);
                 toret=true;
                 break;
 
             case R.id.item3:
-                Intent intent3 = new Intent(getApplicationContext(),AreaPersonalActivity.class);
-                startActivity(intent3);
+                intent = new Intent(getApplicationContext(),AreaPersonalActivity.class);
+                startActivity(intent);
+                toret=true;
+                break;
+
+            case R.id.item4:
                 toret=true;
                 break;
         }
