@@ -15,12 +15,16 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class HomeActivity extends AppCompatActivity {
+    TextView username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        cargar_info_user();
+
+        username = (TextView) findViewById(R.id.info_user);
+        UtilidadesSP utilidadesSP = new UtilidadesSP();
+        utilidadesSP.cargar_info_user(username, HomeActivity.this);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
@@ -63,20 +67,16 @@ public class HomeActivity extends AppCompatActivity {
                 break;
 
             case R.id.item4:
+                UtilidadesSP utilidadesSP = new UtilidadesSP();
+                utilidadesSP.logout(HomeActivity.this);
+                Toast.makeText(HomeActivity.this, "Sesión cerrada correctamente", Toast.LENGTH_LONG).show();
+                intent = new Intent(getApplicationContext(),LoginActivity.class);
+                startActivity(intent);
                 toret=true;
                 break;
         }
 
         return toret;
-    }
-
-    private void cargar_info_user(){
-        SharedPreferences preferences = getSharedPreferences("credenciales", Context.MODE_PRIVATE);
-
-        TextView username = (TextView) findViewById(R.id.info_user);
-        String usuario = preferences.getString("user", "");
-        username.setText(usuario);
-
     }
 
 }
