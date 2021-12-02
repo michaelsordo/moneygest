@@ -10,6 +10,7 @@ public class UtilidadesSP {
 
     public void guardar_preferencias(EditText username, EditText password, AppCompatActivity activity){
         SharedPreferences preferences = activity.getSharedPreferences("credenciales", Context.MODE_PRIVATE);
+        SharedPreferences preferences2 = activity.getSharedPreferences("session", Context.MODE_PRIVATE);
 
         String usuario = username.getText().toString();
         String pass = password.getText().toString();
@@ -17,8 +18,12 @@ public class UtilidadesSP {
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("user", usuario);
         editor.putString("pass", pass);
-
         editor.commit();
+
+        SharedPreferences.Editor editor2 = preferences2.edit();
+        editor2.putString("user", usuario);
+        editor2.putString("pass", pass);
+        editor2.commit();
     }
 
     public void cargar_preferencias(EditText username, EditText password, AppCompatActivity activity){
@@ -32,7 +37,7 @@ public class UtilidadesSP {
     }
 
     public void cargar_info_user(TextView username, AppCompatActivity activity){
-        SharedPreferences preferences = activity.getSharedPreferences("credenciales", Context.MODE_PRIVATE);
+        SharedPreferences preferences = activity.getSharedPreferences("session", Context.MODE_PRIVATE);
 
         String usuario = preferences.getString("user", "");
         username.setText(usuario);
@@ -40,7 +45,7 @@ public class UtilidadesSP {
     }
 
     public  void logout(AppCompatActivity activity){
-        SharedPreferences sharedpreferences = activity.getSharedPreferences("credenciales", Context.MODE_PRIVATE);
+        SharedPreferences sharedpreferences = activity.getSharedPreferences("session", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedpreferences.edit();
         editor.clear();
         editor.commit();
