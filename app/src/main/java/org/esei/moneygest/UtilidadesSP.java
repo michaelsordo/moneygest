@@ -66,8 +66,8 @@ public class UtilidadesSP {
         String strDate = dateFormat.format(dateFormat);
 
         SharedPreferences.Editor editor = preferences3.edit();
-        editor.putString("user", concept);
-        editor.putString("pass", cantidad_to_string);
+        editor.putString("registro", concept);
+        editor.putString("cantidad", cantidad_to_string);
         editor.putString("fecha",strDate);
         editor.commit();
 
