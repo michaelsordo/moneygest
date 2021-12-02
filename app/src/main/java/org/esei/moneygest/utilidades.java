@@ -1,12 +1,14 @@
 package org.esei.moneygest;
 
+import java.util.Date;
+
 public class utilidades {
     //CONSTANTES CAMPOS TABLA GASTO
 
     public static final String TABLA_GASTO="gasto";
     public static final String CAMPO_ID="id_gasto";
     public static final String CAMPO_CONCEPTO="concepto_gasto";
-    public static final String CAMPO_FECHA="fecha_gasto";
+    public static final String CAMPO_FECHA ="mm/dd/yy";
     public static final String CAMPO_CANTIDAD="cantidad_gasto";
     public static final String CAMPO_LOGINAUT="login_autor";
 

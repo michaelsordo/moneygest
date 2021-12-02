@@ -13,12 +13,16 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 
-
-public class RegistroGastoActivity extends Activity {
+public class RegistroGastoActivity extends AppCompatActivity {
 
     EditText campoConcepto, campoCantidad, campoFecha;
+    DatabaseHelper DB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -35,11 +39,14 @@ public class RegistroGastoActivity extends Activity {
         campoFecha = findViewById(R.id.registro_fecha_gasto);
 
         String concepto = campoConcepto.getText().toString();
-        String cantidad = campoCantidad.getText().toString();
-        String fecha = campoFecha.getText().toString();
+        Double cantidad=null;
+        String cantidad_to_string = String.valueOf(cantidad);
+        Date fecha = Calendar.getInstance().getTime();
+        DateFormat dateFormat = new SimpleDateFormat("dd/mm/yyyy");
+        String strDate = dateFormat.format(fecha);
 
         if(concepto.equals("") || cantidad.equals("") || fecha.equals("")){
-            //Toast.makeText(RegistroGastoActvity.this, "Por favor cubre todos los campos", Toast.LENGTH_SHORT).show();
+            Toast.makeText(RegistroGastoActivity.this, "Por favor cubre todos los campos", Toast.LENGTH_SHORT).show();
         }
 
         else{
@@ -49,12 +56,29 @@ public class RegistroGastoActivity extends Activity {
             ContentValues values = new ContentValues();
             values.put(utilidades.CAMPO_CONCEPTO,concepto);
             values.put(utilidades.CAMPO_CANTIDAD,cantidad);
-            values.put(utilidades.CAMPO_FECHA,fecha);
+            values.put(utilidades.CAMPO_FECHA, String.valueOf(fecha));
+
+            Boolean insert_gasto = DB.insertGasto(concepto,cantidad,fecha);
+
+            if(insert_gasto){
+                UtilidadesSP utilidadesSP = new UtilidadesSP();
+                utilidadesSP.guardar_gastos(campoConcepto,campoCantidad,campoFecha,RegistroGastoActivity.this);
+
+                Toast.makeText(RegistroGastoActivity.this, "Gasto registrado correctamente", Toast.LENGTH_LONG).show();
+            }
+
+            else{
+                Toast.makeText(RegistroGastoActivity.this, "Error en la inserción del gasto", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+
+    }
+
 
             //Long idResultante = db.insert(utilidades.TABLA_GASTO,utilidades.CAMPO_ID,values);
 
             //Toast.makeText(getApplicationContext(),"Id Registro" + idResultante,Toast.LENGTH_SHORT).show();
         }
 
-    }
-}
+

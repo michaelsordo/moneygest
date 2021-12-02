@@ -111,14 +111,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return true;
     }
 
-    public Boolean insertGasto(String concepto, Double cantidad, Date fecha, String username){
+    public Boolean insertGasto(String concepto, Double cantidad, Date fecha){
         SQLiteDatabase MyDB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
         contentValues.put("concepto_gasto", concepto);
         contentValues.put("cantidad_gasto", cantidad);
         contentValues.put("fecha_gasto", String.valueOf(fecha));
-        contentValues.put("login_autor", username);
+        //quitamos user de momento
+        //contentValues.put("login_autor", username);
 
         long result = MyDB.insert("GASTO", null, contentValues);
 
