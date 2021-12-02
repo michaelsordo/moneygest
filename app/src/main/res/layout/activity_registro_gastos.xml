@@ -24,8 +24,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Concepto" />
+            android:hint="Concepto"
+            android:inputType="textPersonName" />
 
         <EditText
             android:id="@+id/registro_cantidad_gasto"
@@ -33,17 +33,16 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             android:ems="10"
-            android:inputType="number"
-            android:text="Cantidad" />
+            android:hint="Cantidad"
+            android:inputType="number" />
 
         <EditText
             android:id="@+id/registro_fecha_gasto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
             android:ems="10"
-            android:inputType="date"
-            android:text="Fecha ingreso" />
+            android:hint="Fecha"
+            android:inputType="date" />
 
         <Button
             android:id="@+id/boton_registro"
