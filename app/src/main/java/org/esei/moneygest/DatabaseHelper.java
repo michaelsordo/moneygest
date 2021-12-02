@@ -10,6 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import org.esei.moneygest.User;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
@@ -34,7 +35,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             db.execSQL("CREATE TABLE IF NOT EXISTS GASTO("
                     + "id_gasto INT PRIMARY KEY, AUTO_INCREMENT"
                     + "concepto_gasto VARCHAR(100) NOT NULL,"
-                    + "cantidad_gasto VDOUBLE(7,2) NOT NULL,"
+                    + "cantidad_gasto DOUBLE(7,2) NOT NULL,"
                     + "fecha_gasto DATE NOT NULL,"
                     + "login_autor VARCHAR(15) NOT NULL,"
                     + "FOREIGN KEY (login_autor) REFERENCES USUARIO(login_usuario) ON DELETE CASCADE"
@@ -43,7 +44,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             db.execSQL("CREATE TABLE IF NOT EXISTS INGRESO("
                     + "id_ingreso INT PRIMARY KEY, AUTO_INCREMENT"
                     + "concepto_ingreso VARCHAR(100) NOT NULL,"
-                    + "cantidad_ingreso VDOUBLE(7,2) NOT NULL,"
+                    + "cantidad_ingreso DOUBLE(7,2) NOT NULL,"
                     + "fecha_ingreso DATE NOT NULL,"
                     + "login_autor VARCHAR(15) NOT NULL,"
                     + "FOREIGN KEY (login_autor) REFERENCES USUARIO(login_usuario) ON DELETE CASCADE"
@@ -94,7 +95,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return;
     }
 
-    public Boolean insertData(String username, String password, String email){
+    public Boolean insertUser(String username, String password, String email){
         SQLiteDatabase MyDB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("login_usuario", username);
@@ -102,6 +103,42 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put("pass_usuario", password);
 
         long result = MyDB.insert("USUARIO", null, contentValues);
+
+        if(result ==-1 ){
+            return false;
+        }
+
+        return true;
+    }
+
+    public Boolean insertGasto(String concepto, Double cantidad, Date fecha, String username){
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put("concepto_gasto", concepto);
+        contentValues.put("cantidad_gasto", cantidad);
+        contentValues.put("fecha_gasto", String.valueOf(fecha));
+        contentValues.put("login_autor", username);
+
+        long result = MyDB.insert("GASTO", null, contentValues);
+
+        if(result ==-1 ){
+            return false;
+        }
+
+        return true;
+    }
+
+    public Boolean insertIngreso(String concepto, Double cantidad, Date fecha, String username){
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put("concepto_ingreso", concepto);
+        contentValues.put("cantidad_ingreso", cantidad);
+        contentValues.put("fecha_ingreso", String.valueOf(fecha));
+        contentValues.put("login_autor", username);
+
+        long result = MyDB.insert("INGRESO", null, contentValues);
 
         if(result ==-1 ){
             return false;
