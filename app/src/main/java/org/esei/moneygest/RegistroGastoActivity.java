@@ -39,7 +39,10 @@ public class RegistroGastoActivity extends AppCompatActivity {
         campoFecha = findViewById(R.id.registro_fecha_gasto);
 
         String concepto = campoConcepto.getText().toString();
+
+
         //aqui no estamos recogiendo los datos de los edittext claro
+        //pero si los recogemos y cambiamos el tipo de dato da error
         Double cantidad = null;
         String cantidad_to_string = String.valueOf(cantidad);
         Date fecha = Calendar.getInstance().getTime();
