@@ -120,7 +120,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues contentValues = new ContentValues();
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        String date = sdf.format(new Date());
+        String date = sdf.format(fecha);
 
         contentValues.put("concepto_gasto", concepto);
         contentValues.put("cantidad_gasto", cantidad);

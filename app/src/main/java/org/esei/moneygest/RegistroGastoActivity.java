@@ -100,42 +100,34 @@ public class RegistroGastoActivity extends AppCompatActivity {
 
             try {
                 fecha = dateFormat.parse(stringFecha);
-                Toast.makeText(RegistroGastoActivity.this, stringFecha + String.valueOf(fecha), Toast.LENGTH_SHORT).show();
             } catch (ParseException e) {
                 e.printStackTrace();
             }
 
             Double cantidad = Double.parseDouble(cantidadString);
 
-            //SQLiteDatabase db = conn.getWritableDatabase();
             UtilidadesSP utilidadesSP = new UtilidadesSP();
             String username = utilidadesSP.cargar_username(RegistroGastoActivity.this);
-
-            Toast.makeText(RegistroGastoActivity.this, concepto + " " + cantidad + " " + fecha + " " + username, Toast.LENGTH_SHORT).show();
 
             Boolean insert_gasto = DB.insertGasto(concepto,cantidad,fecha,tipoGastoString,username);
 
             if(insert_gasto){
 
                 Toast.makeText(RegistroGastoActivity.this, "Gasto registrado correctamente", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getApplicationContext(),GastosActivity.class);
+                startActivity(intent);
+                
             }
 
             else{
                 Toast.makeText(RegistroGastoActivity.this, "Error en la inserción del gasto", Toast.LENGTH_SHORT).show();
             }
 
-
-            Toast.makeText(RegistroGastoActivity.this, "Gasto registrado correctamente", Toast.LENGTH_LONG).show();
-
         }
 
 
     }
 
-
-            //Long idResultante = db.insert(utilidades.TABLA_GASTO,utilidades.CAMPO_ID,values);
-
-            //Toast.makeText(getApplicationContext(),"Id Registro" + idResultante,Toast.LENGTH_SHORT).show();
-        }
+}
 
 
