@@ -163,16 +163,47 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return true;
     }
 
-    /*public void insertarGasto(String concepto, Double cantidad, String fecha, String username) {
+    public void updateGasto(int id, String concepto, Double cantidad, Date fecha, String tipoGasto) {
         SQLiteDatabase db = this.getWritableDatabase();
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        String date = sdf.format(fecha);
+
         db.beginTransaction();
         try {
-            db.execSQL("INSERT INTO GASTO(concepto_gasto,cantidad_gasto,fecha_gasto,login_autor) VALUES(?,?,?,?)");
+            db.execSQL("UPDATE GASTO SET concepto_gasto=?, cantidad_gasto=?, fecha_gasto=?, tipo_gasto=? WHERE id_gasto=?",
+                    new String[]{concepto,cantidad.toString(), date, tipoGasto, String.valueOf(id)});
             db.setTransactionSuccessful();
         } finally {
             db.endTransaction();
         }
-        return;
+    }
+
+    public void deleteGasto(int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.beginTransaction();
+        try {
+            db.execSQL("DELETE FROM GASTO WHERE id_gasto=?",
+                    new String[]{String.valueOf(id)});
+            db.setTransactionSuccessful();
+        } finally {
+            db.endTransaction();
+        }
+    }
+
+    /*
+    public getGastosUser( String username) {
+        String [] toRet = new String[2];
+        SQLiteDatabase db = this.getReadableDatabase();
+        try (Cursor cursor = db.query("USUARIO",null, "login_usuario=?", new String[]{username}, null, null, null, null)) {
+            if (cursor.moveToFirst())
+            {
+                toRet[0] = cursor.getString(cursor.getColumnIndex("email_usuario"));
+                toRet[1] = cursor.getString(cursor.getColumnIndex("pass_usuario"));
+            }
+        }
+
+        return toRet;
     }*/
 
     public Boolean insertIngreso(String concepto, Double cantidad, Date fecha,String tipoIngreso, String username){
@@ -195,6 +226,34 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
 
         return true;
+    }
+
+    public void updateIngreso(int id, String concepto, Double cantidad, Date fecha, String tipoIngreso) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        String date = sdf.format(fecha);
+
+        db.beginTransaction();
+        try {
+            db.execSQL("UPDATE INGRESO SET concepto_ingreso=?, cantidad_ingreso=?, fecha_ingreso=?, tipo_ingreso=? WHERE id_ingreso=?",
+                    new String[]{concepto,cantidad.toString(), date, tipoIngreso, String.valueOf(id)});
+            db.setTransactionSuccessful();
+        } finally {
+            db.endTransaction();
+        }
+    }
+
+    public void deleteIngreso(int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.beginTransaction();
+        try {
+            db.execSQL("DELETE FROM INGRESO WHERE id_ingreso=?",
+                    new String[]{String.valueOf(id)});
+            db.setTransactionSuccessful();
+        } finally {
+            db.endTransaction();
+        }
     }
 
     public Boolean checkUsernameExists(String username){
