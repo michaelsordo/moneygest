@@ -35,19 +35,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     + ")");
 
             db.execSQL("CREATE TABLE IF NOT EXISTS GASTO("
-                    + "id_gasto INT PRIMARY KEY, AUTO_INCREMENT"
+                    + "id_gasto INTEGER PRIMARY KEY AUTOINCREMENT,"
                     + "concepto_gasto VARCHAR(100) NOT NULL,"
                     + "cantidad_gasto DOUBLE(7,2) NOT NULL,"
                     + "fecha_gasto DATE NOT NULL,"
+                    + "tipo_gasto VARCHAR(30) NOT NULL,"
                     + "login_autor VARCHAR(15) NOT NULL,"
                     + "FOREIGN KEY (login_autor) REFERENCES USUARIO(login_usuario) ON DELETE CASCADE"
                     + ")");
 
             db.execSQL("CREATE TABLE IF NOT EXISTS INGRESO("
-                    + "id_ingreso INT PRIMARY KEY, AUTO_INCREMENT"
+                    + "id_ingreso INTEGER PRIMARY KEY AUTOINCREMENT,"
                     + "concepto_ingreso VARCHAR(100) NOT NULL,"
                     + "cantidad_ingreso DOUBLE(7,2) NOT NULL,"
                     + "fecha_ingreso DATE NOT NULL,"
+                    + "tipo_ingreso VARCHAR(30) NOT NULL,"
                     + "login_autor VARCHAR(15) NOT NULL,"
                     + "FOREIGN KEY (login_autor) REFERENCES USUARIO(login_usuario) ON DELETE CASCADE"
                     + ")");
@@ -113,12 +115,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return true;
     }
 
-    public Boolean insertGasto(String concepto, Double cantidad, String fecha, String username){
+    public Boolean insertGasto(String concepto, Double cantidad, Date fecha, String tipoGasto, String username){
         SQLiteDatabase MyDB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-
-        //DateFormat dateFormatISO8601 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        //String stringFecha = dateFormatISO8601.format(fecha);
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String date = sdf.format(new Date());
@@ -126,6 +125,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put("concepto_gasto", concepto);
         contentValues.put("cantidad_gasto", cantidad);
         contentValues.put("fecha_gasto", date);
+        contentValues.put("tipo_gasto", tipoGasto);
         contentValues.put("login_autor", username);
 
         long result = MyDB.insert("GASTO", null, contentValues);

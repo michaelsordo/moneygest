@@ -29,7 +29,7 @@ import java.util.Date;
 public class RegistroGastoActivity extends AppCompatActivity {
 
     EditText editConcepto, editCantidad, editFecha;
-    Spinner categoria;
+    Spinner tipoGasto;
     DatabaseHelper DB;
     DatePickerDialog.OnDateSetListener setListener;
 
@@ -70,10 +70,10 @@ public class RegistroGastoActivity extends AppCompatActivity {
 
         //Spinner para seleccion de categoría
 
-        categoria = (Spinner) findViewById(R.id.idspinner);
+        tipoGasto = (Spinner) findViewById(R.id.idspinner);
 
         ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(this,R.array.categoria, android.R.layout.simple_spinner_item);
-        categoria.setAdapter(adapter);
+        tipoGasto.setAdapter(adapter);
     }
 
     public void registrarGasto(View view){
@@ -82,6 +82,7 @@ public class RegistroGastoActivity extends AppCompatActivity {
 
         editConcepto = (EditText) findViewById(R.id.registro_concepto_gasto);
         editCantidad = (EditText) findViewById(R.id.registro_cantidad_gasto);
+        tipoGasto = (Spinner) findViewById(R.id.idspinner);
         //editFecha = (EditText) findViewById(R.id.registro_fecha_gasto);
 
         String concepto = editConcepto.getText().toString();
@@ -90,18 +91,9 @@ public class RegistroGastoActivity extends AppCompatActivity {
 
         Double cantidad = Double.parseDouble(cantidadString);
 
-        String fecha = editFecha.getText().toString();
+        String stringFecha = editFecha.getText().toString();
 
-        /*
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
-        Date fecha = null;
-
-        try {
-            fecha = dateFormat.parse(stringFecha);
-            Toast.makeText(RegistroGastoActivity.this, stringFecha + String.valueOf(fecha), Toast.LENGTH_SHORT).show();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }*/
+        String tipoGastoString = tipoGasto.getSelectedItem().toString();
 
 
         //aqui no estamos recogiendo los datos de los edittext claro
@@ -112,11 +104,21 @@ public class RegistroGastoActivity extends AppCompatActivity {
         //DateFormat dateFormat = new SimpleDateFormat("dd/mm/yyyy");
         //String strDate = dateFormat.format(fecha);
 
-        if(concepto.equals("") || cantidad.equals("") || fecha.equals("")){
+        if(concepto.equals("") || cantidad.equals("") || stringFecha.equals("") || tipoGastoString.equals("")){
             Toast.makeText(RegistroGastoActivity.this, "Por favor cubre todos los campos", Toast.LENGTH_SHORT).show();
         }
 
         else{
+
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            Date fecha = null;
+
+            try {
+                fecha = dateFormat.parse(stringFecha);
+                Toast.makeText(RegistroGastoActivity.this, stringFecha + String.valueOf(fecha), Toast.LENGTH_SHORT).show();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
 
             //SQLiteDatabase db = conn.getWritableDatabase();
             UtilidadesSP utilidadesSP = new UtilidadesSP();
@@ -124,20 +126,9 @@ public class RegistroGastoActivity extends AppCompatActivity {
 
             Toast.makeText(RegistroGastoActivity.this, concepto + " " + cantidad + " " + fecha + " " + username, Toast.LENGTH_SHORT).show();
 
-            /*
-            ContentValues values = new ContentValues();
-            values.put(utilidades.CAMPO_CONCEPTO,concepto);
-            values.put(utilidades.CAMPO_CANTIDAD,cantidad);
-            values.put(utilidades.CAMPO_FECHA, String.valueOf(fecha));
-            */
-            DB.insertGasto(concepto,cantidad,fecha, username);
-
-            /*
-            Boolean insert_gasto = DB.insertGasto(concepto,cantidad,fecha, username);
+            Boolean insert_gasto = DB.insertGasto(concepto,cantidad,fecha,tipoGastoString,username);
 
             if(insert_gasto){
-                //UtilidadesSP utilidadesSP = new UtilidadesSP();
-                //utilidadesSP.guardar_gastos(campoConcepto,campoCantidad,campoFecha,RegistroGastoActivity.this);
 
                 Toast.makeText(RegistroGastoActivity.this, "Gasto registrado correctamente", Toast.LENGTH_LONG).show();
             }
@@ -145,7 +136,7 @@ public class RegistroGastoActivity extends AppCompatActivity {
             else{
                 Toast.makeText(RegistroGastoActivity.this, "Error en la inserción del gasto", Toast.LENGTH_SHORT).show();
             }
-            */
+
 
             Toast.makeText(RegistroGastoActivity.this, "Gasto registrado correctamente", Toast.LENGTH_LONG).show();
 
