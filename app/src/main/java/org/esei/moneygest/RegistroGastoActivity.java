@@ -83,28 +83,13 @@ public class RegistroGastoActivity extends AppCompatActivity {
         editConcepto = (EditText) findViewById(R.id.registro_concepto_gasto);
         editCantidad = (EditText) findViewById(R.id.registro_cantidad_gasto);
         tipoGasto = (Spinner) findViewById(R.id.idspinner);
-        //editFecha = (EditText) findViewById(R.id.registro_fecha_gasto);
 
         String concepto = editConcepto.getText().toString();
-
         String cantidadString = editCantidad.getText().toString();
-
-        Double cantidad = Double.parseDouble(cantidadString);
-
         String stringFecha = editFecha.getText().toString();
-
         String tipoGastoString = tipoGasto.getSelectedItem().toString();
 
-
-        //aqui no estamos recogiendo los datos de los edittext claro
-        //pero si los recogemos y cambiamos el tipo de dato da error
-        //Double cantidad = null;
-        //String cantidad_to_string = String.valueOf(cantidad);
-        //Date fecha = Calendar.getInstance().getTime();
-        //DateFormat dateFormat = new SimpleDateFormat("dd/mm/yyyy");
-        //String strDate = dateFormat.format(fecha);
-
-        if(concepto.equals("") || cantidad.equals("") || stringFecha.equals("") || tipoGastoString.equals("")){
+        if(concepto.equals("") || cantidadString.equals("") || stringFecha.equals("") || tipoGastoString.equals("")){
             Toast.makeText(RegistroGastoActivity.this, "Por favor cubre todos los campos", Toast.LENGTH_SHORT).show();
         }
 
@@ -119,6 +104,8 @@ public class RegistroGastoActivity extends AppCompatActivity {
             } catch (ParseException e) {
                 e.printStackTrace();
             }
+
+            Double cantidad = Double.parseDouble(cantidadString);
 
             //SQLiteDatabase db = conn.getWritableDatabase();
             UtilidadesSP utilidadesSP = new UtilidadesSP();
