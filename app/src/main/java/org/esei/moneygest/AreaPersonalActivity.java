@@ -105,21 +105,15 @@ public class AreaPersonalActivity extends AppCompatActivity {
         String user = username.getText().toString();
         String pass = editPass.getText().toString();
         String email = editEmail.getText().toString();
-        
-        EditText editUsername = null;
-        editUsername.setText(user);
-
-        UtilidadesSP utilidadesSP = new UtilidadesSP();
-        utilidadesSP.guardar_preferencias(editUsername, editPass, AreaPersonalActivity.this);
 
         if(user.equals("") || pass.equals("") || email.equals("")){
             Toast.makeText(AreaPersonalActivity.this, "Por favor cubre todos los campos", Toast.LENGTH_SHORT).show();
         }
         else{
-                UtilidadesSP utilidadesSP2 = new UtilidadesSP();
-                utilidadesSP2.guardar_preferencias(editUsername, editPass, AreaPersonalActivity.this);
+                UtilidadesSP  utilidadesSP = new UtilidadesSP();
+                utilidadesSP.update_preferencias(user, editPass, AreaPersonalActivity.this);
 
-                //Realizar Update aqui
+                DB.updateUser(user, pass, email);
 
                 Toast.makeText(AreaPersonalActivity.this, "Usuario actualizado correctamente", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(getApplicationContext(), HomeActivity.class);

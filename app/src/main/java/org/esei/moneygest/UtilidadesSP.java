@@ -29,6 +29,23 @@ public class UtilidadesSP {
         editor2.commit();
     }
 
+    public void update_preferencias(String usuario, EditText password, AppCompatActivity activity){
+        SharedPreferences preferences = activity.getSharedPreferences("credenciales", Context.MODE_PRIVATE);
+        SharedPreferences preferences2 = activity.getSharedPreferences("session", Context.MODE_PRIVATE);
+
+        String pass = password.getText().toString();
+
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("user", usuario);
+        editor.putString("pass", pass);
+        editor.commit();
+
+        SharedPreferences.Editor editor2 = preferences2.edit();
+        editor2.putString("user", usuario);
+        editor2.putString("pass", pass);
+        editor2.commit();
+    }
+
     public void cargar_preferencias(EditText username, EditText password, AppCompatActivity activity){
         SharedPreferences preferences = activity.getSharedPreferences("credenciales", Context.MODE_PRIVATE);
 
