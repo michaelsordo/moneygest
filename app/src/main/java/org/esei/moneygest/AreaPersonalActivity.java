@@ -5,16 +5,40 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class AreaPersonalActivity extends AppCompatActivity {
+    EditText editPass, editEmail;
+    TextView username;
+    DatabaseHelper DB;
+    String[] datos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_area_personal);
+
+        DB = new DatabaseHelper(this);
+
+        username = (TextView) findViewById(R.id.area_nombre_usuario);
+        editPass = (EditText) findViewById(R.id.area_pass_usuario);
+        editEmail = (EditText) findViewById(R.id.area_correo_usuario);
+
+        UtilidadesSP utilidadesSP = new UtilidadesSP();
+        utilidadesSP.cargar_info_user(username, AreaPersonalActivity.this);
+
+        username.setText("diego");
+
+        datos = DB.getUserData(username.getText().toString());
+
+        editEmail.setText(datos[0]);
+        editPass.setText(datos[1]);
+
     }
 
     //MENU
@@ -69,6 +93,39 @@ public class AreaPersonalActivity extends AppCompatActivity {
         }
 
         return toret;
+    }
+
+    public void modificarCuenta(View view){
+
+        DB = new DatabaseHelper(this);
+
+        username = (TextView)  findViewById(R.id.area_nombre_usuario);
+        editPass = (EditText) findViewById(R.id.area_pass_usuario);
+        editEmail = (EditText) findViewById(R.id.area_correo_usuario);
+        String user = username.getText().toString();
+        String pass = editPass.getText().toString();
+        String email = editEmail.getText().toString();
+        
+        EditText editUsername = null;
+        editUsername.setText(user);
+
+        UtilidadesSP utilidadesSP = new UtilidadesSP();
+        utilidadesSP.guardar_preferencias(editUsername, editPass, AreaPersonalActivity.this);
+
+        if(user.equals("") || pass.equals("") || email.equals("")){
+            Toast.makeText(AreaPersonalActivity.this, "Por favor cubre todos los campos", Toast.LENGTH_SHORT).show();
+        }
+        else{
+                UtilidadesSP utilidadesSP2 = new UtilidadesSP();
+                utilidadesSP2.guardar_preferencias(editUsername, editPass, AreaPersonalActivity.this);
+
+                //Realizar Update aqui
+
+                Toast.makeText(AreaPersonalActivity.this, "Usuario actualizado correctamente", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                startActivity(intent);
+        }
+
     }
 
 }

@@ -115,6 +115,32 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return true;
     }
 
+    public void updateUser( String username, String password, String email) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.beginTransaction();
+        try {
+            db.execSQL("UPDATE USUARIO SET pass_usuario=?, email_usuario=? WHERE login_usuario=?",
+                    new String[]{password,email,username});
+            db.setTransactionSuccessful();
+        } finally {
+            db.endTransaction();
+        }
+    }
+
+    public String[] getUserData( String username) {
+        String [] toRet = new String[2];
+        SQLiteDatabase db = this.getReadableDatabase();
+        try (Cursor cursor = db.query("USUARIO",null, "login_usuario=?", new String[]{username}, null, null, null, null)) {
+            if (cursor.moveToFirst())
+            {
+                toRet[0] = cursor.getString(cursor.getColumnIndex("email_usuario"));
+                toRet[1] = cursor.getString(cursor.getColumnIndex("pass_usuario"));
+            }
+        }
+
+        return toRet;
+    }
+
     public Boolean insertGasto(String concepto, Double cantidad, Date fecha, String tipoGasto, String username){
         SQLiteDatabase MyDB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
