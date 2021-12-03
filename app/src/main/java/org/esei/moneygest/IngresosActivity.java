@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -71,4 +72,14 @@ public class IngresosActivity extends AppCompatActivity {
 
         return toret;
     }
+
+
+    public void add_ingresos(View view){
+
+        Intent i= new Intent(this, RegistroIngresosActivity.class);
+        startActivity(i);
+
+    }
+
+
 }

@@ -9,4 +9,12 @@
 
     </string-array>
 
+    <string-array name="categoria_ingresos">
+        <item>Salario</item>
+        <item>Inversiones</item>
+        <item>Extra</item>
+        <item>Ingreso Atípico</item>
+
+    </string-array>
+
 </resources>
