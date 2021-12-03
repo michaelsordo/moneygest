@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<resources>
+    <string-array name="categoria">
+        <item>Gasto fijo</item>
+        <item>Ocio</item>
+        <item>Imprevistos</item>
+
+    </string-array>
+
+</resources>

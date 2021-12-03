@@ -10,9 +10,11 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,6 +29,7 @@ import java.util.Date;
 public class RegistroGastoActivity extends AppCompatActivity {
 
     EditText editConcepto, editCantidad, editFecha;
+    Spinner categoria;
     DatabaseHelper DB;
     DatePickerDialog.OnDateSetListener setListener;
 
@@ -64,6 +67,13 @@ public class RegistroGastoActivity extends AppCompatActivity {
 
             }
         };
+
+        //Spinner para seleccion de categoría
+
+        categoria = (Spinner) findViewById(R.id.idspinner);
+
+        ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(this,R.array.categoria, android.R.layout.simple_spinner_item);
+        categoria.setAdapter(adapter);
     }
 
     public void registrarGasto(View view){
