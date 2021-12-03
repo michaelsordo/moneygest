@@ -9,6 +9,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import org.esei.moneygest.User;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -111,15 +113,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return true;
     }
 
-    public Boolean insertGasto(String concepto, Double cantidad, Date fecha){
+    public Boolean insertGasto(String concepto, Double cantidad, String fecha, String username){
         SQLiteDatabase MyDB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
+        //DateFormat dateFormatISO8601 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        //String stringFecha = dateFormatISO8601.format(fecha);
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String date = sdf.format(new Date());
+
         contentValues.put("concepto_gasto", concepto);
         contentValues.put("cantidad_gasto", cantidad);
-        contentValues.put("fecha_gasto", String.valueOf(fecha));
-        //quitamos user de momento
-        //contentValues.put("login_autor", username);
+        contentValues.put("fecha_gasto", date);
+        contentValues.put("login_autor", username);
 
         long result = MyDB.insert("GASTO", null, contentValues);
 
@@ -128,6 +135,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
 
         return true;
+    }
+
+    public void insertarGasto(String concepto, Double cantidad, String fecha, String username) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.beginTransaction();
+        try {
+            db.execSQL("INSERT INTO GASTO(concepto_gasto,cantidad_gasto,fecha_gasto,login_autor) VALUES(?,?,?,?)");
+            db.setTransactionSuccessful();
+        } finally {
+            db.endTransaction();
+        }
+        return;
     }
 
     public Boolean insertIngreso(String concepto, Double cantidad, Date fecha, String username){

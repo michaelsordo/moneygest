@@ -47,6 +47,13 @@ public class UtilidadesSP {
 
     }
 
+    public String cargar_username(AppCompatActivity activity){
+        SharedPreferences preferences = activity.getSharedPreferences("session", Context.MODE_PRIVATE);
+
+        return preferences.getString("user", "");
+
+    }
+
     public  void logout(AppCompatActivity activity){
         SharedPreferences sharedpreferences = activity.getSharedPreferences("session", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedpreferences.edit();
