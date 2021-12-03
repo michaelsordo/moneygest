@@ -137,7 +137,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return true;
     }
 
-    public void insertarGasto(String concepto, Double cantidad, String fecha, String username) {
+    /*public void insertarGasto(String concepto, Double cantidad, String fecha, String username) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.beginTransaction();
         try {
@@ -147,15 +147,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             db.endTransaction();
         }
         return;
-    }
+    }*/
 
-    public Boolean insertIngreso(String concepto, Double cantidad, Date fecha, String username){
+    public Boolean insertIngreso(String concepto, Double cantidad, Date fecha,String tipoIngreso, String username){
         SQLiteDatabase MyDB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        String date = sdf.format(fecha);
+
         contentValues.put("concepto_ingreso", concepto);
         contentValues.put("cantidad_ingreso", cantidad);
-        contentValues.put("fecha_ingreso", String.valueOf(fecha));
+        contentValues.put("fecha_ingreso", date);
+        contentValues.put("tipo_ingreso", tipoIngreso);
         contentValues.put("login_autor", username);
 
         long result = MyDB.insert("INGRESO", null, contentValues);
