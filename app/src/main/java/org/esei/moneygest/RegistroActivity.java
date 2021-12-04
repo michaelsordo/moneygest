@@ -9,6 +9,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.esei.moneygest.core.DatabaseHelper;
+
 public class RegistroActivity extends AppCompatActivity {
 
     EditText username, password, email;

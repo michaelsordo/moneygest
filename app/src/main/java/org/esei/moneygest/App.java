@@ -2,6 +2,8 @@ package org.esei.moneygest;
 
 import android.app.Application;
 
+import org.esei.moneygest.core.DatabaseHelper;
+
 public class App extends Application {
     private DatabaseHelper databasehelper;
 

@@ -1,13 +1,12 @@
-package org.esei.moneygest;
+package org.esei.moneygest.model;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class User {
 
-    private int id; // Primary Key
     private String email;
-    private String login_user;
+    private String login;
     private String password;
     private static final String PATTERN_EMAIL ="^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
@@ -15,7 +14,7 @@ public class User {
     public User(String email, String login_user, String password) {
 
         this.email = email;
-        this.login_user = login_user;
+        this.login = login_user;
         this.password = password;
     }
 
@@ -29,22 +28,22 @@ public class User {
         this.email = email;
     }
 
-    public String getlogin_user() {
+    public String getLogin() {
 
-        return login_user;
+        return login;
     }
 
-    public void setlogin_user(String login_user) {
+    public void setLogin(String login_user) {
 
-        this.login_user = login_user;
+        this.login = login_user;
     }
 
-    public String getpassword() {
+    public String getPassword() {
 
         return password;
     }
 
-    public void setpassword(String password) {
+    public void setPassword(String password) {
 
         this.password = password;
     }

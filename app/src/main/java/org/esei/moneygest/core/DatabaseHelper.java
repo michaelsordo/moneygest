@@ -1,23 +1,40 @@
-package org.esei.moneygest;
+package org.esei.moneygest.core;
 
-import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import org.esei.moneygest.User;
+import org.esei.moneygest.model.User;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
-    public static final String DATABASE_NAME = "user_db";
+    public static final String DATABASE_NAME = "moneygest_db";
     public static int DATABASE_VERSION = 1;
+
+    public static final String TABLA_USUARIO = "USUARIO";
+    public static final String CAMPO_LOGIN_USUARIO = "login_usuario";
+    public static final String CAMPO_EMAIL_USUARIO = "email_usuario";
+    public static final String CAMPO_PASS_USUARIO = "pass_usuario";
+
+    public static final String TABLA_GASTO = "GASTO";
+    public static final String CAMPO_ID_GASTO = "id_gasto";
+    public static final String CAMPO_CONCEPTO_GASTO = "concepto_gasto";
+    public static final String CAMPO_CANTIDAD_GASTO = "cantidad_gasto";
+    public static final String CAMPO_FECHA_GASTO = "fecha_gasto";
+    public static final String CAMPO_TIPO_GASTO = "tipo_gasto";
+    public static final String CAMPO_AUTOR_GASTO = "autor_gasto";
+
+    public static final String TABLA_INGRESO = "INGRESO";
+    public static final String CAMPO_ID_INGRESO = "id_ingreso";
+    public static final String CAMPO_CONCEPTO_INGRESO = "concepto_ingreso";
+    public static final String CAMPO_CANTIDAD_INGRESO = "cantidad_ingreso";
+    public static final String CAMPO_FECHA_INGRESO = "fecha_ingreso";
+    public static final String CAMPO_TIPO_INGRESO = "tipo_ingreso";
+    public static final String CAMPO_AUTOR_INGRESO = "autor_ingreso";
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -28,30 +45,33 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.beginTransaction();
         try {
 
-            db.execSQL("CREATE TABLE IF NOT EXISTS USUARIO("
-                    + "login_usuario VARCHAR(15) PRIMARY KEY,"
-                    + "email_usuario VARCHAR(50) UNIQUE,"
-                    + "pass_usuario VARCHAR(20) NOT NULL"
+            db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLA_USUARIO
+                    +"("
+                    + CAMPO_LOGIN_USUARIO + " VARCHAR(15) PRIMARY KEY,"
+                    + CAMPO_EMAIL_USUARIO + " VARCHAR(50) UNIQUE,"
+                    + CAMPO_PASS_USUARIO + " VARCHAR(20) NOT NULL"
                     + ")");
 
-            db.execSQL("CREATE TABLE IF NOT EXISTS GASTO("
-                    + "id_gasto INTEGER PRIMARY KEY AUTOINCREMENT,"
-                    + "concepto_gasto VARCHAR(100) NOT NULL,"
-                    + "cantidad_gasto DOUBLE(7,2) NOT NULL,"
-                    + "fecha_gasto DATE NOT NULL,"
-                    + "tipo_gasto VARCHAR(30) NOT NULL,"
-                    + "login_autor VARCHAR(15) NOT NULL,"
-                    + "FOREIGN KEY (login_autor) REFERENCES USUARIO(login_usuario) ON DELETE CASCADE"
+            db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLA_GASTO
+                    +"("
+                    + CAMPO_ID_GASTO + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                    + CAMPO_CONCEPTO_GASTO + " VARCHAR(100) NOT NULL,"
+                    + CAMPO_CANTIDAD_GASTO + " DOUBLE(7,2) NOT NULL,"
+                    + CAMPO_FECHA_GASTO + " DATE NOT NULL,"
+                    + CAMPO_TIPO_GASTO + " VARCHAR(30) NOT NULL,"
+                    + CAMPO_AUTOR_GASTO + " VARCHAR(15) NOT NULL,"
+                    + "FOREIGN KEY " + "(" + CAMPO_AUTOR_GASTO + ")" + " REFERENCES " + TABLA_USUARIO + "(" + CAMPO_LOGIN_USUARIO + ")" + " ON DELETE CASCADE"
                     + ")");
 
-            db.execSQL("CREATE TABLE IF NOT EXISTS INGRESO("
-                    + "id_ingreso INTEGER PRIMARY KEY AUTOINCREMENT,"
-                    + "concepto_ingreso VARCHAR(100) NOT NULL,"
-                    + "cantidad_ingreso DOUBLE(7,2) NOT NULL,"
-                    + "fecha_ingreso DATE NOT NULL,"
-                    + "tipo_ingreso VARCHAR(30) NOT NULL,"
-                    + "login_autor VARCHAR(15) NOT NULL,"
-                    + "FOREIGN KEY (login_autor) REFERENCES USUARIO(login_usuario) ON DELETE CASCADE"
+            db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLA_INGRESO
+                    +"("
+                    + CAMPO_ID_INGRESO + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                    + CAMPO_CONCEPTO_INGRESO + " VARCHAR(100) NOT NULL,"
+                    + CAMPO_CANTIDAD_INGRESO + " DOUBLE(7,2) NOT NULL,"
+                    + CAMPO_FECHA_INGRESO + " DATE NOT NULL,"
+                    + CAMPO_TIPO_INGRESO + " VARCHAR(30) NOT NULL,"
+                    + CAMPO_AUTOR_INGRESO + " VARCHAR(15) NOT NULL,"
+                    + "FOREIGN KEY " + "(" + CAMPO_AUTOR_INGRESO + ")" + " REFERENCES " + TABLA_USUARIO + "(" + CAMPO_LOGIN_USUARIO + ")" + " ON DELETE CASCADE"
                     + ")");
             db.setTransactionSuccessful();
         } finally {
@@ -63,7 +83,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         try {
             db.beginTransaction();
-            db.execSQL("DROP TABLE IF EXISTS USUARIO");
+            db.execSQL("DROP TABLE IF EXISTS " + TABLA_USUARIO);
+            db.execSQL("DROP TABLE IF EXISTS " + TABLA_GASTO);
+            db.execSQL("DROP TABLE IF EXISTS " + TABLA_INGRESO);
             db.setTransactionSuccessful();
         } finally {
             db.endTransaction();
@@ -91,7 +113,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.beginTransaction();
         try {
             db.execSQL("INSERT INTO USUARIO(login_usuario,email,password) VALUES(?,?,?)",
-                    new String[]{user.getEmail(),user.getlogin_user(),user.getpassword()});
+                    new String[]{user.getEmail(),user.getLogin(),user.getPassword()});
             db.setTransactionSuccessful();
         } finally {
             db.endTransaction();
@@ -127,7 +149,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public String[] getUserData( String username) {
+    public String[] getUserData(String username) {
         String [] toRet = new String[2];
         SQLiteDatabase db = this.getReadableDatabase();
         try (Cursor cursor = db.query("USUARIO",null, "login_usuario=?", new String[]{username}, null, null, null, null)) {
