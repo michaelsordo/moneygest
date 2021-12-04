@@ -60,6 +60,10 @@ public class GastosActivity extends AppCompatActivity {
             gasto.setId(cursor.getInt(0));
             gasto.setConcepto(cursor.getString(1));
             gasto.setCantidad(cursor.getDouble(2));
+            gasto.setTipo_gasto(cursor.getString(4));
+
+            //faltaria la fecha pero no sé recuperarla
+            //faltaria también el tipo de gasto
 
             listaGastos.add(gasto);
             
@@ -75,8 +79,8 @@ public class GastosActivity extends AppCompatActivity {
         listaInformación=new ArrayList<String>();
 
         for(int i=0;i<listaGastos.size();i++){
-        listaInformación.add(listaGastos.get(i).getId()+ "-"+listaGastos.get(i).getConcepto()
-        +"-"+listaGastos.get(i).getCantidad());
+        listaInformación.add("Gasto número: " + listaGastos.get(i).getId()+ "\n"+ "Concepto: "+listaGastos.get(i).getConcepto()
+        +"\n"+ "Cantidad: "+ listaGastos.get(i).getCantidad() + "\n" +"Tipo Gasto "+listaGastos.get(i).getTipo_gasto());
         }
     }
 

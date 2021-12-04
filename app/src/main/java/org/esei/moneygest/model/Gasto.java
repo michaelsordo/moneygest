@@ -9,6 +9,7 @@ public class Gasto {
     private Double cantidad;
     private Date fecha;
     private String autor;
+    private String tipo_gasto;
 
     /*(public Gasto(int id, String concepto, Double cantidad, Date fecha, String autor) {
         this.id = id;
@@ -45,6 +46,10 @@ public class Gasto {
         this.autor = autor;
     }
 
+    public void setTipo_gasto(String tipo_gasto) {
+        this.tipo_gasto = tipo_gasto;
+    }
+
     public int getId() {
         return id;
     }
@@ -55,6 +60,10 @@ public class Gasto {
 
     public Double getCantidad() {
         return cantidad;
+    }
+
+    public String getTipo_gasto() {
+        return tipo_gasto;
     }
 
     public Date getFecha() {
