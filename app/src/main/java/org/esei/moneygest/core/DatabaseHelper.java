@@ -182,7 +182,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put("cantidad_gasto", cantidad);
         contentValues.put("fecha_gasto", date);
         contentValues.put("tipo_gasto", tipoGasto);
-        contentValues.put("login_autor", username);
+        contentValues.put("autor_gasto", username);
 
         long result = MyDB.insert("GASTO", null, contentValues);
 
