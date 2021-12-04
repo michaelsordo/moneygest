@@ -8,23 +8,29 @@ public class Gasto {
     private String concepto;
     private Double cantidad;
     private Date fecha;
+    private String tipo;
     private String autor;
-    private String tipo_gasto;
 
-    /*(public Gasto(int id, String concepto, Double cantidad, Date fecha, String autor) {
+
+    public Gasto() {
+    }
+
+    public Gasto(int id, String concepto, Double cantidad, Date fecha, String tipo, String autor) {
         this.id = id;
         this.concepto = concepto;
         this.cantidad = cantidad;
         this.fecha = fecha;
+        this.tipo = tipo;
         this.autor = autor;
-    }*/
+    }
 
-    /*public Gasto(String concepto, Double cantidad, Date fecha, String autor) {
+    public Gasto(String concepto, Double cantidad, Date fecha, String tipo, String autor) {
         this.concepto = concepto;
         this.cantidad = cantidad;
         this.fecha = fecha;
+        this.tipo = tipo;
         this.autor = autor;
-    }*/
+    }
 
     public void setId(int id) {
         this.id = id;
@@ -42,12 +48,12 @@ public class Gasto {
         this.fecha = fecha;
     }
 
-    public void setAutor(String autor) {
-        this.autor = autor;
+    public void setTipo(String tipo_gasto) {
+        this.tipo = tipo_gasto;
     }
 
-    public void setTipo_gasto(String tipo_gasto) {
-        this.tipo_gasto = tipo_gasto;
+    public void setAutor(String autor) {
+        this.autor = autor;
     }
 
     public int getId() {
@@ -62,12 +68,12 @@ public class Gasto {
         return cantidad;
     }
 
-    public String getTipo_gasto() {
-        return tipo_gasto;
-    }
-
     public Date getFecha() {
         return fecha;
+    }
+
+    public String getTipo() {
+        return tipo;
     }
 
     public String getAutor() {

@@ -9,13 +9,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import org.esei.moneygest.core.DatabaseHelper;
+import org.esei.moneygest.core.UtilidadesSP;
+import org.esei.moneygest.model.UserMapper;
 
 public class LoginActivity extends AppCompatActivity {
 
     EditText username, password;
     Button btnlogin, btnregister;
-    DatabaseHelper DB;
+    UserMapper userMapper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +27,7 @@ public class LoginActivity extends AppCompatActivity {
         password = (EditText) findViewById(R.id.login_pass_usuario);
 
         UtilidadesSP utilidadesSP = new UtilidadesSP();
-        utilidadesSP.cargar_preferencias(username, password, LoginActivity.this);
+        utilidadesSP.cargarPreferencias(username, password, LoginActivity.this);
 
     }
 
@@ -39,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void loguear(View view){
-        DB = new DatabaseHelper(this);
+        userMapper = new UserMapper(this);
 
         username = (EditText) findViewById(R.id.login_nombre_usuario);
         password = (EditText) findViewById(R.id.login_pass_usuario);
@@ -50,10 +51,10 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(LoginActivity.this, "Por favor cubre todos los campos", Toast.LENGTH_SHORT).show();
         }
         else{
-            Boolean checkuserpass = DB.checkUsernamePass(user, pass);
+            Boolean checkuserpass = userMapper.checkUsernamePass(user, pass);
             if(checkuserpass){
                 UtilidadesSP utilidadesSP = new UtilidadesSP();
-                utilidadesSP.guardar_preferencias(username, password, LoginActivity.this);
+                utilidadesSP.guardarPreferencias(username, password, LoginActivity.this);
                 Toast.makeText(LoginActivity.this, "Usuario logueado correctamente", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                 startActivity(intent);

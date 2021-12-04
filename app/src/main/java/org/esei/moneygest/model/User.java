@@ -11,10 +11,9 @@ public class User {
     private static final String PATTERN_EMAIL ="^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
 
-    public User(String email, String login_user, String password) {
-
+    public User(String login, String email, String password) {
+        this.login = login;
         this.email = email;
-        this.login = login_user;
         this.password = password;
     }
 

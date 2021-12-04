@@ -14,7 +14,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import org.esei.moneygest.core.DatabaseHelper;
+import org.esei.moneygest.core.UtilidadesSP;
+import org.esei.moneygest.model.Ingreso;
+import org.esei.moneygest.model.IngresoMapper;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -25,7 +27,8 @@ public class RegistroIngresosActivity extends AppCompatActivity {
 
     EditText editConcepto, editCantidad, editFecha;
     Spinner categoria_ingresos;
-    DatabaseHelper DB;
+    IngresoMapper ingresoMapper;
+    Ingreso ingreso;
     DatePickerDialog.OnDateSetListener setListener;
 
     @Override
@@ -73,7 +76,7 @@ public class RegistroIngresosActivity extends AppCompatActivity {
 
     public void registrarIngreso(View view){
 
-        DB = new DatabaseHelper(this);
+        ingresoMapper = new IngresoMapper(this);
 
         editConcepto = (EditText) findViewById(R.id.registro_concepto_ingreso);
         editCantidad = (EditText) findViewById(R.id.registro_cantidad_ingreso);
@@ -102,21 +105,15 @@ public class RegistroIngresosActivity extends AppCompatActivity {
             Double cantidad = Double.parseDouble(cantidadString);
 
             UtilidadesSP utilidadesSP = new UtilidadesSP();
-            String username = utilidadesSP.cargar_username(RegistroIngresosActivity.this);
+            String username = utilidadesSP.cargarUsername(RegistroIngresosActivity.this);
 
-            Boolean insert_ingreso = DB.insertIngreso(concepto,cantidad,fecha,tipoIngresoString,username);
+            ingreso = new Ingreso(concepto, cantidad, fecha, tipoIngresoString, username);
+            Toast.makeText(RegistroIngresosActivity.this, fecha.toString(), Toast.LENGTH_LONG).show();
+            ingresoMapper.insertIngreso(ingreso);
 
-            if(insert_ingreso){
-
-                Toast.makeText(RegistroIngresosActivity.this, "Ingreso registrado correctamente", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(getApplicationContext(),IngresosActivity.class);
-                startActivity(intent);
-
-            }
-
-            else{
-                Toast.makeText(RegistroIngresosActivity.this, "Error en la inserción del ingreso", Toast.LENGTH_SHORT).show();
-            }
+            Toast.makeText(RegistroIngresosActivity.this, "Ingreso registrado correctamente", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(getApplicationContext(),IngresosActivity.class);
+            startActivity(intent);
 
         }
 

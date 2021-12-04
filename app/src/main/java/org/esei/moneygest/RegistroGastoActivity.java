@@ -14,7 +14,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import org.esei.moneygest.core.DatabaseHelper;
+import org.esei.moneygest.core.UtilidadesSP;
+import org.esei.moneygest.model.Gasto;
+import org.esei.moneygest.model.GastoMapper;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -26,7 +28,8 @@ public class RegistroGastoActivity extends AppCompatActivity {
 
     EditText editConcepto, editCantidad, editFecha;
     Spinner tipoGasto;
-    DatabaseHelper DB;
+    GastoMapper gastoMapper;
+    Gasto gasto;
     DatePickerDialog.OnDateSetListener setListener;
 
     @Override
@@ -74,7 +77,7 @@ public class RegistroGastoActivity extends AppCompatActivity {
 
     public void registrarGasto(View view){
 
-        DB = new DatabaseHelper(this);
+        gastoMapper = new GastoMapper(this);
 
         editConcepto = (EditText) findViewById(R.id.registro_concepto_gasto);
         editCantidad = (EditText) findViewById(R.id.registro_cantidad_gasto);
@@ -103,22 +106,14 @@ public class RegistroGastoActivity extends AppCompatActivity {
             Double cantidad = Double.parseDouble(cantidadString);
 
             UtilidadesSP utilidadesSP = new UtilidadesSP();
-            String username = utilidadesSP.cargar_username(RegistroGastoActivity.this);
+            String username = utilidadesSP.cargarUsername(RegistroGastoActivity.this);
 
-            Boolean insert_gasto = DB.insertGasto(concepto,cantidad,fecha,tipoGastoString,username);
+            gasto = new Gasto(concepto, cantidad, fecha, tipoGastoString, username);
+            gastoMapper.insertGasto(gasto);
 
-            if(insert_gasto){
-
-                Toast.makeText(RegistroGastoActivity.this, "Gasto registrado correctamente", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(getApplicationContext(),GastosActivity.class);
-                startActivity(intent);
-                
-            }
-
-            else{
-                Toast.makeText(RegistroGastoActivity.this, "Error en la inserción del gasto", Toast.LENGTH_SHORT).show();
-            }
-
+            Toast.makeText(RegistroGastoActivity.this, "Gasto registrado correctamente", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(getApplicationContext(),GastosActivity.class);
+            startActivity(intent);
         }
 
 

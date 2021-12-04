@@ -16,10 +16,11 @@ public class UserMapper extends BaseMapper {
         super(context);
     }
 
-    public void insertarUsuario(User user) {
+    public void insertUser(User user) {
         SQLiteDatabase db = databaseHelper.getWritableDatabase();
-        db.beginTransaction();
+
         try {
+            db.beginTransaction();
             db.execSQL("INSERT INTO " + TABLA_USUARIO
                     +"(" + CAMPO_LOGIN_USUARIO
                     +"," + CAMPO_EMAIL_USUARIO
@@ -30,23 +31,6 @@ public class UserMapper extends BaseMapper {
         } finally {
             db.endTransaction();
         }
-        return;
-    }
-
-    public Boolean insertUser(String username, String password, String email){
-        SQLiteDatabase MyDB = databaseHelper.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("login_usuario", username);
-        contentValues.put("email_usuario", email);
-        contentValues.put("pass_usuario", password);
-
-        long result = MyDB.insert("USUARIO", null, contentValues);
-
-        if(result ==-1 ){
-            return false;
-        }
-
-        return true;
     }
 
     public void updateUser( String username, String password, String email) {

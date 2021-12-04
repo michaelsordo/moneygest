@@ -11,12 +11,13 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import org.esei.moneygest.core.DatabaseHelper;
+import org.esei.moneygest.core.UtilidadesSP;
+import org.esei.moneygest.model.UserMapper;
 
 public class AreaPersonalActivity extends AppCompatActivity {
     EditText editPass, editEmail;
     TextView username;
-    DatabaseHelper DB;
+    UserMapper userMapper;
     String[] datos;
 
     @Override
@@ -24,18 +25,18 @@ public class AreaPersonalActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_area_personal);
 
-        DB = new DatabaseHelper(this);
+        userMapper = new UserMapper(this);
 
         username = (TextView) findViewById(R.id.area_nombre_usuario);
         editPass = (EditText) findViewById(R.id.area_pass_usuario);
         editEmail = (EditText) findViewById(R.id.area_correo_usuario);
 
         UtilidadesSP utilidadesSP = new UtilidadesSP();
-        utilidadesSP.cargar_info_user(username, AreaPersonalActivity.this);
+        utilidadesSP.cargarInfoUser(username, AreaPersonalActivity.this);
 
         username.setText("diego");
 
-        datos = DB.getUserData(username.getText().toString());
+        datos = userMapper.getUserData(username.getText().toString());
 
         editEmail.setText(datos[0]);
         editPass.setText(datos[1]);
@@ -98,7 +99,7 @@ public class AreaPersonalActivity extends AppCompatActivity {
 
     public void modificarCuenta(View view){
 
-        DB = new DatabaseHelper(this);
+        userMapper = new UserMapper(this);
 
         username = (TextView)  findViewById(R.id.area_nombre_usuario);
         editPass = (EditText) findViewById(R.id.area_pass_usuario);
@@ -112,9 +113,9 @@ public class AreaPersonalActivity extends AppCompatActivity {
         }
         else{
                 UtilidadesSP  utilidadesSP = new UtilidadesSP();
-                utilidadesSP.update_preferencias(user, editPass, AreaPersonalActivity.this);
+                utilidadesSP.updatePreferencias(user, editPass, AreaPersonalActivity.this);
 
-                DB.updateUser(user, pass, email);
+                userMapper.updateUser(user, pass, email);
 
                 Toast.makeText(AreaPersonalActivity.this, "Usuario actualizado correctamente", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(getApplicationContext(), HomeActivity.class);

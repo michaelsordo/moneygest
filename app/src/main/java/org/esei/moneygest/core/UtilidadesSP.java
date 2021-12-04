@@ -1,4 +1,4 @@
-package org.esei.moneygest;
+package org.esei.moneygest.core;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
@@ -11,7 +11,7 @@ import java.text.SimpleDateFormat;
 
 public class UtilidadesSP {
 
-    public void guardar_preferencias(EditText username, EditText password, AppCompatActivity activity){
+    public void guardarPreferencias(EditText username, EditText password, AppCompatActivity activity){
         SharedPreferences preferences = activity.getSharedPreferences("credenciales", Context.MODE_PRIVATE);
         SharedPreferences preferences2 = activity.getSharedPreferences("session", Context.MODE_PRIVATE);
 
@@ -29,7 +29,7 @@ public class UtilidadesSP {
         editor2.commit();
     }
 
-    public void update_preferencias(String usuario, EditText password, AppCompatActivity activity){
+    public void updatePreferencias(String usuario, EditText password, AppCompatActivity activity){
         SharedPreferences preferences = activity.getSharedPreferences("credenciales", Context.MODE_PRIVATE);
         SharedPreferences preferences2 = activity.getSharedPreferences("session", Context.MODE_PRIVATE);
 
@@ -46,7 +46,7 @@ public class UtilidadesSP {
         editor2.commit();
     }
 
-    public void cargar_preferencias(EditText username, EditText password, AppCompatActivity activity){
+    public void cargarPreferencias(EditText username, EditText password, AppCompatActivity activity){
         SharedPreferences preferences = activity.getSharedPreferences("credenciales", Context.MODE_PRIVATE);
 
         String usuario = preferences.getString("user", "");
@@ -56,7 +56,7 @@ public class UtilidadesSP {
         password.setText(pass);
     }
 
-    public void cargar_info_user(TextView username, AppCompatActivity activity){
+    public void cargarInfoUser(TextView username, AppCompatActivity activity){
         SharedPreferences preferences = activity.getSharedPreferences("session", Context.MODE_PRIVATE);
 
         String usuario = preferences.getString("user", "");
@@ -64,7 +64,7 @@ public class UtilidadesSP {
 
     }
 
-    public String cargar_username(AppCompatActivity activity){
+    public String cargarUsername(AppCompatActivity activity){
         SharedPreferences preferences = activity.getSharedPreferences("session", Context.MODE_PRIVATE);
 
         return preferences.getString("user", "");
@@ -80,7 +80,7 @@ public class UtilidadesSP {
 
     //metodo para guardar preferences tabla gasto
 
-    public void guardar_gastos (EditText registro_concepto_gasto , EditText registro_cantidad_gasto, EditText registro_fecha_gasto, AppCompatActivity activity){
+    public void guardarGastos(EditText registro_concepto_gasto , EditText registro_cantidad_gasto, EditText registro_fecha_gasto, AppCompatActivity activity){
         SharedPreferences preferences3 = activity.getSharedPreferences("datos_gasto", Context.MODE_PRIVATE);
 
         String concept = registro_concepto_gasto.getText().toString();

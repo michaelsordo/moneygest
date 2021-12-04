@@ -1,6 +1,5 @@
 package org.esei.moneygest;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -15,10 +14,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.esei.moneygest.core.DatabaseHelper;
+import org.esei.moneygest.core.UtilidadesSP;
 import org.esei.moneygest.model.Gasto;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class GastosActivity extends AppCompatActivity {
 
@@ -60,13 +59,13 @@ public class GastosActivity extends AppCompatActivity {
             gasto.setId(cursor.getInt(0));
             gasto.setConcepto(cursor.getString(1));
             gasto.setCantidad(cursor.getDouble(2));
-            gasto.setTipo_gasto(cursor.getString(4));
+            gasto.setTipo(cursor.getString(4));
 
             //faltaria la fecha pero no sé recuperarla
             //faltaria también el tipo de gasto
 
             listaGastos.add(gasto);
-            
+
             //Se encarga de recorrer la lista de usuarios
             obtenerLista();
 
@@ -79,8 +78,8 @@ public class GastosActivity extends AppCompatActivity {
         listaInformación=new ArrayList<String>();
 
         for(int i=0;i<listaGastos.size();i++){
-        listaInformación.add("Gasto número: " + listaGastos.get(i).getId()+ "\n"+ "Concepto: "+listaGastos.get(i).getConcepto()
-        +"\n"+ "Cantidad: "+ listaGastos.get(i).getCantidad() + "\n" +"Tipo Gasto "+listaGastos.get(i).getTipo_gasto());
+            listaInformación.add("Gasto número: " + listaGastos.get(i).getId()+ "\n"+ "Concepto: "+listaGastos.get(i).getConcepto()
+                    +"\n"+ "Cantidad: "+ listaGastos.get(i).getCantidad() + "\n" +"Tipo Gasto "+listaGastos.get(i).getTipo());
         }
     }
 

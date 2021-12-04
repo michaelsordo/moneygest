@@ -8,20 +8,23 @@ public class Ingreso {
     private String concepto;
     private Double cantidad;
     private Date fecha;
+    private String tipo;
     private String autor;
 
-    public Ingreso(int id, String concepto, Double cantidad, Date fecha, String autor) {
+    public Ingreso(int id, String concepto, Double cantidad, Date fecha, String tipo, String autor) {
         this.id = id;
         this.concepto = concepto;
         this.cantidad = cantidad;
         this.fecha = fecha;
+        this.tipo = tipo;
         this.autor = autor;
     }
 
-    public Ingreso(String concepto, Double cantidad, Date fecha, String autor) {
+    public Ingreso(String concepto, Double cantidad, Date fecha, String tipo, String autor) {
         this.concepto = concepto;
         this.cantidad = cantidad;
         this.fecha = fecha;
+        this.tipo = tipo;
         this.autor = autor;
     }
 
@@ -41,9 +44,9 @@ public class Ingreso {
         this.fecha = fecha;
     }
 
-    public void setAutor(String autor) {
-        this.autor = autor;
-    }
+    public void setTipo(String tipo){this.tipo=tipo; }
+
+    public void setAutor(String autor) {this.autor = autor;}
 
     public int getId() {
         return id;
@@ -59,6 +62,10 @@ public class Ingreso {
 
     public Date getFecha() {
         return fecha;
+    }
+
+    public String getTipo() {
+        return tipo;
     }
 
     public String getAutor() {

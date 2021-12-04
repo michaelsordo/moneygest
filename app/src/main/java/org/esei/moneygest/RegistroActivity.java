@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.esei.moneygest.core.DatabaseHelper;
+import org.esei.moneygest.core.UtilidadesSP;
 import org.esei.moneygest.model.User;
 import org.esei.moneygest.model.UserMapper;
 
@@ -59,27 +60,14 @@ public class RegistroActivity extends AppCompatActivity {
                 if(!checkemail){
                     user = new User(usuario, emailS, pass);
 
-                    userMapper.insertarUsuario(user);
+                    userMapper.insertUser(user);
 
                     UtilidadesSP utilidadesSP = new UtilidadesSP();
-                    utilidadesSP.guardar_preferencias(username, password, RegistroActivity.this);
+                    utilidadesSP.guardarPreferencias(username, password, RegistroActivity.this);
 
                     Toast.makeText(RegistroActivity.this, "Usuario registrado correctamente", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                     startActivity(intent);
-                    //Boolean insert = userMapper.insertUser(user, pass, emailS);
-                    /*if(insert){
-                        UtilidadesSP utilidadesSP = new UtilidadesSP();
-                        utilidadesSP.guardar_preferencias(username, password, RegistroActivity.this);
-
-                        Toast.makeText(RegistroActivity.this, "Usuario registrado correctamente", Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                        startActivity(intent);
-                    }
-
-                    else{
-                        Toast.makeText(RegistroActivity.this, "Error en el registro", Toast.LENGTH_SHORT).show();
-                    }*/
                 }
 
                 else{
