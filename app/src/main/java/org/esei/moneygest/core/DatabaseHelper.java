@@ -14,6 +14,7 @@ import java.util.Date;
 public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "moneygest_db";
     public static int DATABASE_VERSION = 1;
+    public static DatabaseHelper databaseHelper;
 
     public static final String TABLA_USUARIO = "USUARIO";
     public static final String CAMPO_LOGIN_USUARIO = "login_usuario";
@@ -38,6 +39,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+    }
+
+    public static DatabaseHelper getDatabaseHelper(Context context) {
+        if (databaseHelper == null) {
+            databaseHelper = new DatabaseHelper(context.getApplicationContext());
+        }
+        return databaseHelper;
     }
 
     @Override
