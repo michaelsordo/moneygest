@@ -2,20 +2,82 @@ package org.esei.moneygest;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.esei.moneygest.core.DatabaseHelper;
+import org.esei.moneygest.model.Gasto;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class GastosActivity extends AppCompatActivity {
+
+    //Para generar el listView
+
+    ListView listViewGastos;
+    ArrayList<String> listaInformación;
+    ArrayList<Gasto> listaGastos;
+    DatabaseHelper conn;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gastos_general);
+
+        listViewGastos= (ListView) findViewById(R.id.listViewGastos);
+        conn= new DatabaseHelper(this);
+
+        consultarGastos();
+
+        ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,listaInformación);
+        listViewGastos.setAdapter(adapter);
+
+    }
+
+    //metodo para consulta de gastos
+
+    public void consultarGastos() {
+
+        SQLiteDatabase db = conn.getReadableDatabase();
+        Gasto gasto = null;
+
+        listaGastos = new ArrayList<Gasto>();
+        Cursor cursor = db.rawQuery("SELECT * FROM "+DatabaseHelper.TABLA_GASTO,null);
+
+        while (cursor.moveToNext()){
+            gasto=new Gasto();
+            gasto.setId(cursor.getInt(0));
+            gasto.setConcepto(cursor.getString(1));
+            gasto.setCantidad(cursor.getDouble(2));
+
+            listaGastos.add(gasto);
+            
+            //Se encarga de recorrer la lista de usuarios
+            obtenerLista();
+
+
+        }
+
+    }
+
+    private void obtenerLista() {
+        listaInformación=new ArrayList<String>();
+
+        for(int i=0;i<listaGastos.size();i++){
+        listaInformación.add(listaGastos.get(i).getId()+ "-"+listaGastos.get(i).getConcepto()
+        +"-"+listaGastos.get(i).getCantidad());
+        }
     }
 
     //MENU

@@ -10,20 +10,20 @@ public class Gasto {
     private Date fecha;
     private String autor;
 
-    public Gasto(int id, String concepto, Double cantidad, Date fecha, String autor) {
+    /*(public Gasto(int id, String concepto, Double cantidad, Date fecha, String autor) {
         this.id = id;
         this.concepto = concepto;
         this.cantidad = cantidad;
         this.fecha = fecha;
         this.autor = autor;
-    }
+    }*/
 
-    public Gasto(String concepto, Double cantidad, Date fecha, String autor) {
+    /*public Gasto(String concepto, Double cantidad, Date fecha, String autor) {
         this.concepto = concepto;
         this.cantidad = cantidad;
         this.fecha = fecha;
         this.autor = autor;
-    }
+    }*/
 
     public void setId(int id) {
         this.id = id;
