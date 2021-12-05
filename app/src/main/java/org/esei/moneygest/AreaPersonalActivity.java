@@ -34,7 +34,7 @@ public class AreaPersonalActivity extends AppCompatActivity {
         UtilidadesSP utilidadesSP = new UtilidadesSP();
         utilidadesSP.cargarInfoUser(username, AreaPersonalActivity.this);
 
-        username.setText("diego");
+        username.getText();
 
         datos = userMapper.getUserData(username.getText().toString());
 
