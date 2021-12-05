@@ -2,6 +2,7 @@ package org.esei.moneygest;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -34,6 +35,7 @@ public class GastosActivity extends AppCompatActivity {
 
         listViewGastos= (ListView) findViewById(R.id.listViewGastos);
 
+
         UtilidadesSP utilidadesSP = new UtilidadesSP();
         username = utilidadesSP.cargarUsername(GastosActivity.this);
 
@@ -46,6 +48,10 @@ public class GastosActivity extends AppCompatActivity {
         ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1, listaMostrar);
         listViewGastos.setAdapter(adapter);
 
+        //Para el menu contextual
+
+        this.registerForContextMenu(listViewGastos);
+
     }
 
     private void obtenerLista() {
@@ -57,7 +63,7 @@ public class GastosActivity extends AppCompatActivity {
         }
     }
 
-    //MENU
+    //Menu de opciones
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
@@ -111,6 +117,45 @@ public class GastosActivity extends AppCompatActivity {
 
         return toret;
     }
+
+    //Menu contextual
+
+    public void onCreateContextMenu (ContextMenu menu ,View v, ContextMenu.ContextMenuInfo menuInfo){
+
+        super.onCreateContextMenu(menu,v,menuInfo);
+
+        menu.setHeaderTitle ("Operación sobre gastos");
+        menu.setHeaderIcon(R.drawable.ic_launcher_foreground);
+        menu.add(1,1,1, "Borrar");
+        menu.add(1,2,1, "Modificar");
+        menu.add(1,3,1, "Cancelar");
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item){
+        switch(item.getItemId()){
+            case 1:
+                Toast.makeText(GastosActivity.this, "Ha escogido borrar",Toast.LENGTH_SHORT).show();
+                break;
+            case 2:
+                Toast.makeText(GastosActivity.this, "Ha escogido modificar",Toast.LENGTH_SHORT).show();
+                break;
+            case 3:
+                Toast.makeText(GastosActivity.this, "Ha escogido cancelar",Toast.LENGTH_SHORT).show();
+                break;
+
+        }
+        return super.onContextItemSelected(item);
+    }
+
+    /*private ArrayList<String> getData(){
+        ArrayList<String> list = new ArrayList<String>();
+        for(int i=0;i<list.size();i++){
+            list.add("Gasto" + (i + 1));
+        }
+        return list;
+    }*/
+
 
 
     public void addGasto(View view){
