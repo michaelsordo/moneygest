@@ -22,6 +22,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 
 public class RegistroGastoActivity extends AppCompatActivity {
@@ -46,6 +47,29 @@ public class RegistroGastoActivity extends AppCompatActivity {
         final int mes = calendar.get(Calendar.MONTH);
         final int dia = calendar.get(Calendar.DAY_OF_MONTH);
 
+        /*
+        editConcepto = (EditText) findViewById(R.id.registro_concepto_gasto);
+        editCantidad = (EditText) findViewById(R.id.registro_cantidad_gasto);
+        tipoGasto = (Spinner) findViewById(R.id.registro_tipo_gasto);
+
+        final Intent datosEnviados = this.getIntent();
+        final String concepto = datosEnviados.getExtras().getString( "concepto", "ERROR" );
+        final Double cantidad = datosEnviados.getExtras().getDouble( "cantidad", -1 );
+        final String fecha = datosEnviados.getExtras().getString( "fecha", new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date()));
+        final String tipo = datosEnviados.getExtras().getString( "tipo", "ERROR" );
+
+        editConcepto.setText(concepto);
+        editCantidad.setText(cantidad.toString());
+        editFecha.setText(fecha);
+
+        for(int i= 0; i < tipoGasto.getAdapter().getCount(); i++)
+        {
+            if(tipoGasto.getAdapter().getItem(i).toString().contains(tipo))
+            {
+                tipoGasto.setSelection(i);
+            }
+        }*/
+
         editFecha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,7 +93,7 @@ public class RegistroGastoActivity extends AppCompatActivity {
 
         //Spinner para seleccion de categoría
 
-        tipoGasto = (Spinner) findViewById(R.id.idspinner);
+        tipoGasto = (Spinner) findViewById(R.id.registro_tipo_gasto);
 
         ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(this,R.array.categoria, android.R.layout.simple_spinner_item);
         tipoGasto.setAdapter(adapter);
@@ -81,7 +105,7 @@ public class RegistroGastoActivity extends AppCompatActivity {
 
         editConcepto = (EditText) findViewById(R.id.registro_concepto_gasto);
         editCantidad = (EditText) findViewById(R.id.registro_cantidad_gasto);
-        tipoGasto = (Spinner) findViewById(R.id.idspinner);
+        tipoGasto = (Spinner) findViewById(R.id.registro_tipo_gasto);
 
         String concepto = editConcepto.getText().toString();
         String cantidadString = editCantidad.getText().toString();

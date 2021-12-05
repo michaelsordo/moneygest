@@ -1,15 +1,19 @@
 package org.esei.moneygest;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.esei.moneygest.core.Utilidades;
@@ -26,7 +30,7 @@ public class GastosActivity extends AppCompatActivity {
     ArrayList<Gasto> listaGastos;
     GastoMapper gastoMapper;
     String username;
-
+    private ActivityResultLauncher<Intent> activityResultLauncher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,15 +137,45 @@ public class GastosActivity extends AppCompatActivity {
 
     @Override
     public boolean onContextItemSelected(MenuItem item){
+        int pos = ( (AdapterView.AdapterContextMenuInfo) item.getMenuInfo() ).position;
         switch(item.getItemId()){
             case 1:
-                Toast.makeText(GastosActivity.this, "Ha escogido borrar",Toast.LENGTH_SHORT).show();
+                Toast.makeText(GastosActivity.this, "Ha escogido borrar " + pos + listaGastos.get(pos).getConcepto(),Toast.LENGTH_SHORT).show();
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("Borrado");
+                builder.setMessage("¿Estás seguro de que deseas eliminar el gasto?");
+                builder.setPositiveButton("SÍ", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        gastoMapper.deleteGasto(listaGastos.get(pos).getId());
+                        Toast.makeText(GastosActivity.this, "Gasto eliminado correctamente.", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getApplicationContext(),GastosActivity.class);
+                        startActivity(intent);
+                    }
+                });
+                builder.setNegativeButton("NO", null);
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
                 break;
             case 2:
-                Toast.makeText(GastosActivity.this, "Ha escogido modificar",Toast.LENGTH_SHORT).show();
+                Toast.makeText(GastosActivity.this, "Ha escogido modificar " + pos + listaGastos.get(pos).getConcepto(),Toast.LENGTH_SHORT).show();
                 break;
+
+                /*
+                Intent subActividad = new Intent( GastosActivity.this, RegistroGastoActivity.class );
+                Item item = GastosActivity.this.adaptadorItems.getItem( i );
+
+                subActividad.putExtra( "nombre", item.getNombre() );
+                subActividad.putExtra( "cantidad", item.getNum() );
+                subActividad.putExtra( "pos", i );
+                MainActivity.this.startActivityForResult( subActividad, CODIGO_EDICION_ITEM );
+                */
+
             case 3:
-                Toast.makeText(GastosActivity.this, "Ha escogido cancelar",Toast.LENGTH_SHORT).show();
+                Toast.makeText(GastosActivity.this, "Ha escogido cancelar " + pos + listaGastos.get(pos).getConcepto(),Toast.LENGTH_SHORT).show();
                 break;
 
         }

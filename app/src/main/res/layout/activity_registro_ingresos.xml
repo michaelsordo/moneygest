@@ -45,7 +45,7 @@
             android:inputType="date" />
 
         <Spinner
-            android:id="@+id/idspinner_ingreso"
+            android:id="@+id/registro_tipo_ingreso"
             android:layout_width="match_parent"
             android:layout_height="55dp" />
 

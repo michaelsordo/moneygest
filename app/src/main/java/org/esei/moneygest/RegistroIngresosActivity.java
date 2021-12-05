@@ -68,7 +68,7 @@ public class RegistroIngresosActivity extends AppCompatActivity {
 
         //Spinner para seleccion de categoría
 
-        categoria_ingresos = (Spinner) findViewById(R.id.idspinner_ingreso);
+        categoria_ingresos = (Spinner) findViewById(R.id.registro_tipo_ingreso);
 
         ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(this,R.array.categoria_ingresos, android.R.layout.simple_spinner_item);
         categoria_ingresos.setAdapter(adapter);
