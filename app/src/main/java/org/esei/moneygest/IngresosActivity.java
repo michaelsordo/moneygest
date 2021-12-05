@@ -5,18 +5,45 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.esei.moneygest.core.Utilidades;
 import org.esei.moneygest.core.UtilidadesSP;
+import org.esei.moneygest.model.Ingreso;
+import org.esei.moneygest.model.IngresoMapper;
+
+import java.util.ArrayList;
 
 public class IngresosActivity extends AppCompatActivity {
+
+    ListView listViewIngresos;
+    ArrayList<String> listaMostrar;
+    ArrayList<Ingreso> listaIngresos;
+    IngresoMapper ingresoMapper;
+    String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ingresos_general);
+
+        listViewIngresos = (ListView) findViewById(R.id.listViewIngresos);
+
+        UtilidadesSP utilidadesSP = new UtilidadesSP();
+        username = utilidadesSP.cargarUsername(IngresosActivity.this);
+
+        ingresoMapper = new IngresoMapper(this);
+        listaIngresos = ingresoMapper.listarIngresos(username);
+
+        Utilidades utilidades = new Utilidades();
+        listaMostrar = utilidades.obtenerListaIngresos(listaIngresos);
+
+        ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1, listaMostrar);
+        listViewIngresos.setAdapter(adapter);
     }
 
     //MENU
@@ -75,7 +102,7 @@ public class IngresosActivity extends AppCompatActivity {
     }
 
 
-    public void add_ingresos(View view){
+    public void addIngreso(View view){
 
         Intent i= new Intent(this, RegistroIngresosActivity.class);
         startActivity(i);

@@ -1,5 +1,7 @@
 package org.esei.moneygest.model;
 
+import static org.esei.moneygest.core.DatabaseHelper.CAMPO_AUTOR_INGRESO;
+import static org.esei.moneygest.core.DatabaseHelper.CAMPO_EMAIL_USUARIO;
 import static org.esei.moneygest.core.DatabaseHelper.TABLA_GASTO;
 import static org.esei.moneygest.core.DatabaseHelper.CAMPO_ID_GASTO;
 import static org.esei.moneygest.core.DatabaseHelper.CAMPO_CONCEPTO_GASTO;
@@ -10,9 +12,14 @@ import static org.esei.moneygest.core.DatabaseHelper.CAMPO_AUTOR_GASTO;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import org.esei.moneygest.core.DatabaseHelper;
+
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class GastoMapper extends BaseMapper{
@@ -80,6 +87,42 @@ public class GastoMapper extends BaseMapper{
         } finally {
             db.endTransaction();
         }
+    }
+
+    public ArrayList<Gasto> listarGastos(String username) {
+
+        SQLiteDatabase db = databaseHelper.getReadableDatabase();
+        Gasto gasto = null;
+
+        ArrayList listaGastos = new ArrayList<Gasto>();
+        Cursor cursor = db.rawQuery("SELECT * FROM "
+                                + TABLA_GASTO
+                                + " WHERE "
+                                + CAMPO_AUTOR_GASTO + "=?",
+                                new String[]{username});
+
+        while (cursor.moveToNext()){
+            gasto=new Gasto();
+
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            Date fecha = null;
+
+            try {
+                fecha = dateFormat.parse(cursor.getString(cursor.getColumnIndexOrThrow(CAMPO_FECHA_GASTO)));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            gasto.setId(cursor.getInt(cursor.getColumnIndexOrThrow(CAMPO_ID_GASTO)));
+            gasto.setConcepto(cursor.getString(cursor.getColumnIndexOrThrow(CAMPO_CONCEPTO_GASTO)));
+            gasto.setCantidad(cursor.getDouble(cursor.getColumnIndexOrThrow(CAMPO_CANTIDAD_GASTO)));
+            gasto.setFecha(fecha);
+            gasto.setTipo(cursor.getString(cursor.getColumnIndexOrThrow(CAMPO_TIPO_GASTO)));
+
+            listaGastos.add(gasto);
+        }
+
+        return listaGastos;
     }
 
 }

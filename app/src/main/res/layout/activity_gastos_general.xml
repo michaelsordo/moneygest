@@ -13,11 +13,12 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/info_gastos_general"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:text="GASTOS"
+            android:text="@string/gastos"
             android:textAlignment="center"
+            android:textAllCaps="true"
             android:textSize="20sp" />
 
         <ListView
@@ -26,12 +27,12 @@
             android:layout_height="356dp"></ListView>
 
         <Button
-            android:id="@+id/add_Gast"
+            android:id="@+id/add_Gasto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/button_radius"
-            android:onClick="add_gasto"
-            android:text="Añadir" />
+            android:onClick="addGasto"
+            android:text="@string/añadir" />
 
 
     </LinearLayout>

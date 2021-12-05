@@ -11,6 +11,9 @@ public class Ingreso {
     private String tipo;
     private String autor;
 
+    public Ingreso() {
+    }
+
     public Ingreso(int id, String concepto, Double cantidad, Date fecha, String tipo, String autor) {
         this.id = id;
         this.concepto = concepto;

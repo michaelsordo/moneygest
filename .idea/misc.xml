@@ -4,7 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Proyecto DM/moneygest/app/src/main/res/layout/activity_area_personal.xml" value="0.2546875" />
+        <entry key="..\:/Proyecto DM/moneygest/app/src/main/res/layout/activity_gastos_general.xml" value="0.13125" />
         <entry key="..\:/Proyecto DM/moneygest/app/src/main/res/layout/activity_home.xml" value="0.23278985507246377" />
+        <entry key="..\:/Proyecto DM/moneygest/app/src/main/res/layout/activity_ingresos.xml" value="0.24682971014492755" />
+        <entry key="..\:/Proyecto DM/moneygest/app/src/main/res/layout/activity_ingresos_general.xml" value="0.24682971014492755" />
         <entry key="..\:/Proyecto DM/moneygest/app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="..\:/Proyecto DM/moneygest/app/src/main/res/layout/activity_main.xml" value="0.1793478260869565" />
         <entry key="..\:/Proyecto DM/moneygest/app/src/main/res/layout/activity_registro.xml" value="0.2546875" />

@@ -1,8 +1,6 @@
 package org.esei.moneygest;
 
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,20 +11,20 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import org.esei.moneygest.core.DatabaseHelper;
+import org.esei.moneygest.core.Utilidades;
 import org.esei.moneygest.core.UtilidadesSP;
 import org.esei.moneygest.model.Gasto;
+import org.esei.moneygest.model.GastoMapper;
 
 import java.util.ArrayList;
 
 public class GastosActivity extends AppCompatActivity {
 
-    //Para generar el listView
-
     ListView listViewGastos;
-    ArrayList<String> listaInformación;
+    ArrayList<String> listaMostrar;
     ArrayList<Gasto> listaGastos;
-    DatabaseHelper conn;
+    GastoMapper gastoMapper;
+    String username;
 
 
     @Override
@@ -35,50 +33,26 @@ public class GastosActivity extends AppCompatActivity {
         setContentView(R.layout.activity_gastos_general);
 
         listViewGastos= (ListView) findViewById(R.id.listViewGastos);
-        conn= new DatabaseHelper(this);
 
-        consultarGastos();
+        UtilidadesSP utilidadesSP = new UtilidadesSP();
+        username = utilidadesSP.cargarUsername(GastosActivity.this);
 
-        ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,listaInformación);
+        gastoMapper = new GastoMapper(this);
+        listaGastos = gastoMapper.listarGastos(username);
+
+        Utilidades utilidades = new Utilidades();
+        listaMostrar = utilidades.obtenerListaGastos(listaGastos);
+
+        ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1, listaMostrar);
         listViewGastos.setAdapter(adapter);
 
     }
 
-    //metodo para consulta de gastos
-
-    public void consultarGastos() {
-
-        SQLiteDatabase db = conn.getReadableDatabase();
-        Gasto gasto = null;
-
-        listaGastos = new ArrayList<Gasto>();
-        Cursor cursor = db.rawQuery("SELECT * FROM "+DatabaseHelper.TABLA_GASTO,null);
-
-        while (cursor.moveToNext()){
-            gasto=new Gasto();
-            gasto.setId(cursor.getInt(0));
-            gasto.setConcepto(cursor.getString(1));
-            gasto.setCantidad(cursor.getDouble(2));
-            gasto.setTipo(cursor.getString(4));
-
-            //faltaria la fecha pero no sé recuperarla
-            //faltaria también el tipo de gasto
-
-            listaGastos.add(gasto);
-
-            //Se encarga de recorrer la lista de usuarios
-            obtenerLista();
-
-
-        }
-
-    }
-
     private void obtenerLista() {
-        listaInformación=new ArrayList<String>();
+        listaMostrar =new ArrayList<String>();
 
         for(int i=0;i<listaGastos.size();i++){
-            listaInformación.add("Gasto número: " + listaGastos.get(i).getId()+ "\n"+ "Concepto: "+listaGastos.get(i).getConcepto()
+            listaMostrar.add("Gasto número: " + listaGastos.get(i).getId()+ "\n"+ "Concepto: "+listaGastos.get(i).getConcepto()
                     +"\n"+ "Cantidad: "+ listaGastos.get(i).getCantidad() + "\n" +"Tipo Gasto "+listaGastos.get(i).getTipo());
         }
     }
@@ -139,7 +113,7 @@ public class GastosActivity extends AppCompatActivity {
     }
 
 
-    public void add_gasto(View view){
+    public void addGasto(View view){
 
         Intent i= new Intent(this, RegistroGastoActivity.class);
         startActivity(i);

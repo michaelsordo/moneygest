@@ -55,8 +55,8 @@ public class UserMapper extends BaseMapper {
         try (Cursor cursor = db.query(TABLA_USUARIO,null, CAMPO_LOGIN_USUARIO+ "=?", new String[]{username}, null, null, null, null)) {
             if (cursor.moveToFirst())
             {
-                toRet[0] = cursor.getString(cursor.getColumnIndex(CAMPO_EMAIL_USUARIO));
-                toRet[1] = cursor.getString(cursor.getColumnIndex(CAMPO_PASS_USUARIO));
+                toRet[0] = cursor.getString(cursor.getColumnIndexOrThrow(CAMPO_EMAIL_USUARIO));
+                toRet[1] = cursor.getString(cursor.getColumnIndexOrThrow(CAMPO_PASS_USUARIO));
             }
         }
 
