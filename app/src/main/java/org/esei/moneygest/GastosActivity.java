@@ -157,6 +157,12 @@ public class GastosActivity extends AppCompatActivity {
     }*/
 
 
+    public void onClick(View v) {
+        // TODO Auto-generated method stub
+
+    }
+
+
 
     public void addGasto(View view){
 
