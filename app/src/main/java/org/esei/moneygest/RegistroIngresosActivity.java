@@ -45,6 +45,11 @@ public class RegistroIngresosActivity extends AppCompatActivity {
         final int mes = calendar.get(Calendar.MONTH);
         final int dia = calendar.get(Calendar.DAY_OF_MONTH);
 
+        // Fecha actual
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        ((EditText) findViewById(R.id.registro_fecha_ingreso)).setText(dateFormat.format(new Date()));
+
+
         editFecha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

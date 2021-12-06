@@ -47,6 +47,10 @@ public class RegistroGastoActivity extends AppCompatActivity {
         final int mes = calendar.get(Calendar.MONTH);
         final int dia = calendar.get(Calendar.DAY_OF_MONTH);
 
+        // Fecha actual
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        ((EditText) findViewById(R.id.registro_fecha_gasto)).setText(dateFormat.format(new Date()));
+
         /*
         editConcepto = (EditText) findViewById(R.id.registro_concepto_gasto);
         editCantidad = (EditText) findViewById(R.id.registro_cantidad_gasto);
