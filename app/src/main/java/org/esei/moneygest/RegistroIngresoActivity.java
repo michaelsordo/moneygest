@@ -15,8 +15,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.esei.moneygest.core.UtilidadesSP;
-import org.esei.moneygest.model.Gasto;
-import org.esei.moneygest.model.GastoMapper;
+import org.esei.moneygest.model.Ingreso;
+import org.esei.moneygest.model.IngresoMapper;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -24,22 +24,21 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-
-public class RegistroGastoActivity extends AppCompatActivity {
+public class RegistroIngresoActivity extends AppCompatActivity {
 
     EditText editConcepto, editCantidad, editFecha;
-    Spinner tipoGasto;
-    GastoMapper gastoMapper;
-    Gasto gasto;
+    Spinner tipoIngreso;
+    IngresoMapper ingresoMapper;
+    Ingreso ingreso;
     DatePickerDialog.OnDateSetListener setListener;
     int id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registro_gastos);
+        setContentView(R.layout.activity_registro_ingresos);
 
-        editFecha = (EditText) findViewById(R.id.registro_fecha_gasto);
+        editFecha = (EditText) findViewById(R.id.registro_fecha_ingreso);
 
         //Añadiendo funcionalidad modo calendario
 
@@ -48,9 +47,9 @@ public class RegistroGastoActivity extends AppCompatActivity {
         final int mes = calendar.get(Calendar.MONTH);
         final int dia = calendar.get(Calendar.DAY_OF_MONTH);
 
-        editConcepto = (EditText) findViewById(R.id.registro_concepto_gasto);
-        editCantidad = (EditText) findViewById(R.id.registro_cantidad_gasto);
-        tipoGasto = (Spinner) findViewById(R.id.registro_tipo_gasto);
+        editConcepto = (EditText) findViewById(R.id.registro_concepto_ingreso);
+        editCantidad = (EditText) findViewById(R.id.registro_cantidad_ingreso);
+        tipoIngreso = (Spinner) findViewById(R.id.registro_tipo_ingreso);
 
         final Intent datosEnviados = this.getIntent();
         id = datosEnviados.getExtras().getInt( "id", -1 );
@@ -63,14 +62,14 @@ public class RegistroGastoActivity extends AppCompatActivity {
         editCantidad.setText(cantidad.toString());
         editFecha.setText(fecha);
 
-        ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(this,R.array.categoria, android.R.layout.simple_spinner_item);
-        tipoGasto.setAdapter(adapter);
+        ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(this,R.array.categoria_ingresos, android.R.layout.simple_spinner_item);
+        tipoIngreso.setAdapter(adapter);
 
-        for(int i= 0; i < tipoGasto.getAdapter().getCount(); i++)
+        for(int i= 0; i < tipoIngreso.getAdapter().getCount(); i++)
         {
-            if(tipoGasto.getAdapter().getItem(i).toString().contains(tipo))
+            if(tipoIngreso.getAdapter().getItem(i).toString().contains(tipo))
             {
-                tipoGasto.setSelection(i);
+                tipoIngreso.setSelection(i);
             }
         }
 
@@ -78,7 +77,7 @@ public class RegistroGastoActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        RegistroGastoActivity.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                        RegistroIngresoActivity.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth,
                         setListener,anho,mes,dia);
                 datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 datePickerDialog.show();
@@ -94,24 +93,25 @@ public class RegistroGastoActivity extends AppCompatActivity {
 
             }
         };
+
     }
 
-    public void registrarGasto(View view){
+    public void registrarIngreso(View view){
 
         if(this.id == -1){
-            gastoMapper = new GastoMapper(this);
+            ingresoMapper = new IngresoMapper(this);
 
-            editConcepto = (EditText) findViewById(R.id.registro_concepto_gasto);
-            editCantidad = (EditText) findViewById(R.id.registro_cantidad_gasto);
-            tipoGasto = (Spinner) findViewById(R.id.registro_tipo_gasto);
+            editConcepto = (EditText) findViewById(R.id.registro_concepto_ingreso);
+            editCantidad = (EditText) findViewById(R.id.registro_cantidad_ingreso);
+
 
             String concepto = editConcepto.getText().toString();
             String cantidadString = editCantidad.getText().toString();
             String stringFecha = editFecha.getText().toString();
-            String tipoGastoString = tipoGasto.getSelectedItem().toString();
+            String tipoIngresoString = tipoIngreso.getSelectedItem().toString();
 
-            if(concepto.equals("") || cantidadString.equals("") || stringFecha.equals("") || tipoGastoString.equals("")){
-                Toast.makeText(RegistroGastoActivity.this, "Por favor cubre todos los campos", Toast.LENGTH_SHORT).show();
+            if(concepto.equals("") || cantidadString.equals("") || stringFecha.equals("") || tipoIngresoString.equals("")){
+                Toast.makeText(RegistroIngresoActivity.this, "Por favor cubre todos los campos", Toast.LENGTH_SHORT).show();
             }
 
             else{
@@ -128,30 +128,32 @@ public class RegistroGastoActivity extends AppCompatActivity {
                 Double cantidad = Double.parseDouble(cantidadString);
 
                 UtilidadesSP utilidadesSP = new UtilidadesSP();
-                String username = utilidadesSP.cargarUsername(RegistroGastoActivity.this);
+                String username = utilidadesSP.cargarUsername(RegistroIngresoActivity.this);
 
-                gasto = new Gasto(concepto, cantidad, fecha, tipoGastoString, username);
-                gastoMapper.insertGasto(gasto);
+                ingreso = new Ingreso(concepto, cantidad, fecha, tipoIngresoString, username);
+                ingresoMapper.insertIngreso(ingreso);
 
-                Toast.makeText(RegistroGastoActivity.this, "Gasto registrado correctamente", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(getApplicationContext(),GastosActivity.class);
+                Toast.makeText(RegistroIngresoActivity.this, "Ingreso registrado correctamente", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getApplicationContext(),IngresosActivity.class);
                 startActivity(intent);
+
             }
         }
-        else {
-            gastoMapper = new GastoMapper(this);
 
-            editConcepto = (EditText) findViewById(R.id.registro_concepto_gasto);
-            editCantidad = (EditText) findViewById(R.id.registro_cantidad_gasto);
-            tipoGasto = (Spinner) findViewById(R.id.registro_tipo_gasto);
+        else{
+            ingresoMapper = new IngresoMapper(this);
+
+            editConcepto = (EditText) findViewById(R.id.registro_concepto_ingreso);
+            editCantidad = (EditText) findViewById(R.id.registro_cantidad_ingreso);
+
 
             String concepto = editConcepto.getText().toString();
             String cantidadString = editCantidad.getText().toString();
             String stringFecha = editFecha.getText().toString();
-            String tipoGastoString = tipoGasto.getSelectedItem().toString();
+            String tipoIngresoString = tipoIngreso.getSelectedItem().toString();
 
-            if(concepto.equals("") || cantidadString.equals("") || stringFecha.equals("") || tipoGastoString.equals("")){
-                Toast.makeText(RegistroGastoActivity.this, "Por favor cubre todos los campos", Toast.LENGTH_SHORT).show();
+            if(concepto.equals("") || cantidadString.equals("") || stringFecha.equals("") || tipoIngresoString.equals("")){
+                Toast.makeText(RegistroIngresoActivity.this, "Por favor cubre todos los campos", Toast.LENGTH_SHORT).show();
             }
 
             else{
@@ -168,20 +170,24 @@ public class RegistroGastoActivity extends AppCompatActivity {
                 Double cantidad = Double.parseDouble(cantidadString);
 
                 UtilidadesSP utilidadesSP = new UtilidadesSP();
-                String username = utilidadesSP.cargarUsername(RegistroGastoActivity.this);
+                String username = utilidadesSP.cargarUsername(RegistroIngresoActivity.this);
 
-                gasto = new Gasto(id, concepto, cantidad, fecha, tipoGastoString, username);
-                gastoMapper.updateGasto(gasto);
+                ingreso = new Ingreso(id, concepto, cantidad, fecha, tipoIngresoString, username);
+                Toast.makeText(RegistroIngresoActivity.this, fecha.toString(), Toast.LENGTH_LONG).show();
+                ingresoMapper.updateIngreso(ingreso);
 
-                Toast.makeText(RegistroGastoActivity.this, "Gasto actualizado correctamente", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(getApplicationContext(),GastosActivity.class);
+                Toast.makeText(RegistroIngresoActivity.this, "Ingreso actualizado correctamente", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getApplicationContext(),IngresosActivity.class);
                 startActivity(intent);
+
             }
         }
+
 
 
     }
 
 }
+
 
 

@@ -20,7 +20,10 @@ import org.esei.moneygest.core.UtilidadesSP;
 import org.esei.moneygest.model.Ingreso;
 import org.esei.moneygest.model.IngresoMapper;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class IngresosActivity extends AppCompatActivity {
 
@@ -48,8 +51,6 @@ public class IngresosActivity extends AppCompatActivity {
 
         ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1, listaMostrar);
         listViewIngresos.setAdapter(adapter);
-
-        //Para el menu contextual
 
         this.registerForContextMenu(listViewIngresos);
 
@@ -130,8 +131,6 @@ public class IngresosActivity extends AppCompatActivity {
         int pos = ( (AdapterView.AdapterContextMenuInfo) item.getMenuInfo() ).position;
         switch(item.getItemId()){
             case 1:
-                Toast.makeText(IngresosActivity.this, "Ha escogido borrar " + pos + listaIngresos.get(pos).getConcepto(),Toast.LENGTH_SHORT).show();
-
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle("Borrado");
                 builder.setMessage("¿Estás seguro de que deseas eliminar el ingreso?");
@@ -151,12 +150,20 @@ public class IngresosActivity extends AppCompatActivity {
 
                 break;
             case 2:
-                Toast.makeText(IngresosActivity.this, "Ha escogido modificar " + pos + listaIngresos.get(pos).getConcepto(),Toast.LENGTH_SHORT).show();
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                String fecha = sdf.format(listaIngresos.get(pos).getFecha());
+
+                Intent intent = new Intent(getApplicationContext(), RegistroIngresoActivity.class);
+                intent.putExtra("id",listaIngresos.get(pos).getId());
+                intent.putExtra("concepto",listaIngresos.get(pos).getConcepto());
+                intent.putExtra("cantidad", listaIngresos.get(pos).getCantidad());
+                intent.putExtra("fecha", fecha);
+                intent.putExtra("tipo", listaIngresos.get(pos).getTipo());
+                startActivity(intent);
                 break;
 
 
             case 3:
-                Toast.makeText(IngresosActivity.this, "Ha escogido cancelar " + pos + listaIngresos.get(pos).getConcepto(),Toast.LENGTH_SHORT).show();
                 break;
 
         }
@@ -172,8 +179,15 @@ public class IngresosActivity extends AppCompatActivity {
 
     public void addIngreso(View view){
 
-        Intent i= new Intent(this, RegistroIngresosActivity.class);
-        startActivity(i);
+        Intent intent = new Intent(this, RegistroIngresoActivity.class);
+
+        intent.putExtra("id",-1);
+        intent.putExtra("concepto","");
+        intent.putExtra("cantidad", 0);
+        intent.putExtra("fecha", new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date()).toString());
+        intent.putExtra("tipo", "");
+
+        startActivity(intent);
 
     }
 

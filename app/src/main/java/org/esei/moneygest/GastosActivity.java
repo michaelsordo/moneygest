@@ -13,15 +13,22 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContract;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityOptionsCompat;
 
 import org.esei.moneygest.core.Utilidades;
 import org.esei.moneygest.core.UtilidadesSP;
 import org.esei.moneygest.model.Gasto;
 import org.esei.moneygest.model.GastoMapper;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class GastosActivity extends AppCompatActivity {
 
@@ -30,7 +37,6 @@ public class GastosActivity extends AppCompatActivity {
     ArrayList<Gasto> listaGastos;
     GastoMapper gastoMapper;
     String username;
-    private ActivityResultLauncher<Intent> activityResultLauncher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +44,6 @@ public class GastosActivity extends AppCompatActivity {
         setContentView(R.layout.activity_gastos_general);
 
         listViewGastos= (ListView) findViewById(R.id.listViewGastos);
-
 
         UtilidadesSP utilidadesSP = new UtilidadesSP();
         username = utilidadesSP.cargarUsername(GastosActivity.this);
@@ -52,19 +57,8 @@ public class GastosActivity extends AppCompatActivity {
         ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1, listaMostrar);
         listViewGastos.setAdapter(adapter);
 
-        //Para el menu contextual
-
         this.registerForContextMenu(listViewGastos);
 
-    }
-
-    private void obtenerLista() {
-        listaMostrar =new ArrayList<String>();
-
-        for(int i=0;i<listaGastos.size();i++){
-            listaMostrar.add("Gasto número: " + listaGastos.get(i).getId()+ "\n"+ "Concepto: "+listaGastos.get(i).getConcepto()
-                    +"\n"+ "Cantidad: "+ listaGastos.get(i).getCantidad() + "\n" +"Tipo Gasto "+listaGastos.get(i).getTipo());
-        }
     }
 
     //Menu de opciones
@@ -140,8 +134,6 @@ public class GastosActivity extends AppCompatActivity {
         int pos = ( (AdapterView.AdapterContextMenuInfo) item.getMenuInfo() ).position;
         switch(item.getItemId()){
             case 1:
-                Toast.makeText(GastosActivity.this, "Ha escogido borrar " + pos + listaGastos.get(pos).getConcepto(),Toast.LENGTH_SHORT).show();
-
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle("Borrado");
                 builder.setMessage("¿Estás seguro de que deseas eliminar el gasto?");
@@ -161,50 +153,41 @@ public class GastosActivity extends AppCompatActivity {
 
                 break;
             case 2:
-                Intent intent = new Intent(getApplicationContext(),GastosEditActivity.class);
-                intent.putExtra("Concepto",listaGastos.get(pos).getId());
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                String fecha = sdf.format(listaGastos.get(pos).getFecha());
+
+                Intent intent = new Intent(getApplicationContext(), RegistroGastoActivity.class);
+                intent.putExtra("id",listaGastos.get(pos).getId());
+                intent.putExtra("concepto",listaGastos.get(pos).getConcepto());
+                intent.putExtra("cantidad", listaGastos.get(pos).getCantidad());
+                intent.putExtra("fecha", fecha);
+                intent.putExtra("tipo", listaGastos.get(pos).getTipo());
                 startActivity(intent);
-                Toast.makeText(GastosActivity.this, "Ha escogido modificar " + pos + listaGastos.get(pos).getConcepto(),Toast.LENGTH_SHORT).show();
                 break;
 
-                /*
-                Intent subActividad = new Intent( GastosActivity.this, RegistroGastoActivity.class );
-                Item item = GastosActivity.this.adaptadorItems.getItem( i );
-
-                subActividad.putExtra( "nombre", item.getNombre() );
-                subActividad.putExtra( "cantidad", item.getNum() );
-                subActividad.putExtra( "pos", i );
-                MainActivity.this.startActivityForResult( subActividad, CODIGO_EDICION_ITEM );
-                */
-
             case 3:
-                Toast.makeText(GastosActivity.this, "Ha escogido cancelar " + pos + listaGastos.get(pos).getConcepto(),Toast.LENGTH_SHORT).show();
                 break;
 
         }
         return super.onContextItemSelected(item);
     }
 
-    /*private ArrayList<String> getData(){
-        ArrayList<String> list = new ArrayList<String>();
-        for(int i=0;i<list.size();i++){
-            list.add("Gasto" + (i + 1));
-        }
-        return list;
-    }*/
-
-
     public void onClick(View v) {
         // TODO Auto-generated method stub
 
     }
 
-
-
     public void addGasto(View view){
 
-        Intent i= new Intent(this, RegistroGastoActivity.class);
-        startActivity(i);
+        Intent intent = new Intent(this, RegistroGastoActivity.class);
+
+        intent.putExtra("id",-1);
+        intent.putExtra("concepto","");
+        intent.putExtra("cantidad", 0);
+        intent.putExtra("fecha", new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date()).toString());
+        intent.putExtra("tipo", "");
+
+        startActivity(intent);
 
     }
 
