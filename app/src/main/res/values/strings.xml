@@ -20,9 +20,16 @@
     <string name="modificar">MODIFICAR</string>
     <string name="añadir">AÑADIR</string>
     <string name="guardar">GUARDAR</string>
+<<<<<<< HEAD
     <string name="contacto">Contacto</string>
     <string name="registrar_gasto">Añadir o modificar gastos</string>
     <string name="registrar_ingreso">Añadir o modificar ingresos</string>
+=======
+    <string name="registrar_gasto">Añadir Gasto</string>
+    <string name="registrar_ingreso">Añadir Ingreso</string>
+    <string name="modificar_gasto">Modificar Gasto</string>
+    <string name="modificar_ingreso">Modificar Ingreso</string>
+>>>>>>> 59618b8e2afbf0f553ae190f59609e94294d6f53
     <string name="detalles">DETALLES</string>
     <string name="registro_text">¿Todavía no tienes una cuenta? Registrate pulsando en el siguiente botón</string>
     <string name="login_text">¿Ya tienes una cuenta? Logueate pulsando en el siguiente botón</string>
