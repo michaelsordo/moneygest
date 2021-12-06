@@ -57,7 +57,7 @@ public class RegistroIngresoActivity extends AppCompatActivity {
         final Intent datosEnviados = this.getIntent();
         id = datosEnviados.getExtras().getInt( "id", -1 );
         final String concepto = datosEnviados.getExtras().getString( "concepto", "" );
-        final Double cantidad = datosEnviados.getExtras().getDouble( "cantidad", 0);
+        final Double cantidad = datosEnviados.getExtras().getDouble( "cantidad", 0.00);
         final String fecha = datosEnviados.getExtras().getString( "fecha", new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date()).toString());
         final String tipo = datosEnviados.getExtras().getString( "tipo", "" );
 

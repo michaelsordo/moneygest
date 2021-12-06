@@ -183,7 +183,7 @@ public class IngresosActivity extends AppCompatActivity {
 
         intent.putExtra("id",-1);
         intent.putExtra("concepto","");
-        intent.putExtra("cantidad", 0);
+        intent.putExtra("cantidad", 0.00);
         intent.putExtra("fecha", new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date()).toString());
         intent.putExtra("tipo", "");
 
