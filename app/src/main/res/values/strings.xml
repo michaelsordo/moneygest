@@ -20,8 +20,11 @@
     <string name="modificar">MODIFICAR</string>
     <string name="añadir">AÑADIR</string>
     <string name="guardar">GUARDAR</string>
-    <string name="registrar_gasto">Añadir o modificar gastos</string>
-    <string name="registrar_ingreso">Añadir o modificar ingresos</string>
+    <string name="contacto">Contacto</string>
+    <string name="registrar_gasto">Añadir Gasto</string>
+    <string name="registrar_ingreso">Añadir Ingreso</string>
+    <string name="modificar_gasto">Modificar Gasto</string>
+    <string name="modificar_ingreso">Modificar Ingreso</string>
     <string name="detalles">DETALLES</string>
     <string name="registro_text">¿Todavía no tienes una cuenta? Registrate pulsando en el siguiente botón</string>
     <string name="login_text">¿Ya tienes una cuenta? Logueate pulsando en el siguiente botón</string>
@@ -30,5 +33,12 @@
     <string name="item2">Ingresos</string>
     <string name="item3">Area Personal</string>
     <string name="item4">Logout</string>
+    <string name="Diego">Diego Rodríguez Taboada</string>
+    <string name="correo_diego">drtaboada17@esei.uvigo.es</string>
+    <string name="Iago">Iago Seara Vicente</string>
+    <string name="correo_iago">correo@correoiago.es</string>
+    <string name="Michael">Michael Sordo Seijo</string>
+    <string name="correo_michael">msseijo18@esei.uvigo.es</string>
+
 
 </resources>

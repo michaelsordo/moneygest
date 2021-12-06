@@ -9,7 +9,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/registro_text_ingreso"
+            android:id="@+id/registro_titulo_ingreso"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:paddingTop="50dp"

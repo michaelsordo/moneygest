@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,6 +28,7 @@ import java.util.Locale;
 
 public class RegistroGastoActivity extends AppCompatActivity {
 
+    TextView textViewTitulo;
     EditText editConcepto, editCantidad, editFecha;
     Spinner tipoGasto;
     GastoMapper gastoMapper;
@@ -48,6 +50,7 @@ public class RegistroGastoActivity extends AppCompatActivity {
         final int mes = calendar.get(Calendar.MONTH);
         final int dia = calendar.get(Calendar.DAY_OF_MONTH);
 
+        textViewTitulo = (TextView) findViewById(R.id.registro_titulo_gasto);
         editConcepto = (EditText) findViewById(R.id.registro_concepto_gasto);
         editCantidad = (EditText) findViewById(R.id.registro_cantidad_gasto);
         tipoGasto = (Spinner) findViewById(R.id.registro_tipo_gasto);
@@ -58,6 +61,14 @@ public class RegistroGastoActivity extends AppCompatActivity {
         final Double cantidad = datosEnviados.getExtras().getDouble( "cantidad", 0);
         final String fecha = datosEnviados.getExtras().getString( "fecha", new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date()).toString());
         final String tipo = datosEnviados.getExtras().getString( "tipo", "" );
+
+        if(id == -1){
+            textViewTitulo.setText(getString(R.string.registrar_gasto));
+        }
+
+        else{
+            textViewTitulo.setText(getString(R.string.modificar_gasto));
+        }
 
         editConcepto.setText(concepto);
         editCantidad.setText(cantidad.toString());
