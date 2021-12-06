@@ -14,11 +14,18 @@ import java.util.ArrayList;
 
 public class GastosEditActivity extends AppCompatActivity {
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> michaelsordo
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_gastos);
 
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> michaelsordo
 }
