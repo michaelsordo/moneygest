@@ -1,12 +1,5 @@
 package org.esei.moneygest.model;
 
-import static org.esei.moneygest.core.DatabaseHelper.CAMPO_AUTOR_GASTO;
-import static org.esei.moneygest.core.DatabaseHelper.CAMPO_CANTIDAD_GASTO;
-import static org.esei.moneygest.core.DatabaseHelper.CAMPO_CONCEPTO_GASTO;
-import static org.esei.moneygest.core.DatabaseHelper.CAMPO_FECHA_GASTO;
-import static org.esei.moneygest.core.DatabaseHelper.CAMPO_ID_GASTO;
-import static org.esei.moneygest.core.DatabaseHelper.CAMPO_TIPO_GASTO;
-import static org.esei.moneygest.core.DatabaseHelper.TABLA_GASTO;
 import static org.esei.moneygest.core.DatabaseHelper.TABLA_INGRESO;
 import static org.esei.moneygest.core.DatabaseHelper.CAMPO_ID_INGRESO;
 import static org.esei.moneygest.core.DatabaseHelper.CAMPO_CONCEPTO_INGRESO;
@@ -93,11 +86,10 @@ public class IngresoMapper extends BaseMapper{
     }
 
     public ArrayList<Ingreso> listarIngresos(String username) {
-
         SQLiteDatabase db = databaseHelper.getReadableDatabase();
         Ingreso ingreso = null;
 
-        ArrayList listaIngresos = new ArrayList<Gasto>();
+        ArrayList listaIngresos = new ArrayList<Ingreso>();
         Cursor cursor = db.rawQuery("SELECT * FROM "
                         + TABLA_INGRESO
                         + " WHERE "
@@ -127,5 +119,287 @@ public class IngresoMapper extends BaseMapper{
 
         return listaIngresos;
     }
+
+    public ArrayList<Ingreso> listarIngresosFecha(String username, Date fechaInicio, Date fechaFin) {
+        SQLiteDatabase db = databaseHelper.getReadableDatabase();
+        Ingreso ingreso = null;
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+        String dateInicio = sdf.format(fechaInicio);
+        String dateFin = sdf.format(fechaFin);
+
+        ArrayList listaIngresos = new ArrayList<Ingreso>();
+        Cursor cursor = db.rawQuery("SELECT * FROM "
+                        + TABLA_INGRESO
+                        + " WHERE "
+                        + CAMPO_AUTOR_INGRESO + "=?"
+                        + " AND " + CAMPO_FECHA_INGRESO
+                        + " BETWEEN " + "?" + " AND " + "?",
+                new String[]{username, dateInicio, dateFin});
+
+        while (cursor.moveToNext()){
+            ingreso=new Ingreso();
+
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+            Date fecha = null;
+
+            try {
+                fecha = dateFormat.parse(cursor.getString(cursor.getColumnIndexOrThrow(CAMPO_FECHA_INGRESO)));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            ingreso.setId(cursor.getInt(cursor.getColumnIndexOrThrow(CAMPO_ID_INGRESO)));
+            ingreso.setConcepto(cursor.getString(cursor.getColumnIndexOrThrow(CAMPO_CONCEPTO_INGRESO)));
+            ingreso.setCantidad(cursor.getDouble(cursor.getColumnIndexOrThrow(CAMPO_CANTIDAD_INGRESO)));
+            ingreso.setFecha(fecha);
+            ingreso.setTipo(cursor.getString(cursor.getColumnIndexOrThrow(CAMPO_TIPO_INGRESO)));
+
+            listaIngresos.add(ingreso);
+        }
+
+        return listaIngresos;
+    }
+
+    public ArrayList<Ingreso> listarIngresosCantidad(String username, Double cantidadMin, Double cantidadMax) {
+        SQLiteDatabase db = databaseHelper.getReadableDatabase();
+        Ingreso ingreso = null;
+
+        ArrayList listaIngresos = new ArrayList<Ingreso>();
+        Cursor cursor = db.rawQuery("SELECT * FROM "
+                        + TABLA_INGRESO
+                        + " WHERE "
+                        + CAMPO_AUTOR_INGRESO + "=?"
+                        + " AND " + CAMPO_CANTIDAD_INGRESO
+                        + " BETWEEN " + "?" + " AND " + "?",
+                new String[]{username, cantidadMin.toString(), cantidadMax.toString()});
+
+        while (cursor.moveToNext()){
+            ingreso=new Ingreso();
+
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+            Date fecha = null;
+
+            try {
+                fecha = dateFormat.parse(cursor.getString(cursor.getColumnIndexOrThrow(CAMPO_FECHA_INGRESO)));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            ingreso.setId(cursor.getInt(cursor.getColumnIndexOrThrow(CAMPO_ID_INGRESO)));
+            ingreso.setConcepto(cursor.getString(cursor.getColumnIndexOrThrow(CAMPO_CONCEPTO_INGRESO)));
+            ingreso.setCantidad(cursor.getDouble(cursor.getColumnIndexOrThrow(CAMPO_CANTIDAD_INGRESO)));
+            ingreso.setFecha(fecha);
+            ingreso.setTipo(cursor.getString(cursor.getColumnIndexOrThrow(CAMPO_TIPO_INGRESO)));
+
+            listaIngresos.add(ingreso);
+        }
+
+        return listaIngresos;
+    }
+
+    public ArrayList<Ingreso> listarIngresosTipo(String username, String tipo) {
+        SQLiteDatabase db = databaseHelper.getReadableDatabase();
+        Ingreso ingreso = null;
+
+        ArrayList listaIngresos = new ArrayList<Ingreso>();
+        Cursor cursor = db.rawQuery("SELECT * FROM "
+                        + TABLA_INGRESO
+                        + " WHERE "
+                        + CAMPO_AUTOR_INGRESO + "=?"
+                        + " AND " + CAMPO_TIPO_INGRESO + "=?",
+                new String[]{username, tipo});
+
+        while (cursor.moveToNext()){
+            ingreso=new Ingreso();
+
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+            Date fecha = null;
+
+            try {
+                fecha = dateFormat.parse(cursor.getString(cursor.getColumnIndexOrThrow(CAMPO_FECHA_INGRESO)));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            ingreso.setId(cursor.getInt(cursor.getColumnIndexOrThrow(CAMPO_ID_INGRESO)));
+            ingreso.setConcepto(cursor.getString(cursor.getColumnIndexOrThrow(CAMPO_CONCEPTO_INGRESO)));
+            ingreso.setCantidad(cursor.getDouble(cursor.getColumnIndexOrThrow(CAMPO_CANTIDAD_INGRESO)));
+            ingreso.setFecha(fecha);
+            ingreso.setTipo(cursor.getString(cursor.getColumnIndexOrThrow(CAMPO_TIPO_INGRESO)));
+
+            listaIngresos.add(ingreso);
+        }
+
+        return listaIngresos;
+    }
+
+    public ArrayList<Ingreso> listarIngresosFechaCantidad(String username, Date fechaInicio, Date fechaFin, Double cantidadMin, Double cantidadMax) {
+        SQLiteDatabase db = databaseHelper.getReadableDatabase();
+        Ingreso ingreso = null;
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+        String dateInicio = sdf.format(fechaInicio);
+        String dateFin = sdf.format(fechaFin);
+
+        ArrayList listaIngresos = new ArrayList<Ingreso>();
+        Cursor cursor = db.rawQuery("SELECT * FROM "
+                        + TABLA_INGRESO
+                        + " WHERE "
+                        + CAMPO_AUTOR_INGRESO + "=?"
+                        + " AND " + CAMPO_FECHA_INGRESO
+                        + " BETWEEN " + "?" + " AND " + "?"
+                        + " AND " + CAMPO_CANTIDAD_INGRESO
+                        + " BETWEEN " + "?" + " AND " + "?",
+                new String[]{username, dateInicio, dateFin, cantidadMin.toString(), cantidadMax.toString()});
+
+        while (cursor.moveToNext()){
+            ingreso=new Ingreso();
+
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+            Date fecha = null;
+
+            try {
+                fecha = dateFormat.parse(cursor.getString(cursor.getColumnIndexOrThrow(CAMPO_FECHA_INGRESO)));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            ingreso.setId(cursor.getInt(cursor.getColumnIndexOrThrow(CAMPO_ID_INGRESO)));
+            ingreso.setConcepto(cursor.getString(cursor.getColumnIndexOrThrow(CAMPO_CONCEPTO_INGRESO)));
+            ingreso.setCantidad(cursor.getDouble(cursor.getColumnIndexOrThrow(CAMPO_CANTIDAD_INGRESO)));
+            ingreso.setFecha(fecha);
+            ingreso.setTipo(cursor.getString(cursor.getColumnIndexOrThrow(CAMPO_TIPO_INGRESO)));
+
+            listaIngresos.add(ingreso);
+        }
+
+        return listaIngresos;
+    }
+
+    public ArrayList<Ingreso> listarIngresosFechaTipo(String username, Date fechaInicio, Date fechaFin, String tipo) {
+        SQLiteDatabase db = databaseHelper.getReadableDatabase();
+        Ingreso ingreso = null;
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+        String dateInicio = sdf.format(fechaInicio);
+        String dateFin = sdf.format(fechaFin);
+
+        ArrayList listaIngresos = new ArrayList<Ingreso>();
+        Cursor cursor = db.rawQuery("SELECT * FROM "
+                        + TABLA_INGRESO
+                        + " WHERE "
+                        + CAMPO_AUTOR_INGRESO + "=?"
+                        + " AND " + CAMPO_FECHA_INGRESO
+                        + " BETWEEN " + "?" + " AND " + "?"
+                        + " AND " + CAMPO_TIPO_INGRESO + "=?",
+                new String[]{username, dateInicio, dateFin, tipo});
+
+        while (cursor.moveToNext()){
+            ingreso=new Ingreso();
+
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+            Date fecha = null;
+
+            try {
+                fecha = dateFormat.parse(cursor.getString(cursor.getColumnIndexOrThrow(CAMPO_FECHA_INGRESO)));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            ingreso.setId(cursor.getInt(cursor.getColumnIndexOrThrow(CAMPO_ID_INGRESO)));
+            ingreso.setConcepto(cursor.getString(cursor.getColumnIndexOrThrow(CAMPO_CONCEPTO_INGRESO)));
+            ingreso.setCantidad(cursor.getDouble(cursor.getColumnIndexOrThrow(CAMPO_CANTIDAD_INGRESO)));
+            ingreso.setFecha(fecha);
+            ingreso.setTipo(cursor.getString(cursor.getColumnIndexOrThrow(CAMPO_TIPO_INGRESO)));
+
+            listaIngresos.add(ingreso);
+        }
+
+        return listaIngresos;
+    }
+
+    public ArrayList<Ingreso> listarIngresosCantidadTipo(String username, Double cantidadMin, Double cantidadMax, String tipo) {
+        SQLiteDatabase db = databaseHelper.getReadableDatabase();
+        Ingreso ingreso = null;
+
+        ArrayList listaIngresos = new ArrayList<Ingreso>();
+        Cursor cursor = db.rawQuery("SELECT * FROM "
+                        + TABLA_INGRESO
+                        + " WHERE "
+                        + CAMPO_AUTOR_INGRESO + "=?"
+                        + " AND " + CAMPO_CANTIDAD_INGRESO
+                        + " BETWEEN " + "?" + " AND " + "?"
+                        + " AND " + CAMPO_TIPO_INGRESO + "=?",
+                new String[]{username, cantidadMin.toString(), cantidadMax.toString(), tipo});
+
+        while (cursor.moveToNext()){
+            ingreso=new Ingreso();
+
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+            Date fecha = null;
+
+            try {
+                fecha = dateFormat.parse(cursor.getString(cursor.getColumnIndexOrThrow(CAMPO_FECHA_INGRESO)));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            ingreso.setId(cursor.getInt(cursor.getColumnIndexOrThrow(CAMPO_ID_INGRESO)));
+            ingreso.setConcepto(cursor.getString(cursor.getColumnIndexOrThrow(CAMPO_CONCEPTO_INGRESO)));
+            ingreso.setCantidad(cursor.getDouble(cursor.getColumnIndexOrThrow(CAMPO_CANTIDAD_INGRESO)));
+            ingreso.setFecha(fecha);
+            ingreso.setTipo(cursor.getString(cursor.getColumnIndexOrThrow(CAMPO_TIPO_INGRESO)));
+
+            listaIngresos.add(ingreso);
+        }
+
+        return listaIngresos;
+    }
+
+    public ArrayList<Ingreso> listarIngresosFechaCantidadTipo(String username, Date fechaInicio, Date fechaFin, Double cantidadMin, Double cantidadMax, String tipo) {
+        SQLiteDatabase db = databaseHelper.getReadableDatabase();
+        Ingreso ingreso = null;
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+        String dateInicio = sdf.format(fechaInicio);
+        String dateFin = sdf.format(fechaFin);
+
+        ArrayList listaIngresos = new ArrayList<Ingreso>();
+        Cursor cursor = db.rawQuery("SELECT * FROM "
+                        + TABLA_INGRESO
+                        + " WHERE "
+                        + CAMPO_AUTOR_INGRESO + "=?"
+                        + " AND " + CAMPO_FECHA_INGRESO
+                        + " BETWEEN " + "?" + " AND " + "?"
+                        + " AND " + CAMPO_CANTIDAD_INGRESO
+                        + " BETWEEN " + "?" + " AND " + "?"
+                        + " AND " + CAMPO_TIPO_INGRESO + "=?",
+                new String[]{username, dateInicio, dateFin, cantidadMin.toString(), cantidadMax.toString(), tipo});
+
+        while (cursor.moveToNext()){
+            ingreso=new Ingreso();
+
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+            Date fecha = null;
+
+            try {
+                fecha = dateFormat.parse(cursor.getString(cursor.getColumnIndexOrThrow(CAMPO_FECHA_INGRESO)));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            ingreso.setId(cursor.getInt(cursor.getColumnIndexOrThrow(CAMPO_ID_INGRESO)));
+            ingreso.setConcepto(cursor.getString(cursor.getColumnIndexOrThrow(CAMPO_CONCEPTO_INGRESO)));
+            ingreso.setCantidad(cursor.getDouble(cursor.getColumnIndexOrThrow(CAMPO_CANTIDAD_INGRESO)));
+            ingreso.setFecha(fecha);
+            ingreso.setTipo(cursor.getString(cursor.getColumnIndexOrThrow(CAMPO_TIPO_INGRESO)));
+
+            listaIngresos.add(ingreso);
+        }
+
+        return listaIngresos;
+    }
+
 
 }

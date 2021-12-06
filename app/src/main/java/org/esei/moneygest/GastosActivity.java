@@ -25,6 +25,7 @@ import org.esei.moneygest.core.UtilidadesSP;
 import org.esei.moneygest.model.Gasto;
 import org.esei.moneygest.model.GastoMapper;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -183,7 +184,7 @@ public class GastosActivity extends AppCompatActivity {
 
         intent.putExtra("id",-1);
         intent.putExtra("concepto","");
-        intent.putExtra("cantidad", 0);
+        intent.putExtra("cantidad", 0.00);
         intent.putExtra("fecha", new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date()).toString());
         intent.putExtra("tipo", "");
 
