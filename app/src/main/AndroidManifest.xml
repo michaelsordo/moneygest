@@ -25,6 +25,7 @@
         <activity android:name=".AreaPersonalActivity" android:exported="true"/>
         <activity android:name=".RegistroGastoActivity" android:exported="true"/>
         <activity android:name=".RegistroIngresosActivity" android:exported="true"/>
+        <activity android:name=".GastosEditActivity" android:exported="true"/>
 
 
 
