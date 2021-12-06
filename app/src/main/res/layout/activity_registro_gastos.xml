@@ -13,7 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:paddingTop="50dp"
-            android:text="Registrar nuevo gasto"
+            android:text="@string/registrar_gasto"
             android:textAlignment="center"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -55,7 +55,7 @@
             android:layout_height="58dp"
             android:layout_marginTop="50dp"
             android:onClick="registrarGasto"
-            android:text="@string/añadir" />
+            android:text="@string/guardar" />
 
     </LinearLayout>
 
