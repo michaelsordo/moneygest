@@ -40,6 +40,12 @@
         app:layout_constraintStart_toEndOf="@+id/bienvenido"
         app:layout_constraintTop_toTopOf="parent" />
 
+<com.github.mikephil.charting.charts.PieChart
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    ></com.github.mikephil.charting.charts.PieChart>
+
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyle"
