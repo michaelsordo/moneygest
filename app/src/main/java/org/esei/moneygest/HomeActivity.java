@@ -45,10 +45,9 @@ public class HomeActivity extends AppCompatActivity {
         utilidadesSP.cargarInfoUser(username, HomeActivity.this);
 
         PieChart pieChart = findViewById(R.id.PieChart);
-        datosDB = new DatabaseHelper(this);
-        sqlDB = DatabaseHelper.databaseHelper.getWritableDatabase();
 
-        pieDS.setValues(getDataValues());
+
+        //pieDS.setValues();
         pieDS.setLabel("Hola");
         pieDS.setColors(ColorTemplate.COLORFUL_COLORS);
         pieDS.setValueTextColor(Color.BLUE);
@@ -62,21 +61,6 @@ public class HomeActivity extends AppCompatActivity {
 
         pieDS.setFormLineWidth(4);
 
-
-
-    }
-
-    private ArrayList<PieEntry> getDataValues(){
-
-        ArrayList<PieEntry> dataValues = new ArrayList<>();
-        Cursor cursor = datosDB.getValues();
-
-        for (int i=0; i<cursor.getCount(); i++){
-            cursor.moveToNext();
-            dataValues.add(new PieEntry(cursor.getFloat(0),String.valueOf(cursor.getString(1))));
-        }
-
-        return dataValues;
     }
 
 
