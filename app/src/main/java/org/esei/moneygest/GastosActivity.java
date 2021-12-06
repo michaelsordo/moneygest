@@ -104,6 +104,12 @@ public class GastosActivity extends AppCompatActivity {
                 break;
 
             case R.id.item4:
+                intent = new Intent(getApplicationContext(),ContactoActivity.class);
+                startActivity(intent);
+                toret=true;
+                break;
+
+            case R.id.item5:
                 UtilidadesSP utilidadesSP = new UtilidadesSP();
                 utilidadesSP.logout(GastosActivity.this);
                 Toast.makeText(GastosActivity.this, "Sesión cerrada correctamente", Toast.LENGTH_LONG).show();
