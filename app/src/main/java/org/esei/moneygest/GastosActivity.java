@@ -162,6 +162,7 @@ public class GastosActivity extends AppCompatActivity {
                 break;
             case 2:
                 Intent intent = new Intent(getApplicationContext(),GastosEditActivity.class);
+                intent.putExtra("Concepto",listaGastos.get(pos).getId());
                 startActivity(intent);
                 Toast.makeText(GastosActivity.this, "Ha escogido modificar " + pos + listaGastos.get(pos).getConcepto(),Toast.LENGTH_SHORT).show();
                 break;
