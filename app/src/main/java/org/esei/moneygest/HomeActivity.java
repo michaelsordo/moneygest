@@ -1,8 +1,6 @@
 package org.esei.moneygest;
 
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
@@ -19,20 +17,25 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
-import org.esei.moneygest.core.DatabaseHelper;
 import org.esei.moneygest.core.UtilidadesSP;
 import org.esei.moneygest.model.Gasto;
 import org.esei.moneygest.model.GastoMapper;
+import org.esei.moneygest.model.Ingreso;
+import org.esei.moneygest.model.IngresoMapper;
 
 import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
     TextView username;
-
     ListView listViewGastos;
     ArrayList<String> listaMostrar;
     ArrayList<Gasto> listaGastos;
+    ArrayList<Ingreso> listaIngresos;
     GastoMapper gastoMapper;
+    IngresoMapper ingresoMapper;
+    String user;
+    Double totalGastos = 0.0, totalIngresos=0.0;
+    PieEntry gastosEntry, ingresosEntry;
 
     PieDataSet pieDS = new PieDataSet(null,null);
     @Override
@@ -43,12 +46,34 @@ public class HomeActivity extends AppCompatActivity {
         username = (TextView) findViewById(R.id.info_user);
         UtilidadesSP utilidadesSP = new UtilidadesSP();
         utilidadesSP.cargarInfoUser(username, HomeActivity.this);
+        String user = utilidadesSP.cargarUsername( HomeActivity.this);
+
+        gastoMapper = new GastoMapper(this);
+        listaGastos = gastoMapper.listarGastos(user);
+
+        ingresoMapper = new IngresoMapper(this);
+        listaIngresos = ingresoMapper.listarIngresos(user);
+
+        for(int i=0; i< listaGastos.size(); i++){
+            totalGastos += listaGastos.get(i).getCantidad();
+        }
+
+        for(int i=0; i< listaIngresos.size(); i++){
+            totalIngresos += listaIngresos.get(i).getCantidad();
+        }
 
         PieChart pieChart = findViewById(R.id.PieChart);
 
 
         //pieDS.setValues();
-        pieDS.setLabel("Hola");
+        gastosEntry = new PieEntry( totalGastos.floatValue(), "Gastos" );
+        ingresosEntry = new PieEntry( totalIngresos.floatValue(), "Ingresos" );
+        ArrayList <PieEntry> pieEntryArrayList = new ArrayList<>();
+        pieEntryArrayList.add(gastosEntry);
+        pieEntryArrayList.add(ingresosEntry);
+
+        pieDS.setValues(pieEntryArrayList);
+        pieDS.setLabel("Gráfico Balance");
         pieDS.setColors(ColorTemplate.COLORFUL_COLORS);
         pieDS.setValueTextColor(Color.BLUE);
         pieDS.setValueTextSize(16f);
@@ -56,7 +81,7 @@ public class HomeActivity extends AppCompatActivity {
         PieData pieData = new PieData(pieDS);
         pieChart.setData(pieData);
         pieChart.getDescription().setEnabled(false);
-        pieChart.setCenterText("desc Pie");
+        pieChart.setCenterText("Balance Gastos/Ingresos");
         pieChart.animate();
 
         pieDS.setFormLineWidth(4);
