@@ -23,7 +23,8 @@
         <ListView
             android:id="@+id/listViewIngresos"
             android:layout_width="match_parent"
-            android:layout_height="356dp"></ListView>
+            android:layout_height="490dp"
+            android:layout_marginBottom="25dp"></ListView>
 
         <Button
             android:id="@+id/add_Ingreso"
