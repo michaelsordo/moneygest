@@ -101,6 +101,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         this.onCreate(db);
     }
 
+    public Cursor getValues(){
+        SQLiteDatabase bd = this.getReadableDatabase();
+        Cursor c = bd.rawQuery("SELECT cantidad_gasto from GASTO",null);
+        return c;
+    }
+
     public void burnData() {
         SQLiteDatabase db = this.getWritableDatabase();
         db.beginTransaction();
