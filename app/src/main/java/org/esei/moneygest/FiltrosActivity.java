@@ -1,11 +1,15 @@
 package org.esei.moneygest;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -17,6 +21,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
 
 public class FiltrosActivity extends AppCompatActivity {
@@ -28,6 +33,7 @@ Spinner spTipoGastos, spTipoIngresos;
 LinearLayout layoutFechaGastos, layoutFechaIngresos;
 LinearLayout layoutCantidadGastos, layoutCantidadIngresos;
 LinearLayout layoutTipoGastos, layoutTipoIngresos;
+DatePickerDialog.OnDateSetListener setListener;
 
 public static final int SIN_FILTROS = -1;
 public static final int FILTRO_FECHA = 0;
@@ -42,6 +48,14 @@ public static final int FILTRO_FECHA_CANTIDAD_TIPO = 6;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filtros);
+
+        //Añadiendo funcionalidad modo calendario
+
+        Calendar calendar = Calendar.getInstance();
+        final int anho = calendar.get(Calendar.YEAR);
+        final int mes = calendar.get(Calendar.MONTH);
+        final int dia = calendar.get(Calendar.DAY_OF_MONTH);
+
 
         layoutFechaGastos = findViewById(R.id.layout_fecha_gastos);
         layoutFechaIngresos = findViewById(R.id.layout_fecha_ingresos);
@@ -68,6 +82,30 @@ public static final int FILTRO_FECHA_CANTIDAD_TIPO = 6;
 
         spTipoGastos = findViewById(R.id.spinner_tipo_gasto);
         spTipoIngresos = findViewById(R.id.spinner_tipo_ingreso);
+
+        //FECHA MIN GASTOS
+
+        editMinFechaGastos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        FiltrosActivity.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                        setListener,anho,mes,dia);
+                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                datePickerDialog.show();
+            }
+        });
+
+        setListener = new DatePickerDialog.OnDateSetListener(){
+            @Override
+            public void onDateSet(DatePicker view, int anho, int mes, int dia) {
+                mes=mes+1;
+                String date = dia+"/"+mes+"/"+anho;
+                editMinFechaGastos.setText(date);
+
+            }
+        };
+
 
 
         //Para spinner Gastos
