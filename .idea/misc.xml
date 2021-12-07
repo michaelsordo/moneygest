@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/Proyecto DM/moneygest/app/src/main/res/layout/activity_area_personal.xml" value="0.2546875" />
         <entry key="..\:/Proyecto DM/moneygest/app/src/main/res/layout/activity_edit_gastos.xml" value="0.13125" />
+        <entry key="..\:/Proyecto DM/moneygest/app/src/main/res/layout/activity_filtros.xml" value="0.223731884057971" />
         <entry key="..\:/Proyecto DM/moneygest/app/src/main/res/layout/activity_gastos_general.xml" value="0.13125" />
         <entry key="..\:/Proyecto DM/moneygest/app/src/main/res/layout/activity_home.xml" value="0.23278985507246377" />
         <entry key="..\:/Proyecto DM/moneygest/app/src/main/res/layout/activity_ingresos.xml" value="0.24682971014492755" />
@@ -24,7 +25,6 @@
         <entry key="..\:/Proyecto DM/moneygest/app/src/main/res/layout/registro.xml" value="0.17300724637681159" />
         <entry key="..\:/Users/Michael/Desktop/GitRepo/DM/moneygest/app/src/main/res/drawable/button_radius.xml" value="0.22135416666666666" />
         <entry key="..\:/Users/Michael/Desktop/GitRepo/DM/moneygest/app/src/main/res/drawable/button_radius_border.xml" value="0.22135416666666666" />
-        <entry key="..\:/Users/Michael/Desktop/GitRepo/DM/moneygest/app/src/main/res/layout/activity_filtros.xml" value="0.264" />
         <entry key="..\:/Users/Michael/Desktop/GitRepo/DM/moneygest/app/src/main/res/layout/activity_gastos.xml" value="0.2520833333333333" />
         <entry key="..\:/Users/Michael/Desktop/GitRepo/DM/moneygest/app/src/main/res/layout/activity_gastos_general.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Michael/Desktop/GitRepo/DM/moneygest/app/src/main/res/layout/activity_home.xml" value="0.2520833333333333" />

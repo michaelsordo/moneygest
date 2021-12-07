@@ -28,7 +28,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <CheckBox
-        android:id="@+id/cb_tipo_gastos"
+        android:id="@+id/cb_tipo_gasto"
         android:layout_width="156dp"
         android:layout_height="52dp"
         android:layout_marginTop="4dp"
@@ -36,10 +36,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.211"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox_cantidad_gastos" />
+        app:layout_constraintTop_toBottomOf="@+id/cb_cantidad_gasto" />
 
     <CheckBox
-        android:id="@+id/cb_tipo_ingresos"
+        android:id="@+id/cb_tipo_ingreso"
         android:layout_width="121dp"
         android:layout_height="48dp"
         android:layout_marginStart="32dp"
@@ -48,10 +48,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.79"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cb_cant_ingresos" />
+        app:layout_constraintTop_toBottomOf="@+id/cb_cantidad_ingreso" />
 
     <CheckBox
-        android:id="@+id/checkBox_fecha_gastos"
+        android:id="@+id/cb_fecha_gasto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -62,7 +62,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <CheckBox
-        android:id="@+id/cb_cant_ingresos"
+        android:id="@+id/cb_cantidad_ingreso"
         android:layout_width="143dp"
         android:layout_height="52dp"
         android:layout_marginTop="4dp"
@@ -70,10 +70,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.88"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox4" />
+        app:layout_constraintTop_toBottomOf="@+id/cb_fecha_ingreso" />
 
     <CheckBox
-        android:id="@+id/checkBox_cantidad_gastos"
+        android:id="@+id/cb_cantidad_gasto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
@@ -81,10 +81,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.167"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox_fecha_gastos" />
+        app:layout_constraintTop_toBottomOf="@+id/cb_fecha_gasto" />
 
     <CheckBox
-        android:id="@+id/checkBox4"
+        android:id="@+id/cb_fecha_ingreso"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -105,79 +105,150 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/cantidad_ingresos"
-        android:layout_width="280dp"
-        android:layout_height="50dp"
+    <LinearLayout
+        android:id="@+id/layout_fecha_gastos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
         android:visibility="gone"
-        android:hint="Cantidad ingresos"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintVertical_weight="1"
+        >
+
+        <EditText
+            android:id="@+id/fecha_gastos_min"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="244dp"
+            android:layout_weight="1"
+            android:hint="Fecha gastos min"
+            android:visibility="gone" />
+
+        <EditText
+            android:id="@+id/fecha_gastos_max"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="244dp"
+            android:layout_weight="1"
+            android:hint="Fecha gastos max"
+            android:visibility="gone" />
 
 
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fecha_gastos" />
+    </LinearLayout>
 
-    <EditText
-        android:id="@+id/fecha_gastos"
-        android:layout_width="280dp"
-        android:layout_height="50dp"
+    <LinearLayout
+        android:id="@+id/layout_cantidad_gastos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
         android:visibility="gone"
-        android:hint="Fecha gastos"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintVertical_weight="2"
+        >
+
+        <EditText
+            android:id="@+id/cantidad_gastos_min"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="294dp"
+            android:layout_weight="2"
+            android:hint="Cantidad gastos min"
+            android:visibility="gone" />
+
+        <EditText
+            android:id="@+id/cantidad_gastos_max"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="294dp"
+            android:layout_weight="2"
+            android:hint="Cantidad gastos max"
+            android:visibility="gone" />
 
 
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_tipo_ingresos" />
+    </LinearLayout>
 
     <Spinner
-        android:id="@+id/spinner_tipo_ingresos"
-        android:layout_width="280dp"
+        android:id="@+id/spinner_tipo_gasto"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-
-
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fecha_ingresos" />
-
-    <Spinner
-        android:id="@+id/spinner_tipo_gastos"
-        android:layout_width="280dp"
-        android:layout_height="50dp"
+        android:layout_marginTop="354dp"
+        android:layout_weight="3"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cantidad_ingresos"
+        app:layout_constraintTop_toBottomOf="@+id/layout_cantidad_gastos"
         tools:ignore="SpeakableTextPresentCheck" />
 
-    <EditText
-        android:id="@+id/fecha_ingresos"
+    <LinearLayout
+        android:id="@+id/layout_fecha_ingresos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintVertical_weight="4"
+        android:visibility="gone"
+        >
+
+        <EditText
+            android:id="@+id/fecha_ingresos_min"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="404dp"
+            android:layout_weight="4"
+            android:hint="Fecha ingresos min"
+            android:visibility="gone" />
+
+        <EditText
+            android:id="@+id/fecha_ingresos_max"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="404dp"
+            android:layout_weight="4"
+            android:hint="Fecha ingresos max"
+            android:visibility="gone" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_cantidad_ingresos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintVertical_weight="5"
+        android:visibility="gone"
+        >
+
+        <EditText
+            android:id="@+id/cantidad_ingresos_min"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="454dp"
+            android:layout_weight="5"
+            android:hint="Cantidad ingresos min"
+            android:visibility="gone" />
+
+        <EditText
+            android:id="@+id/cantidad_ingresos_max"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="454dp"
+            android:layout_weight="5"
+            android:hint="Cantidad ingresos max"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+    <Spinner
+        android:id="@+id/spinner_tipo_ingreso"
         android:layout_width="280dp"
         android:layout_height="50dp"
+        android:layout_marginTop="504dp"
         android:visibility="gone"
-        android:hint="Fecha ingresos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
 
 
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cantidad_gastos" />
-
-    <EditText
-        android:id="@+id/cantidad_gastos"
-        android:layout_width="280dp"
-        android:layout_height="50dp"
-        android:visibility="gone"
-        android:layout_marginTop="244dp"
-        android:hint="Cantidad gastos"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/layout_fecha_ingresos" />
 
     <Button
         android:id="@+id/aplicar"
@@ -186,6 +257,6 @@
         android:text="Aplicar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_tipo_gastos" />
+        app:layout_constraintTop_toBottomOf="@+id/spinner_tipo_ingreso" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
