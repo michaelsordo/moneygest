@@ -121,6 +121,7 @@
             android:layout_marginTop="244dp"
             android:layout_weight="1"
             android:hint="Fecha gastos min"
+            android:inputType="date"
             android:visibility="gone" />
 
         <EditText
@@ -130,6 +131,7 @@
             android:layout_marginTop="244dp"
             android:layout_weight="1"
             android:hint="Fecha gastos max"
+            android:inputType="date"
             android:visibility="gone" />
 
 
@@ -165,18 +167,29 @@
 
     </LinearLayout>
 
-    <Spinner
-        android:id="@+id/spinner_tipo_gasto"
+    <LinearLayout
+        android:id="@+id/layout_tipo_gastos"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="354dp"
-        android:layout_weight="3"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
         android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layout_cantidad_gastos"
-        tools:ignore="SpeakableTextPresentCheck" />
+        app:layout_constraintVertical_weight="3"
+        >
+
+        <Spinner
+            android:id="@+id/spinner_tipo_gasto"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="354dp"
+            android:layout_weight="3"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_cantidad_gastos"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/layout_fecha_ingresos"
@@ -194,6 +207,7 @@
             android:layout_marginTop="404dp"
             android:layout_weight="4"
             android:hint="Fecha ingresos min"
+            android:inputType="date"
             android:visibility="gone" />
 
         <EditText
@@ -203,6 +217,7 @@
             android:layout_marginTop="404dp"
             android:layout_weight="4"
             android:hint="Fecha ingresos max"
+            android:inputType="date"
             android:visibility="gone" />
 
 
@@ -237,26 +252,54 @@
 
     </LinearLayout>
 
-    <Spinner
-        android:id="@+id/spinner_tipo_ingreso"
-        android:layout_width="280dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="504dp"
+    <LinearLayout
+        android:id="@+id/layout_tipo_ingresos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintVertical_weight="6"
         android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        >
+
+        <Spinner
+            android:id="@+id/spinner_tipo_ingreso"
+            android:layout_width="280dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="504dp"
+            android:layout_weight="6"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
 
 
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layout_fecha_ingresos" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_cantidad_ingresos" />
 
-    <Button
-        android:id="@+id/aplicar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Aplicar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_tipo_ingreso" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/layout_boton_filtros"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintVertical_weight="7">
+
+        <Button
+            android:id="@+id/aplicar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="584dp"
+            android:layout_marginRight="100dp"
+            android:onClick="aplicarFiltros"
+            android:text="Aplicar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_tipo_ingresos" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

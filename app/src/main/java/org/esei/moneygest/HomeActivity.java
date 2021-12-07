@@ -1,5 +1,14 @@
 package org.esei.moneygest;
 
+import static org.esei.moneygest.FiltrosActivity.SIN_FILTROS;
+import static org.esei.moneygest.FiltrosActivity.FILTRO_FECHA;
+import static org.esei.moneygest.FiltrosActivity.FILTRO_CANTIDAD;
+import static org.esei.moneygest.FiltrosActivity.FILTRO_TIPO;
+import static org.esei.moneygest.FiltrosActivity.FILTRO_FECHA_CANTIDAD;
+import static org.esei.moneygest.FiltrosActivity.FILTRO_FECHA_TIPO;
+import static org.esei.moneygest.FiltrosActivity.FILTRO_CANTIDAD_TIPO;
+import static org.esei.moneygest.FiltrosActivity.FILTRO_FECHA_CANTIDAD_TIPO;
+
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -24,6 +33,7 @@ import org.esei.moneygest.model.GastoMapper;
 import org.esei.moneygest.model.Ingreso;
 import org.esei.moneygest.model.IngresoMapper;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -50,13 +60,10 @@ public class HomeActivity extends AppCompatActivity {
         username = (TextView) findViewById(R.id.info_user);
         UtilidadesSP utilidadesSP = new UtilidadesSP();
         utilidadesSP.cargarInfoUser(username, HomeActivity.this);
-        String user = utilidadesSP.cargarUsername( HomeActivity.this);
+        user = utilidadesSP.cargarUsername( HomeActivity.this);
 
-        gastoMapper = new GastoMapper(this);
-        listaGastos = gastoMapper.listarGastos(user);
-
-        ingresoMapper = new IngresoMapper(this);
-        listaIngresos = ingresoMapper.listarIngresos(user);
+        listaGastos = listarGastos();
+        listaIngresos = listarIngresos();
 
         for(int i=0; i< listaGastos.size(); i++){
             totalGastos += listaGastos.get(i).getCantidad();
@@ -160,6 +167,163 @@ public class HomeActivity extends AppCompatActivity {
         Intent intent = new Intent(this, FiltrosActivity.class);
         startActivity(intent);
 
+    }
+
+    public ArrayList<Gasto> listarGastos(){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        ArrayList<Gasto> toRet = new ArrayList<>();
+        final Intent datosEnviados = this.getIntent();
+
+        final int filtrosGastos = datosEnviados.getExtras().getInt( "filtrosGastos", -1 );
+        final String minFechaGastos = datosEnviados.getExtras().getString( "minFechaGastos", new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date()).toString());
+        final String maxFechaGastos = datosEnviados.getExtras().getString( "maxFechaGastos", new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date()).toString());
+        final Double minCantidadGastos = datosEnviados.getExtras().getDouble( "minCantidadGastos", 0.00);
+        final Double maxCantidadGastos = datosEnviados.getExtras().getDouble( "minCantidadGastos", 0.00);
+        final String tipoGastos = datosEnviados.getExtras().getString( "tipoGastos", "" );
+
+        gastoMapper = new GastoMapper(this);
+        ingresoMapper = new IngresoMapper(this);
+
+        if(filtrosGastos == SIN_FILTROS){
+            toRet = gastoMapper.listarGastos(user);
+        }
+        else if(filtrosGastos == FILTRO_FECHA){
+            Date minFecha = null;
+            Date maxFecha = null;
+
+            try {
+                minFecha = dateFormat.parse(minFechaGastos);
+                maxFecha = dateFormat.parse(maxFechaGastos);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            toRet = gastoMapper.listarGastosFecha(user,minFecha,maxFecha);
+        }
+        else if(filtrosGastos == FILTRO_CANTIDAD){
+            toRet = gastoMapper.listarGastosCantidad(user,minCantidadGastos,maxCantidadGastos);
+        }
+        else if(filtrosGastos == FILTRO_TIPO){
+            toRet = gastoMapper.listarGastosTipo(user, tipoGastos);
+        }
+        else if(filtrosGastos == FILTRO_FECHA_CANTIDAD){
+            Date minFecha = null;
+            Date maxFecha = null;
+
+            try {
+                minFecha = dateFormat.parse(minFechaGastos);
+                maxFecha = dateFormat.parse(maxFechaGastos);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            toRet = gastoMapper.listarGastosFechaCantidad(user,minFecha,maxFecha, minCantidadGastos, maxCantidadGastos);
+        }
+        else if(filtrosGastos == FILTRO_FECHA_TIPO){
+            Date minFecha = null;
+            Date maxFecha = null;
+
+            try {
+                minFecha = dateFormat.parse(minFechaGastos);
+                maxFecha = dateFormat.parse(maxFechaGastos);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            toRet = gastoMapper.listarGastosFechaTipo(user,minFecha,maxFecha, tipoGastos);
+        }
+        else if(filtrosGastos == FILTRO_CANTIDAD_TIPO){
+            toRet = gastoMapper.listarGastosCantidadTipo(user,minCantidadGastos,maxCantidadGastos, tipoGastos);
+        }
+        else{
+            Date minFecha = null;
+            Date maxFecha = null;
+
+            try {
+                minFecha = dateFormat.parse(minFechaGastos);
+                maxFecha = dateFormat.parse(maxFechaGastos);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            toRet = gastoMapper.listarGastosFechaCantidadTipo(user,minFecha,maxFecha, minCantidadGastos, maxCantidadGastos, tipoGastos);
+        }
+
+        return toRet;
+    }
+
+    public ArrayList<Ingreso> listarIngresos(){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        ArrayList <Ingreso> toRet = new ArrayList<>();
+        final Intent datosEnviados = this.getIntent();
+
+        final int filtrosIngresos = datosEnviados.getExtras().getInt( "filtrosIngresos", -1 );
+        final String minFechaIngresos = datosEnviados.getExtras().getString( "minFechaIngresos", new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date()).toString());
+        final String maxFechaIngresos = datosEnviados.getExtras().getString( "maxFechaIngresos", new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date()).toString());
+        final Double minCantidadIngresos = datosEnviados.getExtras().getDouble( "minCantidadIngresos", 0.00);
+        final Double maxCantidadIngresos = datosEnviados.getExtras().getDouble( "minCantidadIngresos", 0.00);
+        final String tipoIngresos = datosEnviados.getExtras().getString( "tipoIngresos", "" );
+
+        ingresoMapper = new IngresoMapper(this);
+
+        if(filtrosIngresos == SIN_FILTROS){
+            toRet = ingresoMapper.listarIngresos(user);
+        }
+        else if(filtrosIngresos == FILTRO_FECHA){
+            Date minFecha = null;
+            Date maxFecha = null;
+
+            try {
+                minFecha = dateFormat.parse(minFechaIngresos);
+                maxFecha = dateFormat.parse(maxFechaIngresos);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            toRet = ingresoMapper.listarIngresosFecha(user,minFecha,maxFecha);
+        }
+        else if(filtrosIngresos == FILTRO_CANTIDAD){
+            toRet = ingresoMapper.listarIngresosCantidad(user,minCantidadIngresos,maxCantidadIngresos);
+        }
+        else if(filtrosIngresos == FILTRO_TIPO){
+            toRet = ingresoMapper.listarIngresosTipo(user, tipoIngresos);
+        }
+        else if(filtrosIngresos == FILTRO_FECHA_CANTIDAD){
+            Date minFecha = null;
+            Date maxFecha = null;
+
+            try {
+                minFecha = dateFormat.parse(minFechaIngresos);
+                maxFecha = dateFormat.parse(maxFechaIngresos);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            toRet = ingresoMapper.listarIngresosFechaCantidad(user,minFecha,maxFecha, minCantidadIngresos, maxCantidadIngresos);
+        }
+        else if(filtrosIngresos == FILTRO_FECHA_TIPO){
+            Date minFecha = null;
+            Date maxFecha = null;
+
+            try {
+                minFecha = dateFormat.parse(minFechaIngresos);
+                maxFecha = dateFormat.parse(maxFechaIngresos);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            toRet = ingresoMapper.listarIngresosFechaTipo(user,minFecha,maxFecha, tipoIngresos);
+        }
+        else if(filtrosIngresos == FILTRO_CANTIDAD_TIPO){
+            toRet = ingresoMapper.listarIngresosCantidadTipo(user,minCantidadIngresos,maxCantidadIngresos, tipoIngresos);
+        }
+        else{
+            Date minFecha = null;
+            Date maxFecha = null;
+
+            try {
+                minFecha = dateFormat.parse(minFechaIngresos);
+                maxFecha = dateFormat.parse(maxFechaIngresos);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            toRet = ingresoMapper.listarIngresosFechaCantidadTipo(user,minFecha,maxFecha, minCantidadIngresos, maxCantidadIngresos, tipoIngresos);
+        }
+
+        return toRet;
     }
 
 

@@ -62,6 +62,19 @@ public class AreaPersonalActivity extends AppCompatActivity {
 
             case R.id.item0:
                 intent = new Intent(getApplicationContext(), HomeActivity.class);
+                intent.putExtra("filtrosGastos",-1);
+                intent.putExtra("minFechaGastos","");
+                intent.putExtra("maxFechaGastos","");
+                intent.putExtra("minCantidadGastos",0.0);
+                intent.putExtra("maxCantidadGastos",0.0);
+                intent.putExtra("tipoGastos", "");
+
+                intent.putExtra("filtrosIngresos",-1);
+                intent.putExtra("minFechaIngresos","");
+                intent.putExtra("maxFechaIngresos","");
+                intent.putExtra("minCantidadIngresos",0.0);
+                intent.putExtra("maxCantidadIngresos",0.0);
+                intent.putExtra("tipoIngresos", "");
                 startActivity(intent);
                 toret=true;
                 break;

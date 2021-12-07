@@ -1,5 +1,6 @@
 package org.esei.moneygest;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -7,11 +8,16 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Date;
 
 public class FiltrosActivity extends AppCompatActivity {
 
@@ -21,7 +27,17 @@ EditText editMinCantidadGastos, editMaxCantidadGastos, editMinCantidadIngresos, 
 Spinner spTipoGastos, spTipoIngresos;
 LinearLayout layoutFechaGastos, layoutFechaIngresos;
 LinearLayout layoutCantidadGastos, layoutCantidadIngresos;
+LinearLayout layoutTipoGastos, layoutTipoIngresos;
 TextView tvCantidadGasto;
+
+public static final int SIN_FILTROS = -1;
+public static final int FILTRO_FECHA = 0;
+public static final int FILTRO_CANTIDAD = 1;
+public static final int FILTRO_TIPO = 2;
+public static final int FILTRO_FECHA_CANTIDAD = 3;
+public static final int FILTRO_FECHA_TIPO = 4;
+public static final int FILTRO_CANTIDAD_TIPO = 5;
+public static final int FILTRO_FECHA_CANTIDAD_TIPO = 6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +48,8 @@ TextView tvCantidadGasto;
         layoutFechaIngresos = findViewById(R.id.layout_fecha_ingresos);
         layoutCantidadGastos = findViewById(R.id.layout_cantidad_gastos);
         layoutCantidadIngresos = findViewById(R.id.layout_cantidad_ingresos);
+        layoutTipoGastos = findViewById(R.id.layout_tipo_gastos);
+        layoutTipoIngresos = findViewById(R.id.layout_tipo_ingresos);
 
         cbFechaGastos = findViewById(R.id.cb_fecha_gasto);
         cbFechaIngresos = findViewById(R.id.cb_fecha_ingreso);
@@ -95,9 +113,11 @@ TextView tvCantidadGasto;
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean esta_pulsado) {
                 if(esta_pulsado){
+                    layoutTipoGastos.setVisibility(View.VISIBLE);
                     spTipoGastos.setVisibility(View.VISIBLE);
                 }else{
-                    spTipoGastos.setVisibility(View.INVISIBLE);
+                    layoutTipoGastos.setVisibility(View.GONE);
+                    spTipoGastos.setVisibility(View.GONE);
                 }
             }
         });
@@ -136,14 +156,243 @@ TextView tvCantidadGasto;
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean esta_pulsado) {
                 if(esta_pulsado){
+                    layoutTipoIngresos.setVisibility(View.VISIBLE);
                     spTipoIngresos.setVisibility(View.VISIBLE);
                 }else{
-                    spTipoIngresos.setVisibility(View.INVISIBLE);
+                    layoutTipoIngresos.setVisibility(View.GONE);
+                    spTipoIngresos.setVisibility(View.GONE);
                 }
             }
         });
+    }
 
+    public void aplicarFiltros(View view){
+        Intent intent = new Intent(this, HomeActivity.class);
 
+        Date minFechaGastos = null, maxFechaGastos = null;
+        Double minCantidadGastos = 0.0, maxCantidadGastos = 0.0;
+        String tipoGastos = "";
+        Date minFechaIngresos = null, maxFechaIngresos = null;
+        Double minCantidadIngresos = 0.0, maxCantidadIngresos = 0.0;
+        String tipoIngresos = "";
+        Boolean camposVacios[] = new Boolean[6];
+        Arrays.fill(camposVacios, Boolean.FALSE);
+        Boolean valoresInvalidos[] = new Boolean[4];
+        Arrays.fill(valoresInvalidos, Boolean.FALSE);
+
+        int filtrosGastos = -1;
+        int filtrosIngresos= -1;
+
+        if(cbFechaGastos.isChecked()){
+            if(editMinFechaGastos.getText().toString().equals("") || editMaxFechaGastos.getText().toString().equals("")){
+                camposVacios[0] = true;
+            }
+
+            else{
+                camposVacios[0] = false;
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
+                try {
+                    minFechaGastos = dateFormat.parse(editMinFechaGastos.getText().toString());
+                    maxFechaGastos = dateFormat.parse(editMaxFechaGastos.getText().toString());
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+                if(minFechaGastos.after(maxFechaGastos)){
+                    valoresInvalidos[0] = true;
+                }
+
+                else{
+                    valoresInvalidos[0] = false;
+                    filtrosGastos = FILTRO_FECHA;
+                }
+            }
+        }
+
+        if(cbCantidadGastos.isChecked()){
+
+            if(editMinCantidadGastos.getText().toString().equals("") || editMaxCantidadGastos.getText().toString().equals("")){
+                camposVacios[1] = true;
+            }
+
+            else{
+                camposVacios[1] = false;
+                minCantidadGastos = Double.parseDouble(editMinCantidadGastos.getText().toString());
+                maxCantidadGastos = Double.parseDouble(editMaxCantidadGastos.getText().toString());
+
+                if(minCantidadGastos > maxCantidadGastos){
+                    valoresInvalidos[1] = true;
+                }
+
+                else{
+                    valoresInvalidos[1] = false;
+
+                    if(filtrosGastos == SIN_FILTROS){
+                        filtrosGastos = FILTRO_CANTIDAD;
+                    }
+
+                    else if(filtrosGastos == FILTRO_FECHA){
+                        filtrosGastos = FILTRO_FECHA_CANTIDAD;
+                    }
+                }
+            }
+
+        }
+
+        if(cbTipoGastos.isChecked()){
+            tipoGastos = spTipoGastos.getSelectedItem().toString();
+
+            if(tipoGastos.equals("")){
+                camposVacios[2] = true;
+            }
+
+            else{
+                camposVacios[2] = false;
+
+                if(filtrosGastos == SIN_FILTROS){
+                    filtrosGastos = FILTRO_TIPO;
+                }
+
+                else if(filtrosGastos == FILTRO_FECHA){
+                    filtrosGastos = FILTRO_FECHA_TIPO;
+                }
+
+                else if(filtrosGastos == FILTRO_CANTIDAD){
+                    filtrosGastos = FILTRO_CANTIDAD_TIPO;
+                }
+
+                else if(filtrosGastos == FILTRO_FECHA_CANTIDAD){
+                    filtrosGastos = FILTRO_FECHA_CANTIDAD_TIPO;
+                }
+
+            }
+        }
+
+        if(cbFechaIngresos.isChecked()){
+            if(editMinFechaIngresos.getText().toString().equals("") || editMaxFechaIngresos.getText().toString().equals("")){
+                camposVacios[3] = true;
+            }
+
+            else{
+                camposVacios[3] = false;
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
+                try {
+                    minFechaIngresos = dateFormat.parse(editMinFechaIngresos.getText().toString());
+                    maxFechaIngresos = dateFormat.parse(editMaxFechaIngresos.getText().toString());
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+                if(minFechaIngresos.after(maxFechaIngresos)){
+                    valoresInvalidos[2] = true;
+                }
+
+                else{
+                    valoresInvalidos[2] = false;
+                    filtrosIngresos = FILTRO_FECHA;
+                }
+            }
+
+        }
+
+        if(cbCantidadIngresos.isChecked()){
+            if(editMinCantidadIngresos.getText().toString().equals("") || editMaxCantidadIngresos.getText().toString().equals("")){
+                camposVacios[4] = true;
+            }
+
+            else{
+                camposVacios[4] = false;
+                minCantidadIngresos = Double.parseDouble(editMinCantidadIngresos.getText().toString());
+                maxCantidadIngresos = Double.parseDouble(editMaxCantidadIngresos.getText().toString());
+
+                if(minCantidadIngresos > maxCantidadIngresos){
+                    valoresInvalidos[3] = true;
+                }
+
+                else{
+                    valoresInvalidos[3] = false;
+                    if(filtrosIngresos == SIN_FILTROS){
+                        filtrosIngresos = FILTRO_CANTIDAD;
+                    }
+
+                    else if(filtrosIngresos == FILTRO_FECHA){
+                        filtrosIngresos = FILTRO_FECHA_CANTIDAD;
+                    }
+                }
+            }
+        }
+
+        if(cbTipoIngresos.isChecked()){
+            tipoIngresos = spTipoIngresos.getSelectedItem().toString();
+
+            if(tipoIngresos.equals("")){
+                camposVacios[5] = true;
+            }
+
+            else{
+                camposVacios[5] = false;
+
+                if(filtrosIngresos == SIN_FILTROS){
+                    filtrosIngresos = FILTRO_TIPO;
+                }
+
+                else if(filtrosIngresos == FILTRO_FECHA){
+                    filtrosIngresos = FILTRO_FECHA_TIPO;
+                }
+
+                else if(filtrosIngresos == FILTRO_CANTIDAD){
+                    filtrosIngresos = FILTRO_CANTIDAD_TIPO;
+                }
+
+                else if(filtrosIngresos == FILTRO_FECHA_CANTIDAD){
+                    filtrosIngresos = FILTRO_FECHA_CANTIDAD_TIPO;
+                }
+
+            }
+
+        }
+
+        Boolean vacio = false, invalido = false;
+
+        for (int i = 0; i<camposVacios.length;i++){
+            if(camposVacios[i]){
+                vacio = true;
+            }
+        }
+
+        for (int i = 0; i<valoresInvalidos.length;i++){
+            if(valoresInvalidos[i]){
+                invalido = true;
+            }
+        }
+
+        if(vacio){
+            Toast.makeText(FiltrosActivity.this, "Por favor cubre todos los campos seleccionados", Toast.LENGTH_SHORT).show();
+        }
+
+        else if (invalido) {
+            Toast.makeText(FiltrosActivity.this, "Un valor mínimo no puede ser mayor que un valor máximo", Toast.LENGTH_SHORT).show();
+        }
+
+        else{
+            intent.putExtra("filtrosGastos",filtrosGastos);
+            intent.putExtra("minFechaGastos",minFechaGastos);
+            intent.putExtra("maxFechaGastos",maxFechaGastos);
+            intent.putExtra("minCantidadGastos",minCantidadGastos);
+            intent.putExtra("maxCantidadGastos",maxCantidadGastos);
+            intent.putExtra("tipoGastos", tipoGastos);
+
+            intent.putExtra("filtrosIngresos",filtrosIngresos);
+            intent.putExtra("minFechaIngresos",minFechaIngresos);
+            intent.putExtra("maxFechaIngresos",maxFechaIngresos);
+            intent.putExtra("minCantidadIngresos",minCantidadIngresos);
+            intent.putExtra("maxCantidadIngresos",maxCantidadIngresos);
+            intent.putExtra("tipoIngresos", tipoIngresos);
+
+            startActivity(intent);
+        }
 
     }
 }
