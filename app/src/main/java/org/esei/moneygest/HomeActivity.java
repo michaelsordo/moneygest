@@ -119,6 +119,20 @@ public class HomeActivity extends AppCompatActivity {
 
             case R.id.item0:
                 intent = new Intent(getApplicationContext(), HomeActivity.class);
+                intent.putExtra("filtrosGastos",-1);
+                intent.putExtra("minFechaGastos","");
+                intent.putExtra("maxFechaGastos","");
+                intent.putExtra("minCantidadGastos",0.0);
+                intent.putExtra("maxCantidadGastos",0.0);
+                intent.putExtra("tipoGastos", "");
+
+                intent.putExtra("filtrosIngresos",-1);
+                intent.putExtra("minFechaIngresos","");
+                intent.putExtra("maxFechaIngresos","");
+                intent.putExtra("minCantidadIngresos",0.0);
+                intent.putExtra("maxCantidadIngresos",0.0);
+                intent.putExtra("tipoIngresos", "");
+                startActivity(intent);
                 startActivity(intent);
                 toret=true;
                 break;
@@ -175,10 +189,10 @@ public class HomeActivity extends AppCompatActivity {
         final Intent datosEnviados = this.getIntent();
 
         final int filtrosGastos = datosEnviados.getExtras().getInt( "filtrosGastos", -1 );
-        final String minFechaGastos = datosEnviados.getExtras().getString( "minFechaGastos", new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date()).toString());
-        final String maxFechaGastos = datosEnviados.getExtras().getString( "maxFechaGastos", new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date()).toString());
+        final String minFechaGastos = datosEnviados.getExtras().getString( "minFechaGastos", "");
+        final String maxFechaGastos = datosEnviados.getExtras().getString( "maxFechaGastos", "");
         final Double minCantidadGastos = datosEnviados.getExtras().getDouble( "minCantidadGastos", 0.00);
-        final Double maxCantidadGastos = datosEnviados.getExtras().getDouble( "minCantidadGastos", 0.00);
+        final Double maxCantidadGastos = datosEnviados.getExtras().getDouble( "maxCantidadGastos", 0.00);
         final String tipoGastos = datosEnviados.getExtras().getString( "tipoGastos", "" );
 
         gastoMapper = new GastoMapper(this);
@@ -257,7 +271,7 @@ public class HomeActivity extends AppCompatActivity {
         final String minFechaIngresos = datosEnviados.getExtras().getString( "minFechaIngresos", new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date()).toString());
         final String maxFechaIngresos = datosEnviados.getExtras().getString( "maxFechaIngresos", new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date()).toString());
         final Double minCantidadIngresos = datosEnviados.getExtras().getDouble( "minCantidadIngresos", 0.00);
-        final Double maxCantidadIngresos = datosEnviados.getExtras().getDouble( "minCantidadIngresos", 0.00);
+        final Double maxCantidadIngresos = datosEnviados.getExtras().getDouble( "maxCantidadIngresos", 0.00);
         final String tipoIngresos = datosEnviados.getExtras().getString( "tipoIngresos", "" );
 
         ingresoMapper = new IngresoMapper(this);

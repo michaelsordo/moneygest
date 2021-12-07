@@ -28,7 +28,6 @@ Spinner spTipoGastos, spTipoIngresos;
 LinearLayout layoutFechaGastos, layoutFechaIngresos;
 LinearLayout layoutCantidadGastos, layoutCantidadIngresos;
 LinearLayout layoutTipoGastos, layoutTipoIngresos;
-TextView tvCantidadGasto;
 
 public static final int SIN_FILTROS = -1;
 public static final int FILTRO_FECHA = 0;
@@ -180,6 +179,9 @@ public static final int FILTRO_FECHA_CANTIDAD_TIPO = 6;
         Boolean valoresInvalidos[] = new Boolean[4];
         Arrays.fill(valoresInvalidos, Boolean.FALSE);
 
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        String minFechaG="", maxFechaG="", minFechaI="", maxFechaI="";
+
         int filtrosGastos = -1;
         int filtrosIngresos= -1;
 
@@ -195,6 +197,8 @@ public static final int FILTRO_FECHA_CANTIDAD_TIPO = 6;
                 try {
                     minFechaGastos = dateFormat.parse(editMinFechaGastos.getText().toString());
                     maxFechaGastos = dateFormat.parse(editMaxFechaGastos.getText().toString());
+                    minFechaG = sdf.format(minFechaGastos);
+                    maxFechaG = sdf.format(maxFechaGastos);
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
@@ -281,6 +285,8 @@ public static final int FILTRO_FECHA_CANTIDAD_TIPO = 6;
                 try {
                     minFechaIngresos = dateFormat.parse(editMinFechaIngresos.getText().toString());
                     maxFechaIngresos = dateFormat.parse(editMaxFechaIngresos.getText().toString());
+                    minFechaI = sdf.format(minFechaIngresos);
+                    maxFechaI = sdf.format(maxFechaIngresos);
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
@@ -377,16 +383,17 @@ public static final int FILTRO_FECHA_CANTIDAD_TIPO = 6;
         }
 
         else{
+
             intent.putExtra("filtrosGastos",filtrosGastos);
-            intent.putExtra("minFechaGastos",minFechaGastos);
-            intent.putExtra("maxFechaGastos",maxFechaGastos);
+            intent.putExtra("minFechaGastos",minFechaG);
+            intent.putExtra("maxFechaGastos",maxFechaG);
             intent.putExtra("minCantidadGastos",minCantidadGastos);
             intent.putExtra("maxCantidadGastos",maxCantidadGastos);
             intent.putExtra("tipoGastos", tipoGastos);
 
             intent.putExtra("filtrosIngresos",filtrosIngresos);
-            intent.putExtra("minFechaIngresos",minFechaIngresos);
-            intent.putExtra("maxFechaIngresos",maxFechaIngresos);
+            intent.putExtra("minFechaIngresos",minFechaI);
+            intent.putExtra("maxFechaIngresos",maxFechaI);
             intent.putExtra("minCantidadIngresos",minCantidadIngresos);
             intent.putExtra("maxCantidadIngresos",maxCantidadIngresos);
             intent.putExtra("tipoIngresos", tipoIngresos);
