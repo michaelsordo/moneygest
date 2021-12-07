@@ -5,19 +5,15 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import org.esei.moneygest.model.Gasto;
-import org.esei.moneygest.model.GastoMapper;
-
-import java.util.ArrayList;
 
 public class FiltrosActivity extends AppCompatActivity {
 
 CheckBox cbCantidadGastos;
+CheckBox cbCantidadIngresos;
 EditText etCantidad;
+EditText etCantidadIngresos;
 
 
     @Override
@@ -26,7 +22,10 @@ EditText etCantidad;
         setContentView(R.layout.activity_filtros);
 
         cbCantidadGastos = findViewById(R.id.checkBox_cantidad_gastos);
-        etCantidad = findViewById(R.id.cantidad);
+        cbCantidadIngresos = findViewById(R.id.cb_cant_ingresos);
+        etCantidad = findViewById(R.id.cantidad_gastos);
+        etCantidadIngresos= findViewById(R.id.cantidad_ingresos);
+
 
         cbCantidadGastos.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -38,6 +37,19 @@ EditText etCantidad;
                 }
             }
         });
+
+
+        cbCantidadIngresos.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean esta_pulsado) {
+                if(esta_pulsado){
+                    etCantidadIngresos.setVisibility(View.VISIBLE);
+                }else{
+                    etCantidadIngresos.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
+
 
     }
 }
