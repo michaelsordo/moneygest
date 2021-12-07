@@ -33,7 +33,11 @@ Spinner spTipoGastos, spTipoIngresos;
 LinearLayout layoutFechaGastos, layoutFechaIngresos;
 LinearLayout layoutCantidadGastos, layoutCantidadIngresos;
 LinearLayout layoutTipoGastos, layoutTipoIngresos;
+
 DatePickerDialog.OnDateSetListener setListener;
+DatePickerDialog.OnDateSetListener setListener2;
+DatePickerDialog.OnDateSetListener setListener3;
+DatePickerDialog.OnDateSetListener setListener4;
 
 public static final int SIN_FILTROS = -1;
 public static final int FILTRO_FECHA = 0;
@@ -105,6 +109,76 @@ public static final int FILTRO_FECHA_CANTIDAD_TIPO = 6;
 
             }
         };
+
+        //FECHA MAX GASTOS
+
+        editMaxFechaGastos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        FiltrosActivity.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                        setListener2,anho,mes,dia);
+                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                datePickerDialog.show();
+            }
+        });
+
+        setListener2 = new DatePickerDialog.OnDateSetListener(){
+            @Override
+            public void onDateSet(DatePicker view, int anho, int mes, int dia) {
+                mes=mes+1;
+                String date = dia+"/"+mes+"/"+anho;
+                editMaxFechaGastos.setText(date);
+
+            }
+        };
+
+        //FECHA MIN INGRESOS
+
+        editMinFechaIngresos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        FiltrosActivity.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                        setListener3,anho,mes,dia);
+                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                datePickerDialog.show();
+            }
+        });
+
+        setListener3 = new DatePickerDialog.OnDateSetListener(){
+            @Override
+            public void onDateSet(DatePicker view, int anho, int mes, int dia) {
+                mes=mes+1;
+                String date = dia+"/"+mes+"/"+anho;
+                editMinFechaIngresos.setText(date);
+
+            }
+        };
+
+        //FECHA MAX INGRESOS
+
+        editMaxFechaIngresos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        FiltrosActivity.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                        setListener4,anho,mes,dia);
+                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                datePickerDialog.show();
+            }
+        });
+
+        setListener4 = new DatePickerDialog.OnDateSetListener(){
+            @Override
+            public void onDateSet(DatePicker view, int anho, int mes, int dia) {
+                mes=mes+1;
+                String date = dia+"/"+mes+"/"+anho;
+                editMaxFechaIngresos.setText(date);
+
+            }
+        };
+
 
 
 
