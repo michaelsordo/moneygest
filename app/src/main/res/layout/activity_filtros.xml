@@ -112,4 +112,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkBox3" />
 
+    <EditText
+        android:id="@+id/cantidad"
+        android:layout_width="280dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="312dp"
+        android:hint="Cantidad gastos"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.0"
+
+
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
