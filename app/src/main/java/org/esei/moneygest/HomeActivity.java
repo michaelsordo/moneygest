@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,7 +24,10 @@ import org.esei.moneygest.model.GastoMapper;
 import org.esei.moneygest.model.Ingreso;
 import org.esei.moneygest.model.IngresoMapper;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class HomeActivity extends AppCompatActivity {
     TextView username;
@@ -148,5 +152,16 @@ public class HomeActivity extends AppCompatActivity {
 
         return toret;
     }
+
+    //Para ver los filtros
+
+    public void verFiltros(View view){
+
+        Intent intent = new Intent(this, FiltrosActivity.class);
+        startActivity(intent);
+
+    }
+
+
 
 }

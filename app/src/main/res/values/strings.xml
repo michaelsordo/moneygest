@@ -39,6 +39,10 @@
     <string name="correo_iago">correo@correoiago.es</string>
     <string name="Michael">Michael Sordo Seijo</string>
     <string name="correo_michael">msseijo18@esei.uvigo.es</string>
+    <string name="filtro_gastos">Filtro gastos</string>
+    <string name="filtro_ingresos">Filtro ingresos</string>
+    <string name="fecha_filtro_gastos">Fecha</string>
+
 
 
 </resources>
