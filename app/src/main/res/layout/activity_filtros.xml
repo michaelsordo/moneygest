@@ -152,8 +152,8 @@
             android:layout_marginTop="294dp"
             android:layout_weight="2"
             android:hint="Cantidad gastos min"
-            android:visibility="gone"
-            android:inputType="number"/>
+            android:inputType="numberDecimal"
+            android:visibility="gone" />
 
         <EditText
             android:id="@+id/cantidad_gastos_max"
@@ -163,7 +163,7 @@
             android:layout_weight="2"
             android:hint="Cantidad gastos max"
             android:visibility="gone"
-            android:inputType="number"/>
+            android:inputType="numberDecimal"/>
 
 
     </LinearLayout>
@@ -241,7 +241,7 @@
             android:layout_weight="5"
             android:hint="Cantidad ingresos min"
             android:visibility="gone"
-            android:inputType="number"/>
+            android:inputType="numberDecimal"/>
 
         <EditText
             android:id="@+id/cantidad_ingresos_max"
@@ -251,7 +251,7 @@
             android:layout_weight="5"
             android:hint="Cantidad ingresos max"
             android:visibility="gone"
-            android:inputType="number"/>
+            android:inputType="numberDecimal"/>
 
     </LinearLayout>
 
