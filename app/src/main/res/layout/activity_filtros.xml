@@ -125,7 +125,7 @@
             android:layout_height="50dp"
             android:layout_marginTop="244dp"
             android:layout_weight="1"
-            android:hint="Fecha gastos min"
+            android:hint="@string/fecha_gasto_min"
             android:inputType="date"
             android:visibility="gone" />
 
@@ -135,7 +135,7 @@
             android:layout_height="50dp"
             android:layout_marginTop="244dp"
             android:layout_weight="1"
-            android:hint="Fecha gastos max"
+            android:hint="@string/fecha_gasto_max"
             android:inputType="date"
             android:visibility="gone" />
 
@@ -157,9 +157,9 @@
             android:layout_height="50dp"
             android:layout_marginTop="294dp"
             android:layout_weight="2"
-            android:hint="Cantidad gastos min"
-            android:visibility="gone"
-            android:inputType="number"/>
+            android:hint="@string/cantidad_gasto_min"
+            android:inputType="number"
+            android:visibility="gone" />
 
         <EditText
             android:id="@+id/cantidad_gastos_max"
@@ -167,9 +167,9 @@
             android:layout_height="50dp"
             android:layout_marginTop="294dp"
             android:layout_weight="2"
-            android:hint="Cantidad gastos max"
-            android:visibility="gone"
-            android:inputType="number"/>
+            android:hint="@string/cantidad_gasto_max"
+            android:inputType="number"
+            android:visibility="gone" />
 
 
     </LinearLayout>
@@ -213,7 +213,7 @@
             android:layout_height="50dp"
             android:layout_marginTop="404dp"
             android:layout_weight="4"
-            android:hint="Fecha ingresos min"
+            android:hint="@string/fecha_ingreso_min"
             android:inputType="date"
             android:visibility="gone" />
 
@@ -223,7 +223,7 @@
             android:layout_height="50dp"
             android:layout_marginTop="404dp"
             android:layout_weight="4"
-            android:hint="Fecha ingresos max"
+            android:hint="@string/fecha_ingreso_max"
             android:inputType="date"
             android:visibility="gone" />
 
@@ -245,9 +245,9 @@
             android:layout_height="50dp"
             android:layout_marginTop="454dp"
             android:layout_weight="5"
-            android:hint="Cantidad ingresos min"
-            android:visibility="gone"
-            android:inputType="number"/>
+            android:hint="@string/cantidad_ingreso_min"
+            android:inputType="number"
+            android:visibility="gone" />
 
         <EditText
             android:id="@+id/cantidad_ingresos_max"
@@ -255,9 +255,9 @@
             android:layout_height="50dp"
             android:layout_marginTop="454dp"
             android:layout_weight="5"
-            android:hint="Cantidad ingresos max"
-            android:visibility="gone"
-            android:inputType="number"/>
+            android:hint="@string/cantidad_ingreso_max"
+            android:inputType="number"
+            android:visibility="gone" />
 
     </LinearLayout>
 

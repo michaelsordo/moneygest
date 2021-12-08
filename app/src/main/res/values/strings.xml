@@ -59,6 +59,14 @@
     <string name="fecha">Fecha</string>
     <string name="sesion">Iniciar sesión</string>
     <string name="regsitrarse">Regístrate aquí</string>
+    <string name="fecha_ingreso_min">Fecha ingresos min</string>
+    <string name="fecha_ingreso_max">Fecha ingresos max</string>
+    <string name="cantidad_ingreso_min">Cantidad ingresos min</string>
+    <string name="cantidad_ingreso_max">Cantidad ingresos max</string>
+    <string name="fecha_gasto_min">Fecha gastos min</string>
+    <string name="fecha_gasto_max">Fecha gastos max</string>
+    <string name="cantidad_gasto_min">Cantidad gastos min</string>
+    <string name="cantidad_gasto_max">Cantidad gastos max</string>
 
 
 
