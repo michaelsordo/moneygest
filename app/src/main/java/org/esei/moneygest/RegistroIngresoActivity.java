@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
@@ -15,6 +17,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.esei.moneygest.core.Utilidades;
 import org.esei.moneygest.core.UtilidadesSP;
 import org.esei.moneygest.model.Ingreso;
 import org.esei.moneygest.model.IngresoMapper;
@@ -105,6 +108,21 @@ public class RegistroIngresoActivity extends AppCompatActivity {
             }
         };
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+
+        super.onCreateOptionsMenu(menu);
+        this.getMenuInflater().inflate(R.menu.main_menu,menu);
+        return true;
+
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item){
+        Utilidades utilidades = new Utilidades();
+        boolean toret=utilidades.desplegarMenu(item, RegistroIngresoActivity.this);
+        return toret;
     }
 
     //Control ciclo de vida

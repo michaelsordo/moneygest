@@ -12,20 +12,14 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContract;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityOptionsCompat;
 
 import org.esei.moneygest.core.Utilidades;
 import org.esei.moneygest.core.UtilidadesSP;
 import org.esei.moneygest.model.Gasto;
 import org.esei.moneygest.model.GastoMapper;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -95,65 +89,8 @@ public class GastosActivity extends AppCompatActivity {
     }
 
     public boolean onOptionsItemSelected(MenuItem item){
-
-        boolean toret=false;
-        Intent intent;
-
-        switch (item.getItemId()){
-
-            case R.id.item0:
-                intent = new Intent(getApplicationContext(), HomeActivity.class);
-                intent.putExtra("filtrosGastos",-1);
-                intent.putExtra("minFechaGastos","");
-                intent.putExtra("maxFechaGastos","");
-                intent.putExtra("minCantidadGastos",0.0);
-                intent.putExtra("maxCantidadGastos",0.0);
-                intent.putExtra("tipoGastos", "");
-
-                intent.putExtra("filtrosIngresos",-1);
-                intent.putExtra("minFechaIngresos","");
-                intent.putExtra("maxFechaIngresos","");
-                intent.putExtra("minCantidadIngresos",0.0);
-                intent.putExtra("maxCantidadIngresos",0.0);
-                intent.putExtra("tipoIngresos", "");
-                startActivity(intent);
-                toret=true;
-                break;
-
-            case R.id.item1:
-                intent = new Intent(getApplicationContext(), GastosActivity.class);
-                startActivity(intent);
-                toret=true;
-                break;
-
-            case R.id.item2:
-                intent = new Intent(getApplicationContext(),IngresosActivity.class);
-                startActivity(intent);
-                toret=true;
-                break;
-
-            case R.id.item3:
-                intent = new Intent(getApplicationContext(),AreaPersonalActivity.class);
-                startActivity(intent);
-                toret=true;
-                break;
-
-            case R.id.item4:
-                intent = new Intent(getApplicationContext(),ContactoActivity.class);
-                startActivity(intent);
-                toret=true;
-                break;
-
-            case R.id.item5:
-                UtilidadesSP utilidadesSP = new UtilidadesSP();
-                utilidadesSP.logout(GastosActivity.this);
-                Toast.makeText(GastosActivity.this, "Sesión cerrada correctamente", Toast.LENGTH_LONG).show();
-                intent = new Intent(getApplicationContext(),LoginActivity.class);
-                startActivity(intent);
-                toret=true;
-                break;
-        }
-
+        Utilidades utilidades = new Utilidades();
+        boolean toret=utilidades.desplegarMenu(item, GastosActivity.this);
         return toret;
     }
 

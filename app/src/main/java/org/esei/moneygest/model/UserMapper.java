@@ -1,6 +1,5 @@
 package org.esei.moneygest.model;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;

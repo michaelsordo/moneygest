@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
@@ -13,10 +15,11 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import org.esei.moneygest.core.Utilidades;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -275,6 +278,20 @@ public static final int FILTRO_FECHA_CANTIDAD_TIPO = 6;
                 }
             }
         });
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu){
+
+        super.onCreateOptionsMenu(menu);
+        this.getMenuInflater().inflate(R.menu.main_menu,menu);
+        return true;
+
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item){
+        Utilidades utilidades = new Utilidades();
+        boolean toret=utilidades.desplegarMenu(item, FiltrosActivity.this);
+        return toret;
     }
 
     //Control ciclo de vida
