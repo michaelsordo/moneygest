@@ -6,7 +6,7 @@ App orientada a la gestión de gastos personales para dispositivos móviles Andr
 <img src="https://user-images.githubusercontent.com/49002900/145206828-360c3445-4bb0-49ec-91b5-fabc431b15a6.png">
 </p>
 
-### Instalación 🔧
+## Instalación 🔧
 
 Clonar el repositorio en local
 
