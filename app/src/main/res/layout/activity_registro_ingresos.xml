@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             android:ems="10"
-            android:hint="Concepto"
+            android:hint="@string/concepto"
             android:inputType="textPersonName" />
 
         <EditText
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             android:ems="10"
-            android:hint="Cantidad"
+            android:hint="@string/cantidad"
             android:inputType="number" />
 
         <EditText
@@ -41,7 +41,7 @@
             android:layout_width="match_parent"
             android:layout_height="59dp"
             android:ems="10"
-            android:hint="Fecha"
+            android:hint="@string/fecha"
             android:inputType="date" />
 
         <Spinner

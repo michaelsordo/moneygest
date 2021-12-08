@@ -28,7 +28,7 @@
             android:id="@+id/textView_nombre_usuario_ap"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nombre de usuario" />
+            android:text="@string/nombre_usuario_ap" />
 
         <TextView
             android:id="@+id/area_nombre_usuario"
@@ -42,7 +42,7 @@
             android:id="@+id/textView_correo_ap"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Correo" />
+            android:text="@string/correo_ap" />
 
         <EditText
             android:id="@+id/area_correo_usuario"
@@ -56,7 +56,7 @@
             android:id="@+id/textView_contraseña_ap"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Contraseña" />
+            android:text="@string/contraseña_ap" />
 
         <EditText
             android:id="@+id/area_pass_usuario"
