@@ -38,7 +38,7 @@
             android:layout_marginEnd="32dp"
             android:ems="10"
             android:hint="@string/cantidad"
-            android:inputType="number" />
+            android:inputType="numberDecimal" />
 
         <EditText
             android:id="@+id/registro_fecha_ingreso"

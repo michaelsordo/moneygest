@@ -7,12 +7,12 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import org.esei.moneygest.AreaPersonalActivity;
-import org.esei.moneygest.ContactoActivity;
-import org.esei.moneygest.GastosActivity;
-import org.esei.moneygest.HomeActivity;
-import org.esei.moneygest.IngresosActivity;
-import org.esei.moneygest.LoginActivity;
+import org.esei.moneygest.ui.AreaPersonalActivity;
+import org.esei.moneygest.ui.ContactoActivity;
+import org.esei.moneygest.ui.GastosActivity;
+import org.esei.moneygest.ui.HomeActivity;
+import org.esei.moneygest.ui.IngresosActivity;
+import org.esei.moneygest.ui.LoginActivity;
 import org.esei.moneygest.R;
 import org.esei.moneygest.model.Gasto;
 import org.esei.moneygest.model.Ingreso;

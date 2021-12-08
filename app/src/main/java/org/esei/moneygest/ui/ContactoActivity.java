@@ -1,10 +1,11 @@
-package org.esei.moneygest;
+package org.esei.moneygest.ui;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.esei.moneygest.R;
 import org.esei.moneygest.core.Utilidades;
 
 public class ContactoActivity extends AppCompatActivity {
