@@ -277,6 +277,7 @@ public static final int FILTRO_FECHA_CANTIDAD_TIPO = 6;
         });
     }
 
+
     public void aplicarFiltros(View view){
         Intent intent = new Intent(this, HomeActivity.class);
 
@@ -514,4 +515,6 @@ public static final int FILTRO_FECHA_CANTIDAD_TIPO = 6;
         }
 
     }
+
+
 }
