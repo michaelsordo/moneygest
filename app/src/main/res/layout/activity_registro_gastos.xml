@@ -16,6 +16,7 @@
             android:paddingTop="50dp"
             android:text="@string/registrar_gasto"
             android:textAlignment="center"
+            android:textColor="#000000"
             android:textSize="24sp"
             android:textStyle="bold" />
 
@@ -23,7 +24,9 @@
             android:id="@+id/registro_concepto_gasto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
             android:layout_marginTop="25dp"
+            android:layout_marginEnd="32dp"
             android:ems="10"
             android:hint="@string/concepto"
             android:inputType="textPersonName"
@@ -33,7 +36,9 @@
             android:id="@+id/registro_cantidad_gasto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
             android:layout_marginTop="25dp"
+            android:layout_marginEnd="32dp"
             android:ems="10"
             android:hint="@string/cantidad"
             android:inputType="number"
@@ -43,6 +48,9 @@
             android:id="@+id/registro_fecha_gasto"
             android:layout_width="match_parent"
             android:layout_height="59dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginTop="25dp"
             android:ems="10"
             android:hint="@string/fecha"
             android:inputType="date" />
@@ -51,13 +59,19 @@
             android:id="@+id/registro_tipo_gasto"
             android:layout_width="match_parent"
             android:layout_height="55dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginTop="25dp"
             tools:ignore="SpeakableTextPresentCheck" />
 
         <Button
             android:id="@+id/boton_registro"
             android:layout_width="match_parent"
             android:layout_height="58dp"
+            android:layout_marginStart="32dp"
             android:layout_marginTop="50dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/button_radius"
             android:onClick="registrarGasto"
             android:text="@string/guardar" />
 

@@ -15,6 +15,7 @@
             android:paddingTop="50dp"
             android:text="@string/registrar_ingreso"
             android:textAlignment="center"
+            android:textColor="#000000"
             android:textSize="24sp"
             android:textStyle="bold" />
 
@@ -22,6 +23,8 @@
             android:id="@+id/registro_concepto_ingreso"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
             android:layout_marginTop="25dp"
             android:ems="10"
             android:hint="@string/concepto"
@@ -31,6 +34,8 @@
             android:id="@+id/registro_cantidad_ingreso"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
             android:layout_marginTop="25dp"
             android:ems="10"
             android:hint="@string/cantidad"
@@ -40,6 +45,9 @@
             android:id="@+id/registro_fecha_ingreso"
             android:layout_width="match_parent"
             android:layout_height="59dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginTop="25dp"
             android:ems="10"
             android:hint="@string/fecha"
             android:inputType="date" />
@@ -47,13 +55,19 @@
         <Spinner
             android:id="@+id/registro_tipo_ingreso"
             android:layout_width="match_parent"
-            android:layout_height="55dp" />
+            android:layout_height="55dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginTop="25dp"/>
 
         <Button
             android:id="@+id/boton_registro"
             android:layout_width="match_parent"
             android:layout_height="58dp"
             android:layout_marginTop="50dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/button_radius"
             android:onClick="registrarIngreso"
             android:text="@string/guardar" />
 

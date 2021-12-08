@@ -26,62 +26,71 @@
 
         <TextView
             android:id="@+id/textView_nombre_usuario_ap"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/nombre_usuario_ap" />
+            android:layout_marginLeft="32dp"
+            android:layout_marginBottom="5dp"
+            android:text="@string/nombre_usuario_ap"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/area_nombre_usuario"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_marginBottom="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:layout_marginBottom="55dp"
+            android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="18sp" />
 
         <TextView
             android:id="@+id/textView_correo_ap"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/correo_ap" />
+            android:layout_marginLeft="32dp"
+            android:text="@string/correo_ap"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/area_correo_usuario"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_marginBottom="25dp"
-            android:hint="@string/correo_usuario"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:layout_marginBottom="55dp"
             android:inputType="textEmailAddress" />
 
         <TextView
             android:id="@+id/textView_contraseña_ap"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/contraseña_ap" />
+            android:layout_marginStart="32dp"
+            android:text="@string/contraseña_ap"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/area_pass_usuario"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:hint="@string/pass_usuario"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:layout_marginBottom="32dp"
             android:inputType="textPassword" />
 
-        <Space
+        <Button
+            android:id="@+id/boton_area_modificar"
             android:layout_width="match_parent"
-            android:layout_height="137dp" />
-
-        <LinearLayout
-            android:id="@+id/detalles"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <Button
-                android:id="@+id/boton_area_modificar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="modificarCuenta"
-                android:text="@string/modificar" />
-        </LinearLayout>
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/button_radius"
+            android:onClick="modificarCuenta"
+            android:text="@string/modificar" />
 
     </LinearLayout>
 </RelativeLayout>
