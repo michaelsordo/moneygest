@@ -3,7 +3,7 @@
 App orientada a la gestión de gastos personales para dispositivos móviles Android
 
 <p align="center">
-![java_logo](https://user-images.githubusercontent.com/49002900/145206382-31eda8a3-57b7-4683-a704-be1c8ca261cc.png)
+<img src="https://user-images.githubusercontent.com/49002900/145206382-31eda8a3-57b7-4683-a704-be1c8ca261cc.png">
 </p>
 
 ### Instalación 🔧
