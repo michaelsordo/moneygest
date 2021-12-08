@@ -57,7 +57,7 @@
 
     </com.github.mikephil.charting.charts.PieChart>
 
-    <!--
+    <!-- Con boton en vez de texto los filtros
     <Button
         android:id="@+id/filtros"
         android:layout_width="108dp"
