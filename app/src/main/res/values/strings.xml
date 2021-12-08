@@ -20,6 +20,7 @@
     <string name="modificar">MODIFICAR</string>
     <string name="añadir">AÑADIR</string>
     <string name="guardar">GUARDAR</string>
+    <string name="filtros">FILTROS</string>
     <string name="contacto">Contacto</string>
     <string name="registrar_gasto">Añadir Gasto</string>
     <string name="registrar_ingreso">Añadir Ingreso</string>
@@ -36,12 +37,26 @@
     <string name="Diego">Diego Rodríguez Taboada</string>
     <string name="correo_diego">drtaboada17@esei.uvigo.es</string>
     <string name="Iago">Iago Seara Vicente</string>
-    <string name="correo_iago">correo@correoiago.es</string>
+    <string name="correo_iago">isvicente17@esei.uvigo.es</string>
     <string name="Michael">Michael Sordo Seijo</string>
     <string name="correo_michael">msseijo18@esei.uvigo.es</string>
     <string name="filtro_gastos">Filtro gastos</string>
     <string name="filtro_ingresos">Filtro ingresos</string>
-    <string name="fecha_filtro_gastos">Fecha</string>
+    <string name="nombre_usuario_ap">Nombre de usuario</string>
+    <string name="correo_ap">Correo</string>
+    <string name="contraseña_ap">Contraseña</string>
+    <string name="tipo_gasto">Tipo</string>
+    <string name="tipo_ingreso">Tipo</string>
+    <string name="cantidad_ingreso">Cantidad</string>
+    <string name="cantidad_gasto">Cantidad</string>
+    <string name="fecha_ingreso">Fecha</string>
+    <string name="fecha_gasto">Fecha</string>
+    <string name="aplicar_filtro">Aplicar</string>
+    <string name="home">HOME</string>
+    <string name="bienvenido">Bienvenido</string>
+    <string name="concepto">Concepto</string>
+    <string name="cantidad">Cantidad</string>
+    <string name="fecha">Fecha</string>
 
 
 

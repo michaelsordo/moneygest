@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -24,8 +25,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             android:ems="10"
-            android:hint="Concepto"
-            android:inputType="textPersonName" />
+            android:hint="@string/concepto"
+            android:inputType="textPersonName"
+            tools:ignore="TouchTargetSizeCheck" />
 
         <EditText
             android:id="@+id/registro_cantidad_gasto"
@@ -33,21 +35,23 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             android:ems="10"
-            android:hint="Cantidad"
-            android:inputType="number" />
+            android:hint="@string/cantidad"
+            android:inputType="number"
+            tools:ignore="TouchTargetSizeCheck" />
 
         <EditText
             android:id="@+id/registro_fecha_gasto"
             android:layout_width="match_parent"
             android:layout_height="59dp"
             android:ems="10"
-            android:hint="Fecha"
+            android:hint="@string/fecha"
             android:inputType="date" />
 
         <Spinner
             android:id="@+id/registro_tipo_gasto"
             android:layout_width="match_parent"
-            android:layout_height="55dp" />
+            android:layout_height="55dp"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <Button
             android:id="@+id/boton_registro"
