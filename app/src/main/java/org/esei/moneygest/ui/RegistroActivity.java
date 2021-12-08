@@ -1,4 +1,4 @@
-package org.esei.moneygest;
+package org.esei.moneygest.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.esei.moneygest.R;
 import org.esei.moneygest.core.UtilidadesSP;
 import org.esei.moneygest.model.User;
 import org.esei.moneygest.model.UserMapper;

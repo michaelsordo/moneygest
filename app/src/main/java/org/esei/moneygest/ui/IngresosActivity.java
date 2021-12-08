@@ -1,4 +1,4 @@
-package org.esei.moneygest;
+package org.esei.moneygest.ui;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -15,44 +15,45 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.esei.moneygest.R;
 import org.esei.moneygest.core.Utilidades;
 import org.esei.moneygest.core.UtilidadesSP;
-import org.esei.moneygest.model.Gasto;
-import org.esei.moneygest.model.GastoMapper;
+import org.esei.moneygest.model.Ingreso;
+import org.esei.moneygest.model.IngresoMapper;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
-public class GastosActivity extends AppCompatActivity {
+public class IngresosActivity extends AppCompatActivity {
 
-    ListView listViewGastos;
+    ListView listViewIngresos;
     ArrayList<String> listaMostrar;
-    ArrayList<Gasto> listaGastos;
-    GastoMapper gastoMapper;
+    ArrayList<Ingreso> listaIngresos;
+    IngresoMapper ingresoMapper;
     String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_gastos_general);
+        setContentView(R.layout.activity_ingresos_general);
 
-        listViewGastos= (ListView) findViewById(R.id.listViewGastos);
+        listViewIngresos = (ListView) findViewById(R.id.listViewIngresos);
 
         UtilidadesSP utilidadesSP = new UtilidadesSP();
-        username = utilidadesSP.cargarUsername(GastosActivity.this);
+        username = utilidadesSP.cargarUsername(IngresosActivity.this);
 
-        gastoMapper = new GastoMapper(this);
-        listaGastos = gastoMapper.listarGastos(username);
+        ingresoMapper = new IngresoMapper(this);
+        listaIngresos = ingresoMapper.listarIngresos(username);
 
         Utilidades utilidades = new Utilidades();
-        listaMostrar = utilidades.obtenerListaGastos(listaGastos);
+        listaMostrar = utilidades.obtenerListaIngresos(listaIngresos);
 
         ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1, listaMostrar);
-        listViewGastos.setAdapter(adapter);
+        listViewIngresos.setAdapter(adapter);
 
-        this.registerForContextMenu(listViewGastos);
+        this.registerForContextMenu(listViewIngresos);
 
     }
 
@@ -90,13 +91,15 @@ public class GastosActivity extends AppCompatActivity {
 
     public boolean onOptionsItemSelected(MenuItem item){
         Utilidades utilidades = new Utilidades();
-        boolean toret=utilidades.desplegarMenu(item, GastosActivity.this);
+        boolean toret=utilidades.desplegarMenu(item, IngresosActivity.this);
         return toret;
     }
 
+    //Para el menu contextual
+
     //Menu contextual
 
-    public void onCreateContextMenu (ContextMenu menu ,View v, ContextMenu.ContextMenuInfo menuInfo){
+    public void onCreateContextMenu (ContextMenu menu , View v, ContextMenu.ContextMenuInfo menuInfo){
 
         super.onCreateContextMenu(menu,v,menuInfo);
 
@@ -114,13 +117,13 @@ public class GastosActivity extends AppCompatActivity {
             case 1:
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle("Borrado");
-                builder.setMessage("¿Estás seguro de que deseas eliminar el gasto?");
+                builder.setMessage("¿Estás seguro de que deseas eliminar el ingreso?");
                 builder.setPositiveButton("SÍ", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        gastoMapper.deleteGasto(listaGastos.get(pos).getId());
-                        Toast.makeText(GastosActivity.this, "Gasto eliminado correctamente.", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(getApplicationContext(),GastosActivity.class);
+                        ingresoMapper.deleteIngreso(listaIngresos.get(pos).getId());
+                        Toast.makeText(IngresosActivity.this, "Ingreso eliminado correctamente.", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getApplicationContext(),IngresosActivity.class);
                         startActivity(intent);
                     }
                 });
@@ -132,16 +135,17 @@ public class GastosActivity extends AppCompatActivity {
                 break;
             case 2:
                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-                String fecha = sdf.format(listaGastos.get(pos).getFecha());
+                String fecha = sdf.format(listaIngresos.get(pos).getFecha());
 
-                Intent intent = new Intent(getApplicationContext(), RegistroGastoActivity.class);
-                intent.putExtra("id",listaGastos.get(pos).getId());
-                intent.putExtra("concepto",listaGastos.get(pos).getConcepto());
-                intent.putExtra("cantidad", listaGastos.get(pos).getCantidad());
+                Intent intent = new Intent(getApplicationContext(), RegistroIngresoActivity.class);
+                intent.putExtra("id",listaIngresos.get(pos).getId());
+                intent.putExtra("concepto",listaIngresos.get(pos).getConcepto());
+                intent.putExtra("cantidad", listaIngresos.get(pos).getCantidad());
                 intent.putExtra("fecha", fecha);
-                intent.putExtra("tipo", listaGastos.get(pos).getTipo());
+                intent.putExtra("tipo", listaIngresos.get(pos).getTipo());
                 startActivity(intent);
                 break;
+
 
             case 3:
                 break;
@@ -150,14 +154,16 @@ public class GastosActivity extends AppCompatActivity {
         return super.onContextItemSelected(item);
     }
 
-    public void onClick(View v) {
-        // TODO Auto-generated method stub
 
+    public void onClick(View v) {
+        //
     }
 
-    public void addGasto(View view){
 
-        Intent intent = new Intent(this, RegistroGastoActivity.class);
+
+    public void addIngreso(View view){
+
+        Intent intent = new Intent(this, RegistroIngresoActivity.class);
 
         intent.putExtra("id",-1);
         intent.putExtra("concepto","");
@@ -168,5 +174,6 @@ public class GastosActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
+
 
 }

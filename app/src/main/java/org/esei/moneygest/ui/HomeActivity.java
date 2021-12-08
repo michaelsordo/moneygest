@@ -1,13 +1,13 @@
-package org.esei.moneygest;
+package org.esei.moneygest.ui;
 
-import static org.esei.moneygest.FiltrosActivity.SIN_FILTROS;
-import static org.esei.moneygest.FiltrosActivity.FILTRO_FECHA;
-import static org.esei.moneygest.FiltrosActivity.FILTRO_CANTIDAD;
-import static org.esei.moneygest.FiltrosActivity.FILTRO_TIPO;
-import static org.esei.moneygest.FiltrosActivity.FILTRO_FECHA_CANTIDAD;
-import static org.esei.moneygest.FiltrosActivity.FILTRO_FECHA_TIPO;
-import static org.esei.moneygest.FiltrosActivity.FILTRO_CANTIDAD_TIPO;
-import static org.esei.moneygest.FiltrosActivity.FILTRO_FECHA_CANTIDAD_TIPO;
+import static org.esei.moneygest.ui.FiltrosActivity.SIN_FILTROS;
+import static org.esei.moneygest.ui.FiltrosActivity.FILTRO_FECHA;
+import static org.esei.moneygest.ui.FiltrosActivity.FILTRO_CANTIDAD;
+import static org.esei.moneygest.ui.FiltrosActivity.FILTRO_TIPO;
+import static org.esei.moneygest.ui.FiltrosActivity.FILTRO_FECHA_CANTIDAD;
+import static org.esei.moneygest.ui.FiltrosActivity.FILTRO_FECHA_TIPO;
+import static org.esei.moneygest.ui.FiltrosActivity.FILTRO_CANTIDAD_TIPO;
+import static org.esei.moneygest.ui.FiltrosActivity.FILTRO_FECHA_CANTIDAD_TIPO;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -15,7 +15,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,6 +25,7 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
+import org.esei.moneygest.R;
 import org.esei.moneygest.core.Utilidades;
 import org.esei.moneygest.core.UtilidadesSP;
 import org.esei.moneygest.model.Gasto;

@@ -1,4 +1,4 @@
-package org.esei.moneygest;
+package org.esei.moneygest.ui;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.esei.moneygest.R;
 import org.esei.moneygest.core.Utilidades;
 
 import java.text.ParseException;
