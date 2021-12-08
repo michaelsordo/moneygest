@@ -277,6 +277,27 @@ public static final int FILTRO_FECHA_CANTIDAD_TIPO = 6;
         });
     }
 
+    //Control ciclo de vida
+
+    @Override
+    public void onStart(){
+        super.onStart();
+    }
+    @Override
+    public void onResume(){
+        super.onResume();
+    }
+
+    @Override
+    public void onPause(){
+        super.onPause();
+    }
+
+    public void onDestroy(){
+        super.onDestroy();
+    }
+
+
 
     public void aplicarFiltros(View view){
         Intent intent = new Intent(this, HomeActivity.class);

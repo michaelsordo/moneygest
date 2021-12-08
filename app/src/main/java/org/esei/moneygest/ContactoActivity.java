@@ -17,4 +17,25 @@ public class ContactoActivity extends AppCompatActivity {
 
     }
 
+    //Control ciclo de vida
+
+    @Override
+    public void onStart(){
+        super.onStart();
+    }
+    @Override
+    public void onResume(){
+        super.onResume();
+    }
+
+    @Override
+    public void onPause(){
+        super.onPause();
+    }
+
+    public void onDestroy(){
+        super.onDestroy();
+    }
+
+
 }
