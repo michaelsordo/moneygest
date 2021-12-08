@@ -6,6 +6,7 @@
         <item>Gasto fijo</item>
         <item>Ocio</item>
         <item>Imprevistos</item>
+        <item>Otros</item>
 
     </string-array>
 
@@ -14,6 +15,7 @@
         <item>Inversiones</item>
         <item>Extra</item>
         <item>Ingreso Atípico</item>
+        <item>Otros</item>
 
     </string-array>
 
