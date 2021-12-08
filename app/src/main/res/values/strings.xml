@@ -9,9 +9,9 @@
     <string name="registro">Registro</string>
     <string name="registrarme">Registrarme</string>
     <string name="loguearme">Loguearme</string>
-    <string name="nombre_usuario">nombre</string>
+    <string name="nombre_usuario">Nombre de usuario</string>
     <string name="correo_usuario">correo@correo.com</string>
-    <string name="pass_usuario">pass</string>
+    <string name="pass_usuario">Contraseña</string>
     <string name="gasto_total">Gasto Total</string>
     <string name="gasto_mayor">Gasto Mayor</string>
     <string name="gasto_objetivo">Gasto Objetivo</string>
@@ -27,8 +27,8 @@
     <string name="modificar_gasto">Modificar Gasto</string>
     <string name="modificar_ingreso">Modificar Ingreso</string>
     <string name="detalles">DETALLES</string>
-    <string name="registro_text">¿Todavía no tienes una cuenta? Registrate pulsando en el siguiente botón</string>
-    <string name="login_text">¿Ya tienes una cuenta? Logueate pulsando en el siguiente botón</string>
+    <string name="registro_text">¿No tienes una cuenta? Registrate</string>
+    <string name="login_text">¿Ya tienes una cuenta? </string>
     <string name="item0">Home</string>
     <string name="item1">Gastos</string>
     <string name="item2">Ingresos</string>
@@ -57,6 +57,8 @@
     <string name="concepto">Concepto</string>
     <string name="cantidad">Cantidad</string>
     <string name="fecha">Fecha</string>
+    <string name="sesion">Iniciar sesión</string>
+    <string name="regsitrarse">Regístrate aquí</string>
 
 
 

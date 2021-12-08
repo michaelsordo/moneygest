@@ -79,12 +79,13 @@ public class HomeActivity extends AppCompatActivity {
         //pieDS.setValues();
         gastosEntry = new PieEntry( totalGastos.floatValue(), "Gastos" );
         ingresosEntry = new PieEntry( totalIngresos.floatValue(), "Ingresos" );
+        new PieEntry(3,"");
         ArrayList <PieEntry> pieEntryArrayList = new ArrayList<>();
         pieEntryArrayList.add(gastosEntry);
         pieEntryArrayList.add(ingresosEntry);
 
         pieDS.setValues(pieEntryArrayList);
-        pieDS.setLabel("Gráfico Balance");
+        //pieDS.setLabel("Gráfico Balance");
         pieDS.setColors(ColorTemplate.COLORFUL_COLORS);
         pieDS.setValueTextColor(Color.BLUE);
         pieDS.setValueTextSize(16f);

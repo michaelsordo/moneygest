@@ -24,8 +24,10 @@
         android:id="@+id/bienvenido"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="90dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="120dp"
         android:text="@string/bienvenido"
+        android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -35,7 +37,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="90dp"
+        android:layout_marginTop="120dp"
+        android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/bienvenido"
         app:layout_constraintTop_toTopOf="parent" />
@@ -53,19 +56,34 @@
 
     </com.github.mikephil.charting.charts.PieChart>
 
+    <!--
     <Button
         android:id="@+id/filtros"
         android:layout_width="108dp"
         android:layout_height="48dp"
-        android:layout_marginStart="116dp"
-        android:layout_marginTop="112dp"
+        android:layout_marginTop="104dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/button_radius_border"
         android:onClick="verFiltros"
         android:text="@string/filtros"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.479"
+        app:layout_constraintHorizontal_bias="0.696"
         app:layout_constraintStart_toEndOf="@+id/info_user"
         app:layout_constraintTop_toTopOf="parent" />
+-->
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="123dp"
+        android:layout_marginEnd="70dp"
+        android:onClick="verFiltros"
+        android:text="Aplicar filtros"
+        android:textColor="#8214FF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bienvenido"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
