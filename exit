@@ -1,0 +1,504 @@
+[33mcommit abfcf499e67adb26aa98d0c71935d25153f73e94[m[33m ([m[1;36mHEAD -> [m[1;32miago[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/diego[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m, [m[1;32mdiego[m[33m)[m
+Merge: 554fa10 0a7223a
+Author: DiegoRT99 <diegorodrigueztaboada99@gmail.com>
+Date:   Thu Dec 9 00:19:41 2021 +0100
+
+    Merge branch 'main' of https://github.com/michaelsordo/moneygest
+
+[33mcommit 554fa103032d0394505dbb1bca8e3df4dd856f7b[m
+Author: DiegoRT99 <diegorodrigueztaboada99@gmail.com>
+Date:   Thu Dec 9 00:18:38 2021 +0100
+
+    Campos de cantidades como numberDecimal
+
+[33mcommit 0a7223ab6e874fe72ba0a62115e9084894a9e905[m
+Author: Michael Sordo <michaelsordoseijo@gmail.com>
+Date:   Thu Dec 9 00:09:39 2021 +0100
+
+    Ultimos retoques, se añaden mas gastos e ingresos
+
+[33mcommit f015357ba43c11706a52d099fd66f9c3dd39beb8[m
+Author: DiegoRT99 <diegorodrigueztaboada99@gmail.com>
+Date:   Wed Dec 8 23:57:00 2021 +0100
+
+    Pequeños cambios en la estructura del proyecto
+
+[33mcommit 62edb9a082035ee360c4fb1652f3b05f666a2a41[m
+Author: DiegoRT99 <diegorodrigueztaboada99@gmail.com>
+Date:   Wed Dec 8 21:05:47 2021 +0100
+
+    Refactorización de código y borrados import y variables innecesarios
+
+[33mcommit d6bc3ac611ceabfad6d61884ab845cd41f319923[m
+Merge: c945d1a 4f1cd4c
+Author: Michael Sordo <michaelsordoseijo@gmail.com>
+Date:   Wed Dec 8 20:04:04 2021 +0100
+
+    Merge branch 'main2' of https://github.com/michaelsordo/moneygest into michaelsordo
+
+[33mcommit 4f1cd4c1c3f6b95b14a6cccbe1315d04382c41a8[m
+Author: iagosv99 <iagosv99@gmail.com>
+Date:   Wed Dec 8 19:56:17 2021 +0100
+
+    cambios visuales
+
+[33mcommit c945d1a1d973868560e833e62dfc9b327d202913[m
+Author: Michael Sordo <michaelsordoseijo@gmail.com>
+Date:   Wed Dec 8 19:52:21 2021 +0100
+
+    Arreglando registro
+
+[33mcommit 9d2a284405a66ca54931702327cfd68187c8ecfe[m
+Author: Michael Sordo <michaelsordoseijo@gmail.com>
+Date:   Wed Dec 8 15:26:38 2021 +0100
+
+    Ciclo de vida RegistroGastos y RegistroIngresos
+
+[33mcommit 29c516d36db3b0f7902c6cfbbe5012017108b17c[m
+Author: Michael Sordo <michaelsordoseijo@gmail.com>
+Date:   Wed Dec 8 15:24:34 2021 +0100
+
+    Ciclo de vida en registro y login
+
+[33mcommit 6362ff87cba7b936493dd474f76029a2b852c4f5[m
+Author: Michael Sordo <michaelsordoseijo@gmail.com>
+Date:   Wed Dec 8 15:22:28 2021 +0100
+
+    Delete activity que no se usaba
+
+[33mcommit def43d81b8f908e091e214b7de7bb9b860c6ad71[m
+Author: Michael Sordo <michaelsordoseijo@gmail.com>
+Date:   Wed Dec 8 15:19:18 2021 +0100
+
+    Control ciclo de vida en contacto y filtros
+
+[33mcommit 02c32a7cd32bb6906df712d0e6291ade5c5ec393[m
+Author: Michael Sordo <michaelsordoseijo@gmail.com>
+Date:   Wed Dec 8 15:18:16 2021 +0100
+
+    Add ciclo de vida area personal
+
+[33mcommit ecab0a47187c004d30aab24d800af8c2d50b305b[m
+Author: Michael Sordo <michaelsordoseijo@gmail.com>
+Date:   Wed Dec 8 15:15:24 2021 +0100
+
+    Add ciclo de vida ingresos activity
+
+[33mcommit 68189ba5927175e17a136e0b0d0bb8303204573f[m
+Author: Michael Sordo <michaelsordoseijo@gmail.com>
+Date:   Wed Dec 8 15:12:59 2021 +0100
+
+    Ciclo de vida GastosActivity
+
+[33mcommit 2d6eeb6ed691fc3e31c6fb3bef18ba87d4d08146[m
+Merge: 0f6f1cf d8ca1f7
+Author: iagosv99 <iagosv99@gmail.com>
+Date:   Wed Dec 8 15:03:17 2021 +0100
+
+    Merge branch 'iago' into main2
+
+[33mcommit d8ca1f7bcf1475d36a4642a1e527dda9c8b1c4a7[m
+Author: iagosv99 <iagosv99@gmail.com>
+Date:   Wed Dec 8 15:02:46 2021 +0100
+
+    cambios en String.xml y logo gif
+
+[33mcommit 0f6f1cf033457ed50582a06d2359020497323708[m
+Author: Michael Sordo <michaelsordoseijo@gmail.com>
+Date:   Wed Dec 8 14:28:39 2021 +0100
+
+    Add ciclo de vida en HomeActivity
+
+[33mcommit ed4b149a8e18fa6ca188c7f4cb5e9061fca7647f[m
+Author: Michael Sordo Seijo <49002900+michaelsordo@users.noreply.github.com>
+Date:   Wed Dec 8 13:25:28 2021 +0100
+
+    Update Readme
+
+[33mcommit 75d9bce9eeee5e3074d8565c4e294480938f9e82[m
+Author: Michael Sordo Seijo <49002900+michaelsordo@users.noreply.github.com>
+Date:   Wed Dec 8 13:16:29 2021 +0100
+
+    Update Readme
+
+[33mcommit 08791ae7d540b8a6ccbc33d9826af4d2cd35f3b4[m
+Author: Michael Sordo Seijo <49002900+michaelsordo@users.noreply.github.com>
+Date:   Wed Dec 8 13:15:42 2021 +0100
+
+    Update Readme
+
+[33mcommit 30b9ac770e9c58537453d3eea31cad890d4f3abf[m
+Author: Michael Sordo Seijo <49002900+michaelsordo@users.noreply.github.com>
+Date:   Wed Dec 8 13:13:40 2021 +0100
+
+    Update Readme
+
+[33mcommit 97d1bc287b87b8b21e212e990a07dc5d3b94c381[m
+Author: Michael Sordo Seijo <49002900+michaelsordo@users.noreply.github.com>
+Date:   Wed Dec 8 13:12:36 2021 +0100
+
+    Update README
+
+[33mcommit 29d2e0e8387367eec9304c8042ea164923d2b6b9[m
+Author: Michael Sordo <michaelsordoseijo@gmail.com>
+Date:   Wed Dec 8 13:10:10 2021 +0100
+
+    Cambios en README
+
+[33mcommit 8ea4e882ccafce2729c22b46c842aef25e243003[m
+Author: Michael Sordo <michaelsordoseijo@gmail.com>
+Date:   Tue Dec 7 20:38:45 2021 +0100
+
+    Add selector de fechas en todo el filtro activity
+
+[33mcommit 5a2ec8c773ccc1d7b7bc85cd9be25ad3a50edef5[m
+Author: Michael Sordo <michaelsordoseijo@gmail.com>
+Date:   Tue Dec 7 20:29:34 2021 +0100
+
+    Selector en fecha min gastos
+
+[33mcommit 99bb78cf1977ba15c4dece711a0fd43e3f4488d8[m
+Author: DiegoRT99 <diegorodrigueztaboada99@gmail.com>
+Date:   Tue Dec 7 19:38:56 2021 +0100
+
+    Arreglados pequeños errores en filtros
+
+[33mcommit 9f1bfbaafb0e3ee77919818632579e5ba3aa1de3[m[33m ([m[1;31morigin/michael[m[33m)[m
+Author: DiegoRT99 <diegorodrigueztaboada99@gmail.com>
+Date:   Tue Dec 7 18:51:14 2021 +0100
+
+    Parte de filtros funcionando perfectamente
+
+[33mcommit 1f431535618f99766ca1e8c4bebd0254dd9776b4[m
+Author: DiegoRT99 <diegorodrigueztaboada99@gmail.com>
+Date:   Tue Dec 7 14:20:02 2021 +0100
+
+    Cambios en layout y activity de filtros
+
+[33mcommit 496732c42775d20632658e4b48c4cd5d4efbf1d5[m[33m ([m[1;31morigin/michaelsordo[m[33m)[m
+Author: Michael Sordo <michaelsordoseijo@gmail.com>
+Date:   Tue Dec 7 11:59:36 2021 +0100
+
+    Cambios en layout filtro
+
+[33mcommit dd770bbfd82561d9372725fcab4a1d661cc20b60[m
+Author: Michael Sordo <michaelsordoseijo@gmail.com>
+Date:   Tue Dec 7 02:38:07 2021 +0100
+
+    Incremento en actividad filtros
+
+[33mcommit e67e470186d203ad22fefcf46fbd775017904016[m
+Author: Michael Sordo <michaelsordoseijo@gmail.com>
+Date:   Tue Dec 7 02:23:50 2021 +0100
+
+    Cambios en filtros activity, propiedad gone para los edit text
+
+[33mcommit e20187c5bc7600304ebeee28e6cb44ddeeea5ddd[m
+Author: Michael Sordo <michaelsordoseijo@gmail.com>
+Date:   Tue Dec 7 01:49:59 2021 +0100
+
+    Filtros layout, en producción
+
+[33mcommit aa7338f0a96c6ab7595e4d4824a2d5d32f50d5fe[m
+Author: Michael Sordo <michaelsordoseijo@gmail.com>
+Date:   Mon Dec 6 23:32:14 2021 +0100
+
+    Centrando PieChart
+
+[33mcommit df053a565c09c415b1939e0186cb2dc5414c8342[m
+Author: DiegoRT99 <diegorodrigueztaboada99@gmail.com>
+Date:   Mon Dec 6 20:05:40 2021 +0100
+
+    Gráfico funcionando correctamente
+
+[33mcommit 6df7be3bbf1b3ed3cec0c6527f9759d012bc7134[m
+Merge: 6c8d77b a3e1c6e
+Author: DiegoRT99 <diegorodrigueztaboada99@gmail.com>
+Date:   Mon Dec 6 19:15:05 2021 +0100
+
+    Merge branch 'diego'
+
+[33mcommit a3e1c6e32ba707024a8bd934bc46edd9ff6fb047[m
+Author: DiegoRT99 <diegorodrigueztaboada99@gmail.com>
+Date:   Mon Dec 6 19:14:16 2021 +0100
+
+    Creados métodos para filtrado
+
+[33mcommit 6c8d77be3eb1c511b76e30540911c0821701eb45[m
+Author: iagosv99 <iagosv99@gmail.com>
+Date:   Mon Dec 6 19:09:42 2021 +0100
+
+    grafica
+
+[33mcommit f3554eda10cb50263d93efe824cb665fcb689f36[m
+Merge: 65eb1dd daf4aa4
+Author: iagosv99 <iagosv99@gmail.com>
+Date:   Mon Dec 6 18:40:15 2021 +0100
+
+    Merge branch 'main' into iago
+
+[33mcommit 65eb1dd49b0e19958e9d0e599db2fd86447c9dd4[m
+Author: iagosv99 <iagosv99@gmail.com>
+Date:   Mon Dec 6 18:39:40 2021 +0100
+
+    sadsd
+
+[33mcommit daf4aa449df2984aaa04315e44129aaaf3223849[m
+Author: Michael Sordo <michaelsordoseijo@gmail.com>
+Date:   Mon Dec 6 18:14:51 2021 +0100
+
+    Arreglando algun problema
+
+[33mcommit 29a836d97d117c8534a76fc40144163fd1f199c0[m
+Merge: 37316e1 59618b8
+Author: Michael Sordo <michaelsordoseijo@gmail.com>
+Date:   Mon Dec 6 18:10:28 2021 +0100
+
+    layout contacto
+
+[33mcommit 37316e134b500fe9133126c64bb0a6d3c4da9e05[m
+Author: Michael Sordo <michaelsordoseijo@gmail.com>
+Date:   Mon Dec 6 18:02:18 2021 +0100
+
+    Creando nuevo layout de contacto, todavía en producción
+
+[33mcommit 59618b8e2afbf0f553ae190f59609e94294d6f53[m
+Author: DiegoRT99 <diegorodrigueztaboada99@gmail.com>
+Date:   Mon Dec 6 17:44:40 2021 +0100
+
+    Distintos títulos en layouts de registro para añadir y modificar
+
+[33mcommit b1120a8cbd975832c8ecc4fdf9917447f2e4fd5f[m
+Author: Michael Sordo <michaelsordoseijo@gmail.com>
+Date:   Mon Dec 6 16:39:07 2021 +0100
+
+    Add dependencias y librerias para usar PieChart
+
+[33mcommit e71125d78f9201184c4e543f38e5352fae05b467[m
+Author: Michael Sordo <michaelsordoseijo@gmail.com>
+Date:   Mon Dec 6 16:00:50 2021 +0100
+
+    Delete layout sin uso
+
+[33mcommit 85c848f378805352d8c16671c722fad9dd85d8f4[m
+Author: Michael Sordo <michaelsordoseijo@gmail.com>
+Date:   Mon Dec 6 15:56:59 2021 +0100
+
+    Modificacion en layouts y strings.xml
+
+[33mcommit fd9b7ab3fe75dd1938de579b163b2762a956ce49[m
+Author: DiegoRT99 <diegorodrigueztaboada99@gmail.com>
+Date:   Mon Dec 6 14:44:10 2021 +0100
+
+    Modificar Gasto y Modificar Ingreso funcionan correctamente en las mismas pantallas que los registros
+
+[33mcommit 73c68442248148f5fbd9e23657c688713c7530aa[m
+Author: Michael Sordo <michaelsordoseijo@gmail.com>
+Date:   Mon Dec 6 13:20:09 2021 +0100
+
+    Pequeña modificacion en gastos edit activity
+
+[33mcommit d658392c74a36be4f5ea0dda506ca5a6b5ecc5c4[m
+Author: Michael Sordo <michaelsordoseijo@gmail.com>
+Date:   Mon Dec 6 12:56:59 2021 +0100
+
+    Arreglando layout edit gastos y textview, funcionando
+
+[33mcommit 2b7c463e27b35fc78787a03902c097bedd22d6d0[m
+Merge: 4633d41 5cb74f9
+Author: Michael Sordo <michaelsordoseijo@gmail.com>
+Date:   Mon Dec 6 12:54:18 2021 +0100
+
+    Merge branch 'main' of https://github.com/michaelsordo/moneygest into main
+
+[33mcommit 5cb74f964203855686da7e899960066fe2c3a1f4[m
+Merge: c1df1ca 338eb26
+Author: Michael Sordo Seijo <49002900+michaelsordo@users.noreply.github.com>
+Date:   Mon Dec 6 12:51:59 2021 +0100
+
+    Merge pull request #3 from michaelsordo/michaelsordo
+    
+    Add layout edit gastos, todavía en pruebas
+
+[33mcommit 4633d416aded45e417d7c01096172d7238e3ef76[m
+Merge: 9a58b5c 338eb26
+Author: Michael Sordo <michaelsordoseijo@gmail.com>
+Date:   Mon Dec 6 12:47:26 2021 +0100
+
+    Add layout edit gastos, todavía en prueba
+
+[33mcommit 338eb26e9916a33c4fd00a4994533427fcc2ee94[m
+Author: Michael Sordo <michaelsordoseijo@gmail.com>
+Date:   Mon Dec 6 12:42:26 2021 +0100
+
+    Add layout edit gastos, todavía en pruebas
+
+[33mcommit 9a58b5c8c2837628cb3a57da783569a95e0b851b[m
+Author: Michael Sordo <michaelsordoseijo@gmail.com>
+Date:   Mon Dec 6 12:35:49 2021 +0100
+
+    Add posible layout para editar gastos, pruebas todavía
+
+[33mcommit c1df1cac4d06d8f0aade672e7c4e6253edf72ed8[m
+Author: iagosv99 <iagosv99@gmail.com>
+Date:   Mon Dec 6 12:22:17 2021 +0100
+
+    layouts en area personal
+
+[33mcommit 828906599165f024e880fa17dcddda9723b53c62[m
+Author: iagosv99 <iagosv99@gmail.com>
+Date:   Mon Dec 6 12:19:00 2021 +0100
+
+    Fecha actual
+
+[33mcommit 5c17e6254fddd04312f944cbaa891fc0e7cdfd67[m
+Author: iagosv99 <iagosv99@gmail.com>
+Date:   Mon Dec 6 12:14:40 2021 +0100
+
+    cambios en el listado
+
+[33mcommit 975e43201d9c6c83e4401bf3fbbdd52d18e411f2[m
+Author: Michael Sordo <michaelsordoseijo@gmail.com>
+Date:   Mon Dec 6 10:56:46 2021 +0100
+
+    Add menu contextual a IngresosActivity
+
+[33mcommit e908e963758d424ee50b4550dcb678dc742a2d7b[m
+Author: Michael Sordo <michaelsordoseijo@gmail.com>
+Date:   Mon Dec 6 00:25:28 2021 +0100
+
+    Arreglos en area personal, funcionando correctamente
+
+[33mcommit cdea960e991833ca1e55a17efeee9cb0f8b48eb2[m
+Author: DiegoRT99 <diegorodrigueztaboada99@gmail.com>
+Date:   Mon Dec 6 00:02:04 2021 +0100
+
+    funciona borrar gasto
+
+[33mcommit 1562e6697c3e1551c014fd1335aaec989badf8f3[m
+Author: Michael Sordo <michaelsordoseijo@gmail.com>
+Date:   Sun Dec 5 19:57:37 2021 +0100
+
+    Arreglando menu contextual gastos,sigue sin funcionar bien
+
+[33mcommit 88584b7ad4d523fd736598edebe5cf9b33b2bc3a[m
+Author: Michael Sordo <michaelsordoseijo@gmail.com>
+Date:   Sun Dec 5 19:45:48 2021 +0100
+
+    Agregando menu contextual a gastos, no funciona como debería
+
+[33mcommit db63084acb39be3202dead1d7b1ffbf0794b001a[m
+Author: DiegoRT99 <diegorodrigueztaboada99@gmail.com>
+Date:   Sun Dec 5 01:37:07 2021 +0100
+
+    Diversos cambios en el proyecto, funciona listarGastos y listarIngresos
+
+[33mcommit 4e65e2ab88450df96781d85dc556d14b6bc6c945[m
+Author: DiegoRT99 <diegorodrigueztaboada99@gmail.com>
+Date:   Sat Dec 4 21:01:07 2021 +0100
+
+    Cmabios en muchos métodos y en la estructura del proyecto
+
+[33mcommit 3b99b211dfdd1b417a48d2504f7aa801ff74385f[m
+Author: Michael Sordo <michaelsordoseijo@gmail.com>
+Date:   Sat Dec 4 18:13:30 2021 +0100
+
+    Mejorando layout gastos
+
+[33mcommit 5486db062969a3766900a0eee254e8561839042a[m
+Author: Michael Sordo <michaelsordoseijo@gmail.com>
+Date:   Sat Dec 4 18:03:34 2021 +0100
+
+    ListView gastos mejor con conceptos de cada gasto
+
+[33mcommit 3ae80246a2360066ec84037fac89271d0691d389[m
+Author: Michael Sordo <michaelsordoseijo@gmail.com>
+Date:   Sat Dec 4 17:46:17 2021 +0100
+
+    ListView de Gastos funcionando
+
+[33mcommit c93d8f0743144f644656dd737e28138471700a0f[m
+Author: Michael Sordo <michaelsordoseijo@gmail.com>
+Date:   Sat Dec 4 16:58:56 2021 +0100
+
+    arreglando insert gasto en DBhelper
+
+[33mcommit a1f82b9bd66c15f507058c6f513ff70de05933f9[m
+Author: DiegoRT99 <diegorodrigueztaboada99@gmail.com>
+Date:   Sat Dec 4 13:46:21 2021 +0100
+
+    Más cambios en la estructura y registro de usuario hecho de manera más correcta
+
+[33mcommit b521e20c33eb14ee9e4388825d86c4c9c3fec4c4[m
+Author: DiegoRT99 <diegorodrigueztaboada99@gmail.com>
+Date:   Sat Dec 4 12:59:13 2021 +0100
+
+    Cambios estructurales en el proyecto
+
+[33mcommit 1985c12ea2ace8b6d58968dfa71a52235f70b565[m
+Author: DiegoRT99 <diegorodrigueztaboada99@gmail.com>
+Date:   Sat Dec 4 00:36:04 2021 +0100
+
+    Añadidos métodos SQL para borrar y actualizar gastos e ingresos
+
+[33mcommit 0698810249897a342cb815928197c5ec76d0680f[m
+Merge: 64b4a37 78b10b5
+Author: DiegoRT99 <diegorodrigueztaboada99@gmail.com>
+Date:   Sat Dec 4 00:18:54 2021 +0100
+
+    Merge branch 'main' of https://github.com/michaelsordo/moneygest
+
+[33mcommit 64b4a376ec2ea5aa2a7b9da8e5afc0c153f9e97a[m
+Author: DiegoRT99 <diegorodrigueztaboada99@gmail.com>
+Date:   Sat Dec 4 00:17:51 2021 +0100
+
+    Area personal funcionando
+
+[33mcommit 80e31fbc678094088fbb661334a186203000140e[m
+Author: DiegoRT99 <diegorodrigueztaboada99@gmail.com>
+Date:   Fri Dec 3 20:32:20 2021 +0100
+
+    Cambios en Área Personal
+
+[33mcommit 78b10b5b862502121415b8df702b96ffa8c710b8[m
+Author: Michael Sordo <michaelsordoseijo@gmail.com>
+Date:   Fri Dec 3 19:12:55 2021 +0100
+
+    Ingresos correctamente funcion añadir
+
+[33mcommit 4fb4b05ade05f900a60f404db55007da90cb1cc3[m
+Author: DiegoRT99 <diegorodrigueztaboada99@gmail.com>
+Date:   Fri Dec 3 18:47:05 2021 +0100
+
+    Registrar Gasto acabado
+
+[33mcommit 9a63b18d753e92978712675289e81377444526dc[m
+Author: DiegoRT99 <diegorodrigueztaboada99@gmail.com>
+Date:   Fri Dec 3 18:37:29 2021 +0100
+
+    Insertar Gasto funciona mejor
+
+[33mcommit 7c6312caa92a718a1021f69060cbb6406bdc8cfa[m
+Merge: 9827af5 1d6c125
+Author: DiegoRT99 <diegorodrigueztaboada99@gmail.com>
+Date:   Fri Dec 3 18:21:06 2021 +0100
+
+    Merge branch 'main' of https://github.com/michaelsordo/moneygest
+
+[33mcommit 9827af5dbb4bddfb1c5c4f528a2dc0c3c9f07301[m
+Author: DiegoRT99 <diegorodrigueztaboada99@gmail.com>
+Date:   Fri Dec 3 18:20:07 2021 +0100
+
+    Funciona insertar gasto
+
+[33mcommit 1d6c1257edeeb66cceebf05f16370e1c1630a2dd[m
+Author: Michael Sordo <michaelsordoseijo@gmail.com>
+Date:   Fri Dec 3 17:20:40 2021 +0100
+
+    Add ingresos como gastos
+
+[33mcommit 041104b75f3b186bd8bcd6801513f52a0205a817[m
+Author: Michael Sordo <michaelsordoseijo@gmail.com>
+Date:   Fri Dec 3 14:54:59 2021 +0100
+
+    Add spinner categoria
