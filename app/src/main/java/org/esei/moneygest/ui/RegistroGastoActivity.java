@@ -1,5 +1,6 @@
 package org.esei.moneygest.ui;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -186,7 +187,11 @@ public class RegistroGastoActivity extends AppCompatActivity {
 
                 Toast.makeText(RegistroGastoActivity.this, "Gasto registrado correctamente", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(getApplicationContext(),GastosActivity.class);
+
                 startActivity(intent);
+                RegistroGastoActivity.this.finish();
+
+
             }
         }
         else {

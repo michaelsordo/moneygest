@@ -187,6 +187,7 @@ public class RegistroIngresoActivity extends AppCompatActivity {
                 Toast.makeText(RegistroIngresoActivity.this, "Ingreso registrado correctamente", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(getApplicationContext(),IngresosActivity.class);
                 startActivity(intent);
+                RegistroIngresoActivity.this.finish();
 
             }
         }

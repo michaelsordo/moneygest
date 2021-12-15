@@ -125,6 +125,7 @@ public class IngresosActivity extends AppCompatActivity {
                         Toast.makeText(IngresosActivity.this, "Ingreso eliminado correctamente.", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(),IngresosActivity.class);
                         startActivity(intent);
+                        IngresosActivity.this.finish();
                     }
                 });
                 builder.setNegativeButton("NO", null);
