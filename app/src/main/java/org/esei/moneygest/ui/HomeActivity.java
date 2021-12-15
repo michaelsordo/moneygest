@@ -9,6 +9,7 @@ import static org.esei.moneygest.ui.FiltrosActivity.FILTRO_FECHA_TIPO;
 import static org.esei.moneygest.ui.FiltrosActivity.FILTRO_CANTIDAD_TIPO;
 import static org.esei.moneygest.ui.FiltrosActivity.FILTRO_FECHA_CANTIDAD_TIPO;
 
+import android.content.ComponentName;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -321,7 +323,6 @@ public class HomeActivity extends AppCompatActivity {
         }
         return toRet;
     }
-
 
 
 }

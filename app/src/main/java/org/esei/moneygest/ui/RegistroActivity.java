@@ -51,7 +51,6 @@ public class RegistroActivity extends AppCompatActivity {
     public void ejecutar_login(View view){
 
         Intent i= new Intent(this, LoginActivity.class);
-
         startActivity(i);
 
     }
@@ -98,6 +97,7 @@ public class RegistroActivity extends AppCompatActivity {
                     intent.putExtra("maxCantidadIngresos",0.0);
                     intent.putExtra("tipoIngresos", "");
                     startActivity(intent);
+                    RegistroActivity.this.finish();
                 }
 
                 else{
