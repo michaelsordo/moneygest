@@ -104,7 +104,13 @@ public class AreaPersonalActivity extends AppCompatActivity {
 
                 Toast.makeText(AreaPersonalActivity.this, "Usuario actualizado correctamente", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                intent.putExtra("email_usuario",email);
+                intent.putExtra("pass_usuario",pass);
+
                 startActivity(intent);
+
+
+
         }
 
     }
