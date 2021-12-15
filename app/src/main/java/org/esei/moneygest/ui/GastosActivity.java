@@ -39,6 +39,18 @@ public class GastosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gastos_general);
 
+    }
+
+    //Control ciclo de vida
+
+    @Override
+    public void onStart(){
+        super.onStart();
+    }
+    @Override
+    public void onResume(){
+        super.onResume();
+
         listViewGastos= (ListView) findViewById(R.id.listViewGastos);
 
         UtilidadesSP utilidadesSP = new UtilidadesSP();
@@ -57,16 +69,6 @@ public class GastosActivity extends AppCompatActivity {
 
     }
 
-    //Control ciclo de vida
-
-    @Override
-    public void onStart(){
-        super.onStart();
-    }
-    @Override
-    public void onResume(){
-        super.onResume();
-    }
 
     @Override
     public void onPause(){
@@ -143,7 +145,7 @@ public class GastosActivity extends AppCompatActivity {
                 intent.putExtra("fecha", fecha);
                 intent.putExtra("tipo", listaGastos.get(pos).getTipo());
                 startActivity(intent);
-                GastosActivity.this.finish();
+
                 break;
 
             case 3:
@@ -169,7 +171,7 @@ public class GastosActivity extends AppCompatActivity {
         intent.putExtra("tipo", "");
 
         startActivity(intent);
-        GastosActivity.this.finish();
+
 
     }
 

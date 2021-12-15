@@ -19,11 +19,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:launchMode="singleInstance" android:name=".ui.RegistroActivity" android:exported="true"/>
+        <activity android:name=".ui.RegistroActivity" android:exported="true"/>
 
         <activity
             android:name=".ui.HomeActivity"
-            android:launchMode="singleInstance">
+            android:launchMode="singleInstance"
+            android:clearTaskOnLaunch="true">
+
 
 
         </activity>

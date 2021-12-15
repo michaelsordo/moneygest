@@ -57,6 +57,21 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+
+
+    }
+
+
+    //Control ciclo de vida
+
+    @Override
+    public void onStart(){
+        super.onStart();
+    }
+    @Override
+    public void onResume(){
+        super.onResume();
+
         username = (TextView) findViewById(R.id.info_user);
         UtilidadesSP utilidadesSP = new UtilidadesSP();
         utilidadesSP.cargarInfoUser(username, HomeActivity.this);
@@ -97,19 +112,6 @@ public class HomeActivity extends AppCompatActivity {
         pieChart.animate();
 
         pieDS.setFormLineWidth(4);
-
-    }
-
-
-    //Control ciclo de vida
-
-    @Override
-    public void onStart(){
-        super.onStart();
-    }
-    @Override
-    public void onResume(){
-        super.onResume();
 
     }
 
