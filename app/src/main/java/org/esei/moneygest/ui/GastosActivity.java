@@ -123,6 +123,7 @@ public class GastosActivity extends AppCompatActivity {
                         Toast.makeText(GastosActivity.this, "Gasto eliminado correctamente.", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(),GastosActivity.class);
                         startActivity(intent);
+                        GastosActivity.this.finish();
                     }
                 });
                 builder.setNegativeButton("NO", null);
@@ -142,6 +143,7 @@ public class GastosActivity extends AppCompatActivity {
                 intent.putExtra("fecha", fecha);
                 intent.putExtra("tipo", listaGastos.get(pos).getTipo());
                 startActivity(intent);
+                GastosActivity.this.finish();
                 break;
 
             case 3:
@@ -167,6 +169,7 @@ public class GastosActivity extends AppCompatActivity {
         intent.putExtra("tipo", "");
 
         startActivity(intent);
+        GastosActivity.this.finish();
 
     }
 

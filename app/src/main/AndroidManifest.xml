@@ -18,7 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.RegistroActivity" android:exported="true"/>
+        <activity android:launchMode="singleInstance" android:name=".ui.RegistroActivity" android:exported="true"/>
         <activity android:name=".ui.HomeActivity" android:exported="true"/>
         <activity android:name=".ui.GastosActivity" android:exported="true"/>
         <activity android:name=".ui.IngresosActivity" android:exported="true"/>
