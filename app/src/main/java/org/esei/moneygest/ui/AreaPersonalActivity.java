@@ -108,6 +108,7 @@ public class AreaPersonalActivity extends AppCompatActivity {
                 intent.putExtra("pass_usuario",pass);
 
                 startActivity(intent);
+                AreaPersonalActivity.this.finish();
 
 
 

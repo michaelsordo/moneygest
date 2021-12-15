@@ -96,6 +96,9 @@ public class RegistroActivity extends AppCompatActivity {
                     intent.putExtra("minCantidadIngresos",0.0);
                     intent.putExtra("maxCantidadIngresos",0.0);
                     intent.putExtra("tipoIngresos", "");
+
+
+
                     startActivity(intent);
                     RegistroActivity.this.finish();
                 }

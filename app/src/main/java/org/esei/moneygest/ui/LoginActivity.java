@@ -56,6 +56,7 @@ public class LoginActivity extends AppCompatActivity {
         Intent i= new Intent(this, RegistroActivity.class);
         startActivity(i);
 
+
     }
 
     public void loguear(View view){
@@ -89,6 +90,9 @@ public class LoginActivity extends AppCompatActivity {
                 intent.putExtra("minCantidadIngresos",0.0);
                 intent.putExtra("maxCantidadIngresos",0.0);
                 intent.putExtra("tipoIngresos", "");
+
+
+
                 startActivity(intent);
                 LoginActivity.this.finish();
             }

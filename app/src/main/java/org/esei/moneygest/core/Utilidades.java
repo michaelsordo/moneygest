@@ -1,6 +1,7 @@
 package org.esei.moneygest.core;
 
 
+import android.app.Activity;
 import android.content.Intent;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -78,32 +79,57 @@ public class Utilidades {
                 intent.putExtra("minCantidadIngresos",0.0);
                 intent.putExtra("maxCantidadIngresos",0.0);
                 intent.putExtra("tipoIngresos", "");
+
                 activity.startActivity(intent);
-                activity.startActivity(intent);
+                if(activity instanceof HomeActivity){
+                }
+                else{
+                    activity.finish();
+                }
                 toret=true;
                 break;
 
             case R.id.item1:
                 intent = new Intent(activity.getApplicationContext(), GastosActivity.class);
                 activity.startActivity(intent);
+                if(activity instanceof HomeActivity){
+                }
+                else{
+                    activity.finish();
+                }
                 toret=true;
                 break;
 
             case R.id.item2:
                 intent = new Intent(activity.getApplicationContext(), IngresosActivity.class);
                 activity.startActivity(intent);
+                if(activity instanceof HomeActivity){
+                }
+                else{
+                    activity.finish();
+                }
                 toret=true;
                 break;
 
             case R.id.item3:
                 intent = new Intent(activity.getApplicationContext(), AreaPersonalActivity.class);
                 activity.startActivity(intent);
+                if(activity instanceof HomeActivity){
+                }
+                else{
+                    activity.finish();
+                }
                 toret=true;
                 break;
 
             case R.id.item4:
                 intent = new Intent(activity.getApplicationContext(), ContactoActivity.class);
                 activity.startActivity(intent);
+                if(activity instanceof HomeActivity){
+                }
+                else{
+                    activity.finish();
+                }
                 toret=true;
                 break;
 
@@ -112,7 +138,9 @@ public class Utilidades {
                 utilidadesSP.logout(activity);
                 Toast.makeText(activity, "Sesión cerrada correctamente", Toast.LENGTH_LONG).show();
                 intent = new Intent(activity.getApplicationContext(), LoginActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 activity.startActivity(intent);
+                activity.finish();
                 toret=true;
                 break;
         }
