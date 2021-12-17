@@ -39,6 +39,18 @@ public class IngresosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ingresos_general);
 
+    }
+
+    //Control ciclo de vida
+
+    @Override
+    public void onStart(){
+        super.onStart();
+    }
+    @Override
+    public void onResume(){
+        super.onResume();
+
         listViewIngresos = (ListView) findViewById(R.id.listViewIngresos);
 
         UtilidadesSP utilidadesSP = new UtilidadesSP();
@@ -55,17 +67,6 @@ public class IngresosActivity extends AppCompatActivity {
 
         this.registerForContextMenu(listViewIngresos);
 
-    }
-
-    //Control ciclo de vida
-
-    @Override
-    public void onStart(){
-        super.onStart();
-    }
-    @Override
-    public void onResume(){
-        super.onResume();
     }
 
     @Override
