@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.RegistroActivity" android:exported="true"/>
-        <activity android:name=".ui.HomeActivity" android:launchMode="singleInstance"/>
+        <activity android:name=".ui.HomeActivity"/>
         <activity android:name=".ui.GastosActivity" android:exported="true"/>
         <activity android:name=".ui.IngresosActivity" android:exported="true"/>
         <activity android:name=".ui.AreaPersonalActivity" android:exported="true"/>

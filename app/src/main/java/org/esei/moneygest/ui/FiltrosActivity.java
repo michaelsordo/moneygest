@@ -551,6 +551,7 @@ public static final int FILTRO_FECHA_CANTIDAD_TIPO = 6;
             intent.putExtra("tipoIngresos", tipoIngresos);
 
             startActivity(intent);
+            finish();
         }
 
     }
