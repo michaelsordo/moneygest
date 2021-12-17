@@ -48,7 +48,7 @@ public class HomeActivity extends AppCompatActivity {
     GastoMapper gastoMapper;
     IngresoMapper ingresoMapper;
     String user;
-    Double totalGastos = 0.0, totalIngresos=0.0;
+    Double totalGastos, totalIngresos;
     PieEntry gastosEntry, ingresosEntry;
 
     PieDataSet pieDS = new PieDataSet(null,null);
@@ -71,6 +71,9 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     public void onResume(){
         super.onResume();
+
+        totalGastos = 0.0;
+        totalIngresos=0.0;
 
         username = (TextView) findViewById(R.id.info_user);
         UtilidadesSP utilidadesSP = new UtilidadesSP();
