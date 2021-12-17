@@ -331,11 +331,10 @@ public class HomeActivity extends AppCompatActivity {
     public void onBackPressed() {
 
         Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra("EXIT", true);
         startActivity(intent);
         finish();
-
         //finishAffinity();
     }
 }
