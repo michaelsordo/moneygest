@@ -142,7 +142,7 @@ public class IngresosActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), RegistroIngresoActivity.class);
                 intent.putExtra("id",listaIngresos.get(pos).getId());
                 intent.putExtra("concepto",listaIngresos.get(pos).getConcepto());
-                intent.putExtra("cantidad €", listaIngresos.get(pos).getCantidad());
+                intent.putExtra("cantidad", listaIngresos.get(pos).getCantidad());
                 intent.putExtra("fecha", fecha);
                 intent.putExtra("tipo", listaIngresos.get(pos).getTipo());
                 startActivity(intent);

@@ -141,7 +141,7 @@ public class GastosActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), RegistroGastoActivity.class);
                 intent.putExtra("id",listaGastos.get(pos).getId());
                 intent.putExtra("concepto",listaGastos.get(pos).getConcepto());
-                intent.putExtra("cantidad €", listaGastos.get(pos).getCantidad());
+                intent.putExtra("cantidad", listaGastos.get(pos).getCantidad());
                 intent.putExtra("fecha", fecha);
                 intent.putExtra("tipo", listaGastos.get(pos).getTipo());
                 startActivity(intent);

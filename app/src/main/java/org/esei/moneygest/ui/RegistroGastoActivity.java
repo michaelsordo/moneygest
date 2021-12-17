@@ -232,6 +232,7 @@ public class RegistroGastoActivity extends AppCompatActivity {
                 Toast.makeText(RegistroGastoActivity.this, "Gasto actualizado correctamente", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(getApplicationContext(),GastosActivity.class);
                 startActivity(intent);
+                finish();
             }
         }
 
