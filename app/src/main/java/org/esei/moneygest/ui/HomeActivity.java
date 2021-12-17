@@ -327,5 +327,15 @@ public class HomeActivity extends AppCompatActivity {
         return toRet;
     }
 
+    @Override
+    public void onBackPressed() {
 
+        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("EXIT", true);
+        startActivity(intent);
+        finish();
+
+        //finishAffinity();
+    }
 }

@@ -21,12 +21,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         username = (EditText) findViewById(R.id.login_nombre_usuario);
         password = (EditText) findViewById(R.id.login_pass_usuario);
-
-        UtilidadesSP utilidadesSP = new UtilidadesSP();
-        utilidadesSP.cargarPreferencias(username, password, LoginActivity.this);
 
     }
 
@@ -39,6 +35,15 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     public void onResume(){
         super.onResume();
+
+        if (getIntent().getBooleanExtra("EXIT", false)) {
+            finish();
+        }
+
+        UtilidadesSP utilidadesSP = new UtilidadesSP();
+        utilidadesSP.cargarPreferencias(username, password, LoginActivity.this);
+
+
     }
 
     @Override
